@@ -1,0 +1,284 @@
+// Auto-generated configuration fallback for local file:// previews
+window.STORE_CONFIG_FALLBACK = {
+  "currentCount": 41,
+  "timestamp": "2026-10-23T10:47:12.075Z",
+  "data": {
+    "currentCount": 41,
+    "timestamp": "2026-10-23T10:47:12.075Z",
+    "brand": {
+      "brand_name": "URBAN EDGE",
+      "brand_tagline": "Own Your Edge.",
+      "brand_logo": "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file1.png"
+    },
+    "categories": [
+      {
+        "id": 1,
+        "category_name": "Home",
+        "category_image": "",
+        "link": ""
+      },
+      {
+        "id": 1792749763143,
+        "category_name": "CHAIN TREND",
+        "category_image": "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file31.webp",
+        "link": ""
+      },
+      {
+        "id": 1792749774692,
+        "category_name": "DATE READY",
+        "category_image": "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file8.webp",
+        "link": "",
+        "cover_product_id": 1792749834198
+      },
+      {
+        "id": 1792749782402,
+        "category_name": "CONCERT FITS",
+        "category_image": "",
+        "link": ""
+      },
+      {
+        "id": 1792749796027,
+        "category_name": "LINEN COLLECTION",
+        "category_image": "",
+        "link": ""
+      },
+      {
+        "id": 1792749802244,
+        "category_name": "AFTER OFFICE",
+        "category_image": "",
+        "link": ""
+      },
+      {
+        "id": 1792749809721,
+        "category_name": "9 TO 5",
+        "category_image": "",
+        "link": ""
+      }
+    ],
+    "hero": [
+      {
+        "title": "",
+        "link": "",
+        "image": "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file2.jpg",
+        "desktop_image": "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file2.jpg",
+        "mobile_image": "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file3.jpg",
+        "desktop_fit_mode": "contain",
+        "mobile_fit_mode": "contain",
+        "view_mode": "auto",
+        "category": "Home"
+      },
+      {
+        "title": "",
+        "link": "",
+        "image": "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file4.jpg",
+        "desktop_image": "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file4.jpg",
+        "mobile_image": "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file5.jpg",
+        "desktop_fit_mode": "contain",
+        "mobile_fit_mode": "contain",
+        "view_mode": "auto",
+        "category": "Home"
+      },
+      {
+        "title": "",
+        "link": "",
+        "image": "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file6.jpg",
+        "desktop_image": "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file6.jpg",
+        "mobile_image": "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file7.jpg",
+        "desktop_fit_mode": "contain",
+        "mobile_fit_mode": "contain",
+        "view_mode": "auto",
+        "category": "Home"
+      }
+    ],
+    "instagram": [],
+    "news": [
+      {
+        "headline": "Buy 2 Get 250 Rs Off | Use Code : B2G250",
+        "link": ""
+      },
+      {
+        "headline": "Flat 10% OFF on your 1st Order | Use Code : FIRST10",
+        "link": ""
+      },
+      {
+        "headline": "Buy 3 Get 500 Rs Off | Use Code : B3G500",
+        "link": ""
+      }
+    ],
+    "story": [],
+    "topics": [],
+    "footer": {
+      "footer_company": "URBAN EDGE Pvt. Ltd.",
+      "footer_address": "Lotus Corporate Park Wing G02 - 1502, Ram Mandir Lane, off Western Express Highway, Goregaon, Mumbai, 400063",
+      "footer_phone": "+919004580603",
+      "footer_email": "tambenick25@gmail.com",
+      "footer_hours": "Mon - Sun : 10:00 AM - 06:00 PM",
+      "footer_copyright": "A copyright notice is a short line of text that lets the public know that your work is protected by copyright law and is not to be copied.",
+      "footer_tagline": "Own Your Edge.",
+      "company_links": [],
+      "policy_links": [],
+      "social_links": {
+        "facebook": "https://www.facebook.com/powerlookofficial",
+        "instagram": "https://www.instagram.com/powerlookofficial",
+        "youtube": "https://www.youtube.com/@powerlook6252",
+        "whatsapp": "https://wa.me/919004580603",
+        "twitter": "https://www.powerlook.in/"
+      }
+    },
+    "subpages": [
+      {
+        "id": 1792749834198,
+        "name": "Yellow Macro Checks Shirt",
+        "category": "DATE READY",
+        "price": "1999",
+        "discount_price": "1599",
+        "description": "Yellow Macro Checks Shirt featuring a bold check pattern for a stylish, modern look. Perfect for casual outings and everyday wear.",
+        "photos": [
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file8.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file9.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file10.webp"
+        ],
+        "is_category_cover": true,
+        "is_showcase": false,
+        "is_new_arrival": false,
+        "is_mix": false,
+        "is_enabled": true
+      },
+      {
+        "id": 1792749937780,
+        "name": "Yellow Macro Checks Shirt",
+        "category": "CONCERT FITS",
+        "price": "1999",
+        "discount_price": "1599",
+        "description": "Yellow Macro Checks Shirt featuring a bold check pattern for a stylish, modern look. Perfect for casual outings and everyday wear.",
+        "photos": [
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file11.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file12.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file13.webp"
+        ],
+        "is_category_cover": false,
+        "is_showcase": false,
+        "is_new_arrival": false,
+        "is_mix": false,
+        "is_enabled": true
+      },
+      {
+        "id": 1792749954069,
+        "name": "",
+        "category": "CONCERT FITS",
+        "price": "1999",
+        "discount_price": "1599",
+        "description": "Light Blue Linen Blend Shirt featuring a clean, elegant design for a fresh and sophisticated look. Perfect for casual outings and everyday wear.",
+        "photos": [
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file14.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file15.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file16.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file17.webp"
+        ],
+        "is_category_cover": false,
+        "is_showcase": false,
+        "is_new_arrival": false,
+        "is_mix": false,
+        "is_enabled": true
+      },
+      {
+        "id": 1792750147622,
+        "name": "Brown Embroidered Patch Linen Blend Shirt",
+        "category": "LINEN COLLECTION",
+        "price": "1999",
+        "discount_price": "1099",
+        "description": "Brown Linen Blend Shirt featuring stylish embroidered patches for a premium, modern look. Perfect for casual outings and everyday wear.",
+        "photos": [
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file18.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file19.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file20.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file21.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file22.jpg",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file23.webp"
+        ],
+        "is_category_cover": false,
+        "is_showcase": false,
+        "is_new_arrival": false,
+        "is_mix": false,
+        "is_enabled": true
+      },
+      {
+        "id": 1792750148998,
+        "name": "Brown Linen Blend Embroidery Shirt",
+        "category": "DATE READY",
+        "price": "1599",
+        "discount_price": "1500",
+        "description": "Light Blue Linen Blend Shirt featuring a clean, elegant design for a fresh and sophisticated look. Perfect for casual outings and everyday wear.",
+        "photos": [
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file24.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file25.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file26.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file27.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file28.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file29.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file30.webp"
+        ],
+        "is_category_cover": false,
+        "is_showcase": false,
+        "is_new_arrival": false,
+        "is_mix": false,
+        "is_enabled": true
+      },
+      {
+        "id": 1792750149230,
+        "name": "Blue Printed Stripe Shirt",
+        "category": "LINEN COLLECTION",
+        "price": "1599",
+        "discount_price": "1499",
+        "description": "Blue Printed Stripe Shirt featuring a modern striped pattern for a smart, stylish look. Perfect for casual outings and everyday wear.",
+        "photos": [
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file32.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file33.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file34.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file35.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file36.webp"
+        ],
+        "is_category_cover": false,
+        "is_showcase": false,
+        "is_new_arrival": false,
+        "is_mix": false,
+        "is_enabled": true
+      },
+      {
+        "id": 1792752146464,
+        "name": "Blue Printed Stripe Shirt",
+        "category": "DATE READY",
+        "price": "1599",
+        "discount_price": "1499",
+        "description": "Blue Printed Stripe Shirt featuring a modern striped pattern for a smart, stylish look. Perfect for casual outings and everyday wear.",
+        "photos": [
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file37.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file38.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file39.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file40.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file41.webp"
+        ],
+        "is_category_cover": false,
+        "is_showcase": false,
+        "is_new_arrival": false,
+        "is_mix": false,
+        "is_enabled": true
+      }
+    ],
+    "showcase": [],
+    "NewArrival": [],
+    "Mix": []
+  },
+  "filename": "2026-10-23-104712-configuration.json",
+  "userEmail": "nitikesh@tambnick25.onmicrosoft.com",
+  "userName": "nitikesh",
+  "organizationName": "bandhan",
+  "organizationSlug": "bandhan",
+  "workspaceType": "organization",
+  "github": {
+    "repository": "https://github.com/Noblecompute/customapp-bandhan",
+    "branch": "main",
+    "publishedAt": "2026-10-23T10:47:13.243Z",
+    "mediaBaseUrl": "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/"
+  }
+};
