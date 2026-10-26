@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="URBAN EDGE — Shopping Bag and Checkout." />
+  <meta name="description" content="Shopping Bag & Checkout — URBAN EDGE" />
   <title>Shopping Bag — URBAN EDGE</title>
   
   <link rel="icon" type="image/png" href="media/file1.png" />
@@ -14,21 +14,16 @@
 </head>
 <body>
 
-  <!-- Announcement Bar -->
+  <!-- Dynamic Announcement Bar -->
   <aside class="announcement-bar" aria-label="Offers Announcement">
     <div class="container">
-      <div class="announcement-slider">
-        <div class="announcement-item active">
-          <span>Free Express Shipping on Orders Above ₹999</span>
-          <button type="button" class="announcement-code-badge" data-copy-code="FIRST10" title="Click to copy code">
-            CODE: FIRST10
-          </button>
-        </div>
+      <div class="announcement-slider" id="announcementSlider">
+        <!-- Injected dynamically -->
       </div>
     </div>
   </aside>
 
-  <!-- Site Header -->
+  <!-- Dynamic Header -->
   <header class="site-header">
     <div class="container">
       <div class="header-inner">
@@ -36,20 +31,12 @@
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
         </button>
 
-        <a href="index.html" class="brand-logo-wrap" aria-label="URBAN EDGE Home">
-          <img src="media/file1.png" alt="URBAN EDGE Logo" class="brand-logo-img" onerror="this.style.display='none'; document.getElementById('brandFallbackText').style.display='flex';" />
-          <div class="brand-fallback-text" id="brandFallbackText" style="display:none;">
-            <span class="brand-name">URBAN EDGE</span>
-            <span class="brand-tagline">Own Your Edge.</span>
-          </div>
+        <a href="index.html" class="brand-logo-wrap" aria-label="Brand Home">
+          <!-- Injected dynamically -->
         </a>
 
-        <nav class="desktop-nav" aria-label="Primary navigation">
-          <a href="index.html#catalog" class="nav-link">Shop All</a>
-          <a href="index.html?category=DATE+READY#catalog" class="nav-link">Date Ready</a>
-          <a href="index.html?category=CONCERT+FITS#catalog" class="nav-link">Concert Fits</a>
-          <a href="index.html?category=LINEN+COLLECTION#catalog" class="nav-link">Linen Collection</a>
-          <a href="index.html#offers" class="nav-link nav-link-sale">Offers</a>
+        <nav class="desktop-nav" id="desktopNav" aria-label="Primary navigation">
+          <!-- Injected dynamically -->
         </nav>
 
         <div class="header-actions">
@@ -79,14 +66,11 @@
         </button>
       </div>
       <div class="mobile-drawer-body">
-        <ul class="mobile-menu-list">
-          <li class="mobile-menu-item"><a href="index.html#catalog">Shop All Shirts</a></li>
-          <li class="mobile-menu-item"><a href="index.html?category=DATE+READY#catalog">Date Ready</a></li>
-          <li class="mobile-menu-item"><a href="index.html?category=CONCERT+FITS#catalog">Concert Fits</a></li>
-          <li class="mobile-menu-item"><a href="index.html?category=LINEN+COLLECTION#catalog">Linen Collection</a></li>
-          <li class="mobile-menu-item"><a href="index.html#offers" style="color: var(--color-vermilion);">Offers &amp; Coupons</a></li>
+        <ul class="mobile-menu-list" id="mobileMenuList">
+          <!-- Injected dynamically -->
         </ul>
       </div>
+      <div class="mobile-drawer-footer" id="mobileDrawerFooter"></div>
     </div>
   </div>
 
@@ -108,23 +92,14 @@
     </section>
   </main>
 
-  <!-- Footer -->
+  <!-- Dynamic Footer -->
   <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
-        <div class="footer-col-brand">
-          <h3 class="footer-brand-name">URBAN EDGE</h3>
-          <div class="footer-brand-tagline">Own Your Edge.</div>
-          <p class="footer-bio">Contemporary Indian menswear label focused on premium linen blends and bold macro checks.</p>
-        </div>
+        <div class="footer-col-brand" id="footerBrandCol"></div>
         <div>
           <h4 class="footer-col-title">Collections</h4>
-          <ul class="footer-links-list">
-            <li><a href="index.html?category=DATE+READY#catalog">Date Ready</a></li>
-            <li><a href="index.html?category=CONCERT+FITS#catalog">Concert Fits</a></li>
-            <li><a href="index.html?category=LINEN+COLLECTION#catalog">Linen Collection</a></li>
-            <li><a href="index.html#catalog">All Shirts</a></li>
-          </ul>
+          <ul class="footer-links-list" id="footerCategoryLinks"></ul>
         </div>
         <div>
           <h4 class="footer-col-title">Customer Care</h4>
@@ -136,17 +111,12 @@
         </div>
         <div>
           <h4 class="footer-col-title">Contact</h4>
-          <div class="footer-contact-info">
-            <div class="footer-contact-item">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-              <span>Mon - Sun: 10:00 AM - 06:00 PM</span>
-            </div>
-          </div>
+          <div class="footer-contact-info" id="footerContactInfo"></div>
         </div>
       </div>
       <div class="footer-bottom">
         <div class="container">
-          <div>&copy; 2026 URBAN EDGE Pvt. Ltd. All rights reserved.</div>
+          <div id="footerCopyrightNotice"></div>
         </div>
       </div>
     </div>
@@ -272,7 +242,7 @@
           </div>
 
           <div class="demo-checkout-alert">
-            <strong>Static Storefront Notice:</strong> This website is hosted on static infrastructure. Submitting this order demonstrates the frontend user flow without collecting sensitive card details or processing actual bank funds.
+            <strong>Static Storefront Notice:</strong> Static preview mode. Submitting this order demonstrates the frontend user flow without collecting payment credentials or charging funds.
           </div>
 
           <button type="submit" class="btn btn-vermilion" style="width: 100%; margin-top: 1.5rem; padding: 1rem; font-size: 1rem;">
@@ -284,7 +254,6 @@
   </div>
 
   <!-- Scripts -->
-  <script src="js/config-fallback.js"></script>
   <script src="js/products.js"></script>
   <script src="js/cart.js"></script>
   <script src="js/wishlist.js"></script>
@@ -294,6 +263,12 @@
       await window.ProductStore.init();
       window.CartStore.init();
       window.WishlistStore.init();
+
+      // Render Dynamic Header, Announcement & Footer
+      renderDynamicHeader();
+      renderDynamicAnnouncementBar();
+      renderDynamicFooter();
+
       renderCartPage();
       initGlobalEvents();
     }
@@ -361,7 +336,7 @@
         `
         : `
           <form style="display: flex; gap: 0.5rem; margin-bottom: 1.25rem;" onsubmit="event.preventDefault(); const res = CartStore.applyCoupon(this.cpCode.value); if(res.success){ showToast(res.message, 'emerald'); } else { showToast(res.message, 'vermilion'); }">
-            <input type="text" name="cpCode" placeholder="Enter Promo Code (e.g. FIRST10)" style="flex: 1; padding: 0.65rem 0.85rem; font-size: 0.85rem; border: 1px solid var(--color-neutral-border); border-radius: 4px; text-transform: uppercase;" />
+            <input type="text" name="cpCode" placeholder="Enter coupon code" style="flex: 1; padding: 0.65rem 0.85rem; font-size: 0.85rem; border: 1px solid var(--color-neutral-border); border-radius: 4px; text-transform: uppercase;" />
             <button type="submit" class="btn btn-primary" style="padding: 0.65rem 1.25rem; font-size: 0.8rem;">Apply</button>
           </form>
         `;
@@ -377,43 +352,46 @@
               <span style="text-align: right;">Total</span>
             </div>
 
-            ${items.map(item => `
-              <div class="cart-row-item">
-                <div style="width: 80px; aspect-ratio: 4/5; background: var(--color-soft-neutral); border-radius: 2px; overflow: hidden;">
-                  <img src="${item.image}" alt="${escapeHtml(item.name)}" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.onerror=null; this.src='${getRemoteMediaFallback(item.raw_image)}';" />
-                </div>
-                
-                <div>
-                  <span style="font-size: 0.7rem; font-weight: 700; color: var(--color-emerald); letter-spacing: 0.1em; text-transform: uppercase;">${escapeHtml(item.category)}</span>
-                  <h3 style="font-size: 0.95rem; font-weight: 600; line-height: 1.35; margin: 0.2rem 0 0.4rem;">
-                    <a href="product.html?id=${item.id}" style="color: var(--color-charcoal);">${escapeHtml(item.name)}</a>
-                  </h3>
-                  <div style="font-size: 0.85rem; color: var(--color-charcoal-muted);">
-                    Unit Price: <strong>${formatPrice(item.effective_price)}</strong>
-                    ${item.price > item.effective_price ? `<del style="margin-left: 0.35rem; font-size: 0.75rem;">${formatPrice(item.price)}</del>` : ''}
+            ${items.map(item => {
+              const imgTag = renderImgTag(item.image, item.name);
+              return `
+                <div class="cart-row-item">
+                  <div style="width: 80px; aspect-ratio: 4/5; background: var(--color-soft-neutral); border-radius: 2px; overflow: hidden;">
+                    ${imgTag}
+                  </div>
+                  
+                  <div>
+                    <span style="font-size: 0.7rem; font-weight: 700; color: var(--color-emerald); letter-spacing: 0.1em; text-transform: uppercase;">${escapeHtml(item.category)}</span>
+                    <h3 style="font-size: 0.95rem; font-weight: 600; line-height: 1.35; margin: 0.2rem 0 0.4rem;">
+                      <a href="product.html?id=${item.id}" style="color: var(--color-charcoal);">${escapeHtml(item.name)}</a>
+                    </h3>
+                    <div style="font-size: 0.85rem; color: var(--color-charcoal-muted);">
+                      Unit Price: <strong>${formatPrice(item.effective_price)}</strong>
+                      ${item.price > item.effective_price ? `<del style="margin-left: 0.35rem; font-size: 0.75rem;">${formatPrice(item.price)}</del>` : ''}
+                    </div>
+                  </div>
+
+                  <div style="text-align: center; font-weight: 700; font-size: 0.9rem;">
+                    <span class="sr-only">Size: </span>${item.size}
+                  </div>
+
+                  <div style="text-align: center;">
+                    <div class="drawer-qty-control" style="margin: 0 auto;">
+                      <button type="button" class="drawer-qty-btn" onclick="CartStore.updateQuantity('${item.key}', ${item.quantity - 1})" aria-label="Decrease quantity">−</button>
+                      <span class="drawer-qty-val">${item.quantity}</span>
+                      <button type="button" class="drawer-qty-btn" onclick="CartStore.updateQuantity('${item.key}', ${item.quantity + 1})" aria-label="Increase quantity">+</button>
+                    </div>
+                  </div>
+
+                  <div style="text-align: right; font-weight: 800; font-size: 1.05rem; color: var(--color-charcoal);">
+                    ${formatPrice(item.effective_price * item.quantity)}
+                    <button type="button" onclick="CartStore.removeItem('${item.key}')" style="display: block; margin-top: 0.4rem; margin-left: auto; font-size: 0.75rem; color: var(--color-vermilion); font-weight: 600; text-decoration: underline;" aria-label="Remove item">
+                      Remove
+                    </button>
                   </div>
                 </div>
-
-                <div style="text-align: center; font-weight: 700; font-size: 0.9rem;">
-                  <span class="sr-only">Size: </span>${item.size}
-                </div>
-
-                <div style="text-align: center;">
-                  <div class="drawer-qty-control" style="margin: 0 auto;">
-                    <button type="button" class="drawer-qty-btn" onclick="CartStore.updateQuantity('${item.key}', ${item.quantity - 1})" aria-label="Decrease quantity">−</button>
-                    <span class="drawer-qty-val">${item.quantity}</span>
-                    <button type="button" class="drawer-qty-btn" onclick="CartStore.updateQuantity('${item.key}', ${item.quantity + 1})" aria-label="Increase quantity">+</button>
-                  </div>
-                </div>
-
-                <div style="text-align: right; font-weight: 800; font-size: 1.05rem; color: var(--color-charcoal);">
-                  ${formatPrice(item.effective_price * item.quantity)}
-                  <button type="button" onclick="CartStore.removeItem('${item.key}')" style="display: block; margin-top: 0.4rem; margin-left: auto; font-size: 0.75rem; color: var(--color-vermilion); font-weight: 600; text-decoration: underline;" aria-label="Remove item">
-                    Remove
-                  </button>
-                </div>
-              </div>
-            `).join('')}
+              `;
+            }).join('')}
 
             <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--color-soft-neutral);">
               <a href="index.html#catalog" style="font-size: 0.875rem; font-weight: 600; color: var(--color-emerald); display: flex; align-items: center; gap: 0.35rem;">
@@ -466,18 +444,6 @@
             <button type="button" class="btn btn-vermilion" style="width: 100%; padding: 1rem; font-size: 0.95rem;" onclick="openCheckoutModal()">
               Proceed To Checkout
             </button>
-
-            <!-- Trust Icons -->
-            <div style="margin-top: 1.75rem; padding-top: 1.25rem; border-top: 1px solid var(--color-soft-neutral); display: flex; flex-direction: column; gap: 0.65rem; font-size: 0.75rem; color: var(--color-charcoal-muted);">
-              <div style="display: flex; align-items: center; gap: 0.5rem;">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--color-emerald);"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-                <span>SSL 256-Bit Encrypted Indian Retail Payment</span>
-              </div>
-              <div style="display: flex; align-items: center; gap: 0.5rem;">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--color-emerald);"><polyline points="1 4 1 10 7 10"></polyline><polyline points="23 20 23 14 17 14"></polyline><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"></path></svg>
-                <span>7-Day Doorstep Exchange Guarantee</span>
-              </div>
-            </div>
           </div>
         </div>
       `;

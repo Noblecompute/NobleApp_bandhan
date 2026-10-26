@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="URBAN EDGE — Contemporary Men's Fashion. Premium linen and macro check shirts designed for every day and styled for every occasion." />
+  <meta name="description" content="URBAN EDGE — Contemporary Men's Fashion. Premium linen and macro check shirts designed for every day." />
   <title>URBAN EDGE — Premium Men's Fashion</title>
   
   <!-- Favicon -->
@@ -20,7 +20,7 @@
 <body>
 
   <!-- ========================================================================
-       ANNOUNCEMENT BAR TICKER
+       ANNOUNCEMENT BAR TICKER (100% Dynamic from configuration.json)
        ======================================================================== -->
   <aside class="announcement-bar" aria-label="Offers Announcement">
     <div class="container">
@@ -28,25 +28,8 @@
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
       </button>
 
-      <div class="announcement-slider">
-        <div class="announcement-item active">
-          <span>Flat 10% OFF on your 1st Order</span>
-          <button type="button" class="announcement-code-badge" data-copy-code="FIRST10" title="Click to copy code">
-            CODE: FIRST10
-          </button>
-        </div>
-        <div class="announcement-item">
-          <span>Buy 2 Get ₹250 OFF on Selected Fits</span>
-          <button type="button" class="announcement-code-badge" data-copy-code="B2G250" title="Click to copy code">
-            CODE: B2G250
-          </button>
-        </div>
-        <div class="announcement-item">
-          <span>Buy 3 Get ₹500 OFF Weekend Collection</span>
-          <button type="button" class="announcement-code-badge" data-copy-code="B3G500" title="Click to copy code">
-            CODE: B3G500
-          </button>
-        </div>
+      <div class="announcement-slider" id="announcementSlider">
+        <!-- Injected dynamically by renderDynamicAnnouncementBar() -->
       </div>
 
       <button type="button" class="announcement-nav-btn" id="announcementNext" aria-label="Next announcement">
@@ -56,7 +39,7 @@
   </aside>
 
   <!-- ========================================================================
-       NAVIGATION HEADER
+       NAVIGATION HEADER (100% Dynamic from configuration.json)
        ======================================================================== -->
   <header class="site-header">
     <div class="container">
@@ -70,23 +53,14 @@
           </svg>
         </button>
 
-        <!-- Brand Identity -->
-        <a href="index.html" class="brand-logo-wrap" aria-label="URBAN EDGE Home">
-          <img src="media/file1.png" alt="URBAN EDGE Logo" class="brand-logo-img" onerror="this.style.display='none'; document.getElementById('brandFallbackText').style.display='flex';" />
-          <div class="brand-fallback-text" id="brandFallbackText" style="display:none;">
-            <span class="brand-name">URBAN EDGE</span>
-            <span class="brand-tagline">Own Your Edge.</span>
-          </div>
+        <!-- Brand Identity (Rendered dynamically) -->
+        <a href="index.html" class="brand-logo-wrap" aria-label="Brand Home">
+          <!-- Injected dynamically by renderDynamicHeader() -->
         </a>
 
-        <!-- Desktop Navigation Categories -->
-        <nav class="desktop-nav" aria-label="Primary navigation">
-          <a href="#catalog" class="nav-link active">Shop All</a>
-          <a href="#catalog" class="nav-link" data-category-filter="DATE READY">Date Ready</a>
-          <a href="#catalog" class="nav-link" data-category-filter="CONCERT FITS">Concert Fits</a>
-          <a href="#catalog" class="nav-link" data-category-filter="LINEN COLLECTION">Linen Collection</a>
-          <a href="#catalog" class="nav-link" data-category-filter="CHAIN TREND">Chain Trend</a>
-          <a href="#offers" class="nav-link nav-link-sale">Offers</a>
+        <!-- Desktop Navigation (Rendered dynamically) -->
+        <nav class="desktop-nav" id="desktopNav" aria-label="Primary navigation">
+          <!-- Injected dynamically by renderDynamicHeader() -->
         </nav>
 
         <!-- Header Actions: Search, Wishlist, Bag -->
@@ -119,7 +93,7 @@
   </header>
 
   <!-- ========================================================================
-       MOBILE NAVIGATION OFF-CANVAS DRAWER
+       MOBILE NAVIGATION OFF-CANVAS DRAWER (100% Dynamic)
        ======================================================================== -->
   <div class="mobile-nav-backdrop" id="mobileNavBackdrop">
     <div class="mobile-nav-drawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
@@ -134,43 +108,8 @@
       </div>
 
       <div class="mobile-drawer-body">
-        <ul class="mobile-menu-list">
-          <li class="mobile-menu-item">
-            <a href="#catalog" onclick="closeAllDrawers();">
-              Shop All Shirts
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
-            </a>
-          </li>
-          <li class="mobile-menu-item">
-            <a href="#catalog" data-category-filter="DATE READY" onclick="closeAllDrawers();">
-              Date Ready
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
-            </a>
-          </li>
-          <li class="mobile-menu-item">
-            <a href="#catalog" data-category-filter="CONCERT FITS" onclick="closeAllDrawers();">
-              Concert Fits
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
-            </a>
-          </li>
-          <li class="mobile-menu-item">
-            <a href="#catalog" data-category-filter="LINEN COLLECTION" onclick="closeAllDrawers();">
-              Linen Collection
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
-            </a>
-          </li>
-          <li class="mobile-menu-item">
-            <a href="#catalog" data-category-filter="CHAIN TREND" onclick="closeAllDrawers();">
-              Chain Trend
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
-            </a>
-          </li>
-          <li class="mobile-menu-item">
-            <a href="#offers" onclick="closeAllDrawers();" style="color: var(--color-vermilion);">
-              Promotions &amp; Coupons
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
-            </a>
-          </li>
+        <ul class="mobile-menu-list" id="mobileMenuList">
+          <!-- Injected dynamically by renderDynamicHeader() -->
         </ul>
 
         <div style="margin-top: auto; display: flex; flex-direction: column; gap: 0.75rem;">
@@ -183,14 +122,8 @@
         </div>
       </div>
 
-      <div class="mobile-drawer-footer">
-        <a href="tel:+919004580603" class="mobile-drawer-phone">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-          Customer Support: +91 9004580603
-        </a>
-        <div style="font-size: 0.75rem; color: var(--color-charcoal-muted);">
-          Mon - Sun: 10:00 AM - 06:00 PM
-        </div>
+      <div class="mobile-drawer-footer" id="mobileDrawerFooter">
+        <!-- Injected dynamically from footer data -->
       </div>
     </div>
   </div>
@@ -198,85 +131,17 @@
   <main id="mainContent">
 
     <!-- ========================================================================
-         HERO SECTION CAROUSEL
+         HERO SECTION CAROUSEL (100% Dynamic from data.hero in configuration.json)
          ======================================================================== -->
     <section class="hero-section" aria-label="Seasonal Campaign Hero">
-      <div class="hero-slider-wrap">
-        
-        <!-- Slide 1 -->
-        <article class="hero-slide active">
-          <div class="hero-media-wrap">
-            <picture>
-              <source media="(max-width: 768px)" srcset="media/file3.jpg" />
-              <img src="media/file2.jpg" alt="Contemporary Men's Fashion Editorial" />
-            </picture>
-            <div class="hero-overlay-gradient"></div>
-          </div>
-          <div class="container hero-content">
-            <span class="hero-pretitle">The New Narrative</span>
-            <h1 class="hero-title">Designed for Every Day.<br />Styled for Every Occasion.</h1>
-            <p class="hero-description">
-              Uncompromising craftsmanship meets relaxed modern tailoring. Discover our handpicked edit of macro checks and artisanal linen blends.
-            </p>
-            <div class="hero-cta-group">
-              <a href="#catalog" class="btn btn-vermilion">Shop Collection</a>
-              <a href="#editorial" class="btn btn-outline-light">Explore Story</a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Slide 2 -->
-        <article class="hero-slide">
-          <div class="hero-media-wrap">
-            <picture>
-              <source media="(max-width: 768px)" srcset="media/file5.jpg" />
-              <img src="media/file4.jpg" alt="Artisanal Linen & Checks Campaign" />
-            </picture>
-            <div class="hero-overlay-gradient"></div>
-          </div>
-          <div class="container hero-content">
-            <span class="hero-pretitle">Signature Linen Blend</span>
-            <h2 class="hero-title">Breathe In Quality.<br />Exude Quiet Confidence.</h2>
-            <p class="hero-description">
-              Engineered with breathable natural textures and contemporary silhouettes crafted for effortless all-day wear.
-            </p>
-            <div class="hero-cta-group">
-              <a href="#catalog" class="btn btn-primary" data-category-filter="LINEN COLLECTION">Discover Linen</a>
-              <a href="#offers" class="btn btn-outline-light">View Launch Offers</a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Slide 3 -->
-        <article class="hero-slide">
-          <div class="hero-media-wrap">
-            <picture>
-              <source media="(max-width: 768px)" srcset="media/file7.jpg" />
-              <img src="media/file6.jpg" alt="Concert Fits & Macro Checks Showcase" />
-            </picture>
-            <div class="hero-overlay-gradient"></div>
-          </div>
-          <div class="container hero-content">
-            <span class="hero-pretitle">Weekend & Evening Statement</span>
-            <h2 class="hero-title">Elevate Your Presence.<br />Own Your Edge.</h2>
-            <p class="hero-description">
-              Statement check motifs and sharp tailoring designed to stand out wherever the night takes you.
-            </p>
-            <div class="hero-cta-group">
-              <a href="#catalog" class="btn btn-vermilion" data-category-filter="CONCERT FITS">Shop Concert Fits</a>
-              <a href="#catalog" class="btn btn-outline-light">View All Shirts</a>
-            </div>
-          </div>
-        </article>
-
+      <div class="hero-slider-wrap" id="heroSliderWrap">
+        <!-- Injected dynamically by renderDynamicHeroSlider() -->
       </div>
 
-      <!-- Controls & Indicators -->
+      <!-- Controls & Indicators (Dynamically sized to hero array length) -->
       <div class="hero-controls">
-        <div class="hero-indicators">
-          <button type="button" class="hero-indicator-dot active" data-slide-index="0" aria-label="Go to slide 1"></button>
-          <button type="button" class="hero-indicator-dot" data-slide-index="1" aria-label="Go to slide 2"></button>
-          <button type="button" class="hero-indicator-dot" data-slide-index="2" aria-label="Go to slide 3"></button>
+        <div class="hero-indicators" id="heroIndicators">
+          <!-- Injected dynamically -->
         </div>
         <div style="display: flex; gap: 0.5rem;">
           <button type="button" class="hero-arrow-btn" id="heroPrevBtn" aria-label="Previous slide">
@@ -299,7 +164,7 @@
             <div class="trust-icon-box">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                 <rect x="1" y="3" width="15" height="13"></rect>
-                <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                <polygon points="16 8 20 8 23 11 23 16 16 16 8"></polygon>
                 <circle cx="5.5" cy="18.5" r="2.5"></circle>
                 <circle cx="18.5" cy="18.5" r="2.5"></circle>
               </svg>
@@ -353,7 +218,7 @@
     </section>
 
     <!-- ========================================================================
-         CURATED CATEGORIES SECTION
+         CURATED CATEGORIES SECTION (100% Dynamic from data.categories)
          ======================================================================== -->
     <section class="section categories-section" aria-label="Curated Categories">
       <div class="container">
@@ -364,13 +229,13 @@
         </div>
 
         <div class="categories-grid" id="categoriesGrid">
-          <!-- Populated dynamically by app.js from ProductStore -->
+          <!-- Injected dynamically by renderDynamicCategories() -->
         </div>
       </div>
     </section>
 
     <!-- ========================================================================
-         MAIN PRODUCT CATALOG & DISCOVERY
+         MAIN PRODUCT CATALOG & DISCOVERY (100% Dynamic from data.subpages)
          ======================================================================== -->
     <section class="section catalog-section" id="catalog" aria-label="Product Catalog">
       <div class="container">
@@ -380,15 +245,11 @@
           <p class="section-desc">Hand-tailored shirts in macro check patterns, breathable linen textures, and crisp vertical stripes.</p>
         </div>
 
-        <!-- Catalog Toolbar: Filters, Search & Sorting -->
+        <!-- Catalog Toolbar: Dynamic Filters, Search & Sorting -->
         <div class="catalog-toolbar">
           <div class="toolbar-top-row">
-            <div class="category-filter-pills" role="tablist" aria-label="Filter by Category">
-              <button type="button" class="filter-pill active" data-category="all">All Shirts</button>
-              <button type="button" class="filter-pill" data-category="DATE READY">Date Ready</button>
-              <button type="button" class="filter-pill" data-category="CONCERT FITS">Concert Fits</button>
-              <button type="button" class="filter-pill" data-category="LINEN COLLECTION">Linen Collection</button>
-              <button type="button" class="filter-pill" data-category="CHAIN TREND">Chain Trend</button>
+            <div class="category-filter-pills" id="categoryFilterPills" role="tablist" aria-label="Filter by Category">
+              <!-- Injected dynamically by renderDynamicCatalogFilters() -->
             </div>
 
             <div class="search-inline-wrap">
@@ -409,19 +270,11 @@
 
             <div class="filter-group">
               <select id="catalogPriceSelect" class="filter-select" aria-label="Filter by max price">
-                <option value="all">Price: All Ranges</option>
-                <option value="1200">Under ₹1,200</option>
-                <option value="1500">Under ₹1,500</option>
-                <option value="1600">Under ₹1,600</option>
+                <!-- Injected dynamically based on actual catalog min/max -->
               </select>
 
               <select id="catalogSizeSelect" class="filter-select" aria-label="Filter by size">
-                <option value="all">Size: All</option>
-                <option value="S">Size S</option>
-                <option value="M">Size M</option>
-                <option value="L">Size L</option>
-                <option value="XL">Size XL</option>
-                <option value="XXL">Size XXL</option>
+                <!-- Injected dynamically based on actual available sizes -->
               </select>
 
               <select id="catalogSortSelect" class="filter-select" aria-label="Sort products">
@@ -435,9 +288,9 @@
           </div>
         </div>
 
-        <!-- Products Grid Container -->
+        <!-- Products Grid Container (Zero hardcoded counts) -->
         <div class="products-grid" id="productsGrid">
-          <!-- Rendered dynamically by app.js -->
+          <!-- Injected dynamically by renderCatalogGrid() -->
         </div>
       </div>
     </section>
@@ -450,18 +303,18 @@
         <div class="editorial-grid">
           <div class="editorial-gallery">
             <div class="editorial-img-large">
-              <img src="media/file22.jpg" alt="Brown embroidered patch shirt craftsmanship" loading="lazy" />
+              <img src="media/file22.jpg" alt="Artisanal craftmanship" loading="lazy" />
             </div>
             <div class="editorial-img-small">
-              <img src="media/file18.webp" alt="Linen blend collection detail" loading="lazy" />
+              <img src="media/file18.webp" alt="Linen collection silhouette" loading="lazy" />
             </div>
           </div>
 
           <div class="editorial-content">
-            <span class="editorial-badge">Autumn / Winter Edit</span>
+            <span class="editorial-badge">Signature Edit</span>
             <h2 class="editorial-heading">The Contemporary Silhouette</h2>
             <p class="editorial-text">
-              We started with a single conviction: Indian men's contemporary fashion deserves authentic character, natural fibers, and deliberate tailoring. Our shirts pair comfortable dropped shoulders with crisp structured collars, allowing you to transition seamlessly from boardroom conversations to rooftop concerts.
+              We started with a single conviction: Indian men's contemporary fashion deserves authentic character, natural fibers, and deliberate tailoring. Our shirts pair comfortable dropped shoulders with crisp structured collars, allowing you to transition seamlessly from daytime conversations to evening plans.
             </p>
             
             <div class="editorial-features">
@@ -471,12 +324,12 @@
               </div>
               <div class="editorial-feature-item">
                 <div class="feature-title">Breathable Weaves</div>
-                <div class="feature-desc">Temperature-regulating linen and cotton blends suited for our climate.</div>
+                <div class="feature-desc">Temperature-regulating linen and cotton blends suited for all day wear.</div>
               </div>
             </div>
 
-            <a href="#catalog" class="btn btn-primary" data-category-filter="LINEN COLLECTION">
-              Explore The Linen Edit
+            <a href="#catalog" class="btn btn-primary" data-category-filter="all">
+              Explore Entire Catalog
             </a>
           </div>
         </div>
@@ -484,7 +337,7 @@
     </section>
 
     <!-- ========================================================================
-         OFFERS & PROMO CODES BANNER
+         OFFERS & PROMO CODES BANNER (100% Dynamic from data.news in configuration.json)
          ======================================================================== -->
     <section class="offers-strip" id="offers" aria-label="Active Offers and Promo Codes">
       <div class="container">
@@ -493,30 +346,8 @@
           <h2 style="font-family: var(--font-serif); font-size: 2rem; color: var(--color-warm-ivory); margin-top: 0.25rem;">Unlock Storewide Savings</h2>
         </div>
 
-        <div class="offers-grid">
-          <div class="offer-card">
-            <div class="offer-headline">Flat 10% OFF on your very first order across all shirts.</div>
-            <div class="offer-code-row">
-              <span class="offer-code-text">FIRST10</span>
-              <button type="button" class="btn-copy-code" data-copy-code="FIRST10">Copy Code</button>
-            </div>
-          </div>
-
-          <div class="offer-card">
-            <div class="offer-headline">Buy 2 Get ₹250 OFF — automatic savings applied at checkout.</div>
-            <div class="offer-code-row">
-              <span class="offer-code-text">B2G250</span>
-              <button type="button" class="btn-copy-code" data-copy-code="B2G250">Copy Code</button>
-            </div>
-          </div>
-
-          <div class="offer-card">
-            <div class="offer-headline">Buy 3 Get ₹500 OFF — build your capsule collection today.</div>
-            <div class="offer-code-row">
-              <span class="offer-code-text">B3G500</span>
-              <button type="button" class="btn-copy-code" data-copy-code="B3G500">Copy Code</button>
-            </div>
-          </div>
+        <div class="offers-grid" id="offersGrid">
+          <!-- Injected dynamically by renderDynamicOffers() -->
         </div>
       </div>
     </section>
@@ -537,7 +368,7 @@
           </form>
 
           <p class="newsletter-disclaimer">
-            * Static storefront preview. No real emails are distributed without double opt-in consent.
+            * Static storefront preview. No marketing emails are sent without double opt-in consent.
           </p>
         </div>
       </div>
@@ -546,43 +377,21 @@
   </main>
 
   <!-- ========================================================================
-       FOOTER
+       FOOTER (100% Dynamic from data.footer and data.brand in configuration.json)
        ======================================================================== -->
   <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
-        <!-- Col 1: Brand -->
-        <div class="footer-col-brand">
-          <h3 class="footer-brand-name">URBAN EDGE</h3>
-          <div class="footer-brand-tagline">Own Your Edge.</div>
-          <p class="footer-bio">
-            URBAN EDGE Pvt. Ltd. is a contemporary Indian menswear label focused on premium linen blends, bold macro checks, and versatile silhouettes crafted for every day.
-          </p>
-          <div class="footer-social-links">
-            <a href="https://www.instagram.com/powerlookofficial" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Instagram">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-            </a>
-            <a href="https://www.facebook.com/powerlookofficial" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Facebook">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-            </a>
-            <a href="https://www.youtube.com/@powerlook6252" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="YouTube">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
-            </a>
-            <a href="https://wa.me/919004580603" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="WhatsApp">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-            </a>
-          </div>
+        <!-- Col 1: Brand (Dynamic) -->
+        <div class="footer-col-brand" id="footerBrandCol">
+          <!-- Injected dynamically -->
         </div>
 
-        <!-- Col 2: Categories -->
+        <!-- Col 2: Categories (Dynamic) -->
         <div>
           <h4 class="footer-col-title">Collections</h4>
-          <ul class="footer-links-list">
-            <li><a href="#catalog" data-category-filter="DATE READY">Date Ready Edit</a></li>
-            <li><a href="#catalog" data-category-filter="CONCERT FITS">Concert Fits</a></li>
-            <li><a href="#catalog" data-category-filter="LINEN COLLECTION">Linen Collection</a></li>
-            <li><a href="#catalog" data-category-filter="CHAIN TREND">Chain Trend</a></li>
-            <li><a href="#catalog">View All Shirts</a></li>
+          <ul class="footer-links-list" id="footerCategoryLinks">
+            <!-- Injected dynamically -->
           </ul>
         </div>
 
@@ -598,37 +407,24 @@
           </ul>
         </div>
 
-        <!-- Col 4: Corporate & Contact -->
+        <!-- Col 4: Corporate & Contact (Dynamic) -->
         <div>
           <h4 class="footer-col-title">Get In Touch</h4>
-          <div class="footer-contact-info">
-            <div class="footer-contact-item">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-              <span>Lotus Corporate Park Wing G02 - 1502, Ram Mandir Lane, Goregaon, Mumbai, 400063</span>
-            </div>
-            <div class="footer-contact-item">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-              <a href="tel:+919004580603">+91 9004580603</a>
-            </div>
-            <div class="footer-contact-item">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-              <a href="mailto:tambenick25@gmail.com">tambenick25@gmail.com</a>
-            </div>
-            <div class="footer-contact-item">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-              <span>Mon - Sun : 10:00 AM - 06:00 PM</span>
-            </div>
+          <div class="footer-contact-info" id="footerContactInfo">
+            <!-- Injected dynamically -->
           </div>
         </div>
       </div>
 
       <div class="footer-bottom">
         <div class="container">
-          <div>&copy; 2026 URBAN EDGE Pvt. Ltd. All rights reserved. Built for static deployment on GitHub Pages.</div>
+          <div id="footerCopyrightNotice">
+            <!-- Injected dynamically -->
+          </div>
           <div style="display: flex; gap: 1rem;">
             <span>100% Genuine Catalog Data</span>
             <span>•</span>
-            <span>Secure Indian Retail Handoff</span>
+            <span>Live Sync with configuration.json</span>
           </div>
         </div>
       </div>
@@ -731,7 +527,7 @@
         </table>
         
         <div style="margin-top: 1.5rem; font-size: 0.8125rem; color: var(--color-charcoal-muted); line-height: 1.6;">
-          <strong>How to measure:</strong> Measure around the fullest part of your chest with a soft measuring tape held horizontal. If you prefer a more tailored fit, choose true-to-size; for an oversized silhouette, size up.
+          <strong>How to measure:</strong> Measure around the fullest part of your chest with a soft measuring tape held horizontal.
         </div>
       </div>
     </div>
@@ -748,7 +544,7 @@
       <div style="padding: 1.5rem 1.5rem 0.5rem;">
         <h3 style="font-family: var(--font-serif); font-size: 1.35rem; margin-bottom: 1rem;">Search Catalog</h3>
         <div style="position: relative; display: flex; align-items: center;">
-          <input type="text" id="liveSearchInput" placeholder="Type a style, color or pattern (e.g. linen, check, blue)..." style="width: 100%; padding: 0.85rem 1rem 0.85rem 2.5rem; font-size: 0.95rem; border: 1px solid var(--color-neutral-border); border-radius: 4px; background: var(--color-warm-ivory);" />
+          <input type="text" id="liveSearchInput" placeholder="Type a style, color or pattern..." style="width: 100%; padding: 0.85rem 1rem 0.85rem 2.5rem; font-size: 0.95rem; border: 1px solid var(--color-neutral-border); border-radius: 4px; background: var(--color-warm-ivory);" />
           <svg style="position: absolute; left: 0.85rem; width: 18px; height: 18px; color: var(--color-charcoal-muted);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
         </div>
       </div>
@@ -770,7 +566,6 @@
         <h3 style="font-family: var(--font-serif); font-size: 1.6rem; margin-bottom: 0.25rem; color: var(--color-charcoal);">Express Shipping &amp; Payment</h3>
         <p style="font-size: 0.85rem; color: var(--color-charcoal-muted); margin-bottom: 1.5rem;">Complete your delivery details for express dispatch across India.</p>
 
-        <!-- Order Summary Box -->
         <div id="checkoutOrderSummary" style="background: var(--color-ivory-light); border: 1px solid var(--color-neutral-border); padding: 1rem 1.25rem; border-radius: 4px; margin-bottom: 1.5rem;">
           <!-- Dynamically populated -->
         </div>
@@ -841,8 +636,7 @@
     </div>
   </div>
 
-  <!-- Scripts -->
-  <script src="js/config-fallback.js"></script>
+  <!-- Dynamic Application Scripts -->
   <script src="js/products.js"></script>
   <script src="js/cart.js"></script>
   <script src="js/wishlist.js"></script>

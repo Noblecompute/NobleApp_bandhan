@@ -1,6 +1,6 @@
 /**
  * URBAN EDGE — Shopping Bag & Checkout Engine
- * Manages cart state in localStorage, quantities, variant awareness, discounts, coupons, and checkout demo.
+ * Manages cart state in localStorage with dynamic media resolution and dynamic coupon validation.
  */
 
 const CART_STORAGE_KEY = 'urban_edge_cart_v1';
@@ -10,11 +10,6 @@ const STANDARD_SHIPPING_FEE = 99;
 const CartStore = {
   items: [],
   appliedCoupon: null,
-  coupons: {
-    'FIRST10': { type: 'percent', value: 10, label: '10% OFF 1st Order' },
-    'B2G250': { type: 'fixed', value: 250, minQty: 2, label: '₹250 OFF on 2+ Items' },
-    'B3G500': { type: 'fixed', value: 500, minQty: 3, label: '₹500 OFF on 3+ Items' }
-  },
 
   init() {
     try {
@@ -27,6 +22,56 @@ const CartStore = {
       this.items = [];
     }
     this.updateBadges();
+  },
+
+  // Dynamically parses active coupon codes from configuration news headlines
+  getAvailableCoupons() {
+    const coupons = {
+      'FIRST10': { type: 'percent', value: 10, label: '10% OFF on 1st Order' },
+      'B2G250': { type: 'fixed', value: 250, minQty: 2, label: '₹250 OFF on 2+ Items' },
+      'B3G500': { type: 'fixed', value: 500, minQty: 3, label: '₹500 OFF on 3+ Items' }
+    };
+
+    if (window.ProductStore && Array.isArray(window.ProductStore.news)) {
+      window.ProductStore.news.forEach(n => {
+        const h = n.headline || '';
+        const match = h.match(/code\s*:\s*([A-Z0-9]+)/i);
+        if (match && match[1]) {
+          const code = match[1].toUpperCase();
+          if (!coupons[code]) {
+            // Determine type and value
+            const percentMatch = h.match(/(\d+)%/);
+            const flatMatch = h.match(/(\d+)\s*(?:rs|inr|off)/i);
+            const qtyMatch = h.match(/buy\s*(\d+)/i);
+
+            if (percentMatch) {
+              coupons[code] = {
+                type: 'percent',
+                value: Number(percentMatch[1]),
+                minQty: qtyMatch ? Number(qtyMatch[1]) : 1,
+                label: `${percentMatch[1]}% OFF`
+              };
+            } else if (flatMatch) {
+              coupons[code] = {
+                type: 'fixed',
+                value: Number(flatMatch[1]),
+                minQty: qtyMatch ? Number(qtyMatch[1]) : 1,
+                label: `₹${flatMatch[1]} OFF`
+              };
+            } else {
+              coupons[code] = {
+                type: 'percent',
+                value: 10,
+                minQty: 1,
+                label: 'Special Promotional Discount'
+              };
+            }
+          }
+        }
+      });
+    }
+
+    return coupons;
   },
 
   save() {
@@ -64,7 +109,6 @@ const CartStore = {
         discount_percent: product.discount_percent,
         size: size,
         image: product.primary_image,
-        raw_image: product.raw_photos[0],
         category: product.category,
         quantity: Number(quantity)
       });
@@ -121,7 +165,8 @@ const CartStore = {
   applyCoupon(code) {
     if (!code) return { success: false, message: 'Please enter a coupon code.' };
     const cleanCode = code.trim().toUpperCase();
-    const coupon = this.coupons[cleanCode];
+    const availableCoupons = this.getAvailableCoupons();
+    const coupon = availableCoupons[cleanCode];
 
     if (!coupon) {
       return { success: false, message: `Coupon "${cleanCode}" is not valid.` };
@@ -217,7 +262,7 @@ const CartStore = {
             <path d="M16 10a4 4 0 0 1-8 0"></path>
           </svg>
           <h4 class="empty-state-title" style="font-size: 1.25rem;">Your Shopping Bag is Empty</h4>
-          <p class="empty-state-desc" style="font-size: 0.875rem;">Discover our collection of premium linen and macro check shirts.</p>
+          <p class="empty-state-desc" style="font-size: 0.875rem;">Explore our latest collection of contemporary shirts.</p>
           <button type="button" class="btn btn-primary" onclick="window.closeAllDrawers();" style="width: 100%;">
             Start Shopping
           </button>
@@ -255,34 +300,33 @@ const CartStore = {
       }
     }
 
-    // Render items
-    drawerBody.innerHTML = this.items.map(item => `
-      <div class="drawer-item" data-cart-key="${item.key}">
-        <div class="drawer-item-img">
-          <img 
-            src="${item.image}" 
-            alt="${escapeHtml(item.name)}" 
-            onerror="this.onerror=null; this.src='${getRemoteMediaFallback(item.raw_image)}';"
-          />
-        </div>
-        <div class="drawer-item-info">
-          <button type="button" class="drawer-item-remove-btn" onclick="CartStore.removeItem('${item.key}')" aria-label="Remove ${escapeHtml(item.name)}">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-          </button>
-          <div class="drawer-item-title">${escapeHtml(item.name)}</div>
-          <div class="drawer-item-meta">Size: <strong>${item.size}</strong></div>
-          <div class="drawer-item-price-row">
-            <span class="price-current">${formatPrice(item.effective_price)}</span>
-            ${item.price > item.effective_price ? `<span class="price-original">${formatPrice(item.price)}</span>` : ''}
+    // Render items with dynamic media rendering
+    drawerBody.innerHTML = this.items.map(item => {
+      const imgTag = renderImgTag(item.image, item.name);
+      return `
+        <div class="drawer-item" data-cart-key="${item.key}">
+          <div class="drawer-item-img">
+            ${imgTag}
           </div>
-          <div class="drawer-qty-control">
-            <button type="button" class="drawer-qty-btn" onclick="CartStore.updateQuantity('${item.key}', ${item.quantity - 1})" aria-label="Decrease quantity">−</button>
-            <span class="drawer-qty-val">${item.quantity}</span>
-            <button type="button" class="drawer-qty-btn" onclick="CartStore.updateQuantity('${item.key}', ${item.quantity + 1})" aria-label="Increase quantity">+</button>
+          <div class="drawer-item-info">
+            <button type="button" class="drawer-item-remove-btn" onclick="CartStore.removeItem('${item.key}')" aria-label="Remove ${escapeHtml(item.name)}">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+            <div class="drawer-item-title">${escapeHtml(item.name)}</div>
+            <div class="drawer-item-meta">Size: <strong>${item.size}</strong></div>
+            <div class="drawer-item-price-row">
+              <span class="price-current">${formatPrice(item.effective_price)}</span>
+              ${item.price > item.effective_price ? `<span class="price-original">${formatPrice(item.price)}</span>` : ''}
+            </div>
+            <div class="drawer-qty-control">
+              <button type="button" class="drawer-qty-btn" onclick="CartStore.updateQuantity('${item.key}', ${item.quantity - 1})" aria-label="Decrease quantity">−</button>
+              <span class="drawer-qty-val">${item.quantity}</span>
+              <button type="button" class="drawer-qty-btn" onclick="CartStore.updateQuantity('${item.key}', ${item.quantity + 1})" aria-label="Increase quantity">+</button>
+            </div>
           </div>
         </div>
-      </div>
-    `).join('');
+      `;
+    }).join('');
 
     // Render footer
     drawerFooter.style.display = 'flex';
@@ -300,7 +344,7 @@ const CartStore = {
       `
       : `
         <form class="drawer-coupon-row" onsubmit="event.preventDefault(); const res = CartStore.applyCoupon(this.couponCode.value); if(res.success){ showToast(res.message, 'emerald'); } else { showToast(res.message, 'vermilion'); }">
-          <input type="text" name="couponCode" placeholder="Enter promo code (e.g. FIRST10)" class="drawer-coupon-input" aria-label="Coupon code" />
+          <input type="text" name="couponCode" placeholder="Enter coupon code" class="drawer-coupon-input" aria-label="Coupon code" />
           <button type="submit" class="drawer-coupon-btn">Apply</button>
         </form>
       `;

@@ -1,6 +1,7 @@
 /**
- * URBAN EDGE — Products & Data Management
- * Handles catalog loading, normalization, filtering, searching, and product card rendering.
+ * URBAN EDGE — Dynamic Products & Configuration Data Engine
+ * Every page load live-reads configuration.json (with cache-busting).
+ * Media paths, categories, products, counts, hero banners, and brand info are 100% dynamic.
  */
 
 // Helper to escape HTML characters in untrusted strings
@@ -12,23 +13,6 @@ function escapeHtml(str) {
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#39;');
-}
-
-// Converts any media URL or filename into a robust relative path with fallback
-function resolveMediaUrl(url) {
-  if (!url) return './media/file1.png';
-  if (url.startsWith('./media/') || url.startsWith('media/')) return url;
-  const parts = url.split('/');
-  const filename = parts[parts.length - 1];
-  return `./media/${filename}`;
-}
-
-// Fallback GitHub raw URL if local file is missing
-function getRemoteMediaFallback(url) {
-  if (!url) return '';
-  const parts = url.split('/');
-  const filename = parts[parts.length - 1];
-  return `https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/${filename}`;
 }
 
 // Indian Rupee formatting
@@ -46,6 +30,63 @@ function calculateDiscount(original, discounted) {
   return Math.round(((orig - disc) / orig) * 100);
 }
 
+// Dynamic Media Path Resolver:
+// Inspects whatever rawPath is currently in configuration.json,
+// resolves relative/absolute paths, and provides fallback resolution.
+function resolveMediaUrl(rawPath) {
+  if (!rawPath) return { src: '', fallback: '', altFallback: '' };
+  const trimmed = String(rawPath).trim();
+  if (!trimmed) return { src: '', fallback: '', altFallback: '' };
+
+  const filename = trimmed.includes('/') ? trimmed.split('/').pop().split('?')[0] : trimmed.split('?')[0];
+
+  const mediaBaseUrl = (window.ProductStore && window.ProductStore.config && window.ProductStore.config.github && window.ProductStore.config.github.mediaBaseUrl)
+    ? window.ProductStore.config.github.mediaBaseUrl.replace(/\/$/, '')
+    : 'https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media';
+
+  // 1. If it's a full remote URL (HTTP/HTTPS)
+  if (trimmed.startsWith('http://') || trimmed.startsWith('https://')) {
+    return {
+      src: trimmed,
+      fallback: `./media/${filename}`,
+      altFallback: `${mediaBaseUrl}/${filename}`
+    };
+  }
+
+  // 2. If it's a relative path starting with ./ or media/
+  if (trimmed.startsWith('./') || trimmed.startsWith('media/')) {
+    const clean = trimmed.startsWith('./') ? trimmed : `./${trimmed}`;
+    return {
+      src: clean,
+      fallback: `${mediaBaseUrl}/${filename}`,
+      altFallback: `./media/${filename}`
+    };
+  }
+
+  // 3. Just a filename e.g. "file8.webp" or "shirt.jpg"
+  return {
+    src: `./media/${trimmed}`,
+    fallback: `${mediaBaseUrl}/${trimmed}`,
+    altFallback: trimmed
+  };
+}
+
+// Helper to generate dynamic <img> tag with automatic multi-tier fallback
+function renderImgTag(rawUrl, alt = '', className = '', loading = 'lazy') {
+  const media = resolveMediaUrl(rawUrl);
+  if (!media.src) {
+    return `<div class="${escapeHtml(className)} placeholder-media" style="background: var(--color-soft-neutral); display: flex; align-items: center; justify-content: center;"><span style="font-size: 0.75rem; color: var(--color-charcoal-muted);">No image</span></div>`;
+  }
+
+  return `<img 
+    src="${escapeHtml(media.src)}" 
+    alt="${escapeHtml(alt)}" 
+    class="${escapeHtml(className)}" 
+    loading="${loading}"
+    onerror="if(!this.dataset.fallbackTried){ this.dataset.fallbackTried='1'; this.src='${escapeHtml(media.fallback)}'; } else if(!this.dataset.altTried && '${escapeHtml(media.altFallback)}'){ this.dataset.altTried='1'; this.src='${escapeHtml(media.altFallback)}'; }"
+  />`;
+}
+
 // Extract product name if missing in raw data
 function deriveProductName(rawProduct) {
   if (rawProduct.name && rawProduct.name.trim()) {
@@ -54,7 +95,6 @@ function deriveProductName(rawProduct) {
   if (rawProduct.description) {
     const firstSentence = rawProduct.description.split('.')[0].trim();
     if (firstSentence.toLowerCase().includes('shirt')) {
-      // Find something like "Light Blue Linen Blend Shirt featuring..." -> "Light Blue Linen Blend Shirt"
       const match = firstSentence.match(/^(.*?shirt)/i);
       if (match && match[1]) {
         return match[1].trim();
@@ -71,11 +111,9 @@ function normalizeProduct(raw) {
   const effectivePrice = (discountPrice > 0 && discountPrice < price) ? discountPrice : price;
   const discountPercent = calculateDiscount(price, effectivePrice);
   
-  const photos = Array.isArray(raw.photos) && raw.photos.length > 0 
-    ? raw.photos.map(resolveMediaUrl) 
-    : ['./media/file8.webp'];
-
-  const rawPhotos = Array.isArray(raw.photos) ? raw.photos : [];
+  const rawPhotos = Array.isArray(raw.photos) && raw.photos.length > 0 
+    ? raw.photos 
+    : [];
 
   return {
     id: String(raw.id || Math.floor(Math.random() * 1000000)),
@@ -86,19 +124,20 @@ function normalizeProduct(raw) {
     effective_price: effectivePrice,
     discount_percent: discountPercent,
     description: raw.description || 'Premium crafted contemporary shirt designed for comfort and modern style.',
-    photos: photos,
-    raw_photos: rawPhotos,
-    primary_image: photos[0],
-    secondary_image: photos[1] || photos[0],
-    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
+    photos: rawPhotos,
+    primary_image: rawPhotos[0] || '',
+    secondary_image: rawPhotos[1] || rawPhotos[0] || '',
+    sizes: (Array.isArray(raw.sizes) && raw.sizes.length > 0) ? raw.sizes : ['S', 'M', 'L', 'XL', 'XXL'],
     is_category_cover: Boolean(raw.is_category_cover),
     is_new: Boolean(raw.is_new_arrival),
-    is_showcase: Boolean(raw.is_showcase)
+    is_showcase: Boolean(raw.is_showcase),
+    is_enabled: raw.is_enabled !== false
   };
 }
 
 // Product Repository State
 const ProductStore = {
+  config: null,
   products: [],
   categories: [],
   brand: {},
@@ -108,63 +147,101 @@ const ProductStore = {
   isLoaded: false,
 
   async init() {
-    let rawData = null;
+    let rawConfig = null;
     try {
-      const res = await fetch('configuration.json');
-      if (res.ok) {
-        rawData = await res.json();
-      } else {
-        throw new Error('HTTP ' + res.status);
-      }
+      // Live fetch with cache-busting timestamp so edits to configuration.json show immediately
+      const url = `configuration.json?t=${Date.now()}`;
+      const res = await fetch(url, { cache: 'no-store' });
+      if (!res.ok) throw new Error(`HTTP ${res.status} when loading configuration.json`);
+      rawConfig = await res.json();
     } catch (err) {
-      console.warn('Direct fetch of configuration.json failed (likely local file:// protocol or CORS). Using fallback data.', err);
-      if (window.STORE_CONFIG_FALLBACK) {
-        rawData = window.STORE_CONFIG_FALLBACK;
+      console.error('Failed to live-load configuration.json:', err);
+      // Fallback attempt without query param if local server rejected query strings
+      try {
+        const res2 = await fetch('configuration.json');
+        if (res2.ok) rawConfig = await res2.json();
+      } catch (err2) {
+        console.error('Secondary configuration load also failed:', err2);
       }
     }
 
-    if (!rawData || !rawData.data) {
-      console.error('Unable to load valid configuration data.');
+    if (!rawConfig || !rawConfig.data) {
+      console.error('Unable to parse valid website data from configuration.json.');
       return false;
     }
 
-    const d = rawData.data;
-    this.brand = d.brand || {};
+    this.config = rawConfig;
+    const d = rawConfig.data;
+
+    // 1. Dynamic Brand
+    this.brand = d.brand || {
+      brand_name: 'URBAN EDGE',
+      brand_tagline: 'Own Your Edge.',
+      brand_logo: ''
+    };
+
+    // 2. Dynamic Hero Slides
     this.hero = Array.isArray(d.hero) ? d.hero : [];
+
+    // 3. Dynamic News / Announcements
     this.news = Array.isArray(d.news) ? d.news : [];
+
+    // 4. Dynamic Footer
     this.footer = d.footer || {};
 
-    // Process products
+    // 5. Dynamic Products (subpages) - never hardcode counts
     if (Array.isArray(d.subpages)) {
-      this.products = d.subpages.map(normalizeProduct);
+      this.products = d.subpages
+        .map(normalizeProduct)
+        .filter(p => p.is_enabled); // only active products
+    } else {
+      this.products = [];
     }
 
-    // Process categories
+    // 6. Dynamic Categories (from configuration.json + any categories present in products)
     const rawCategories = Array.isArray(d.categories) ? d.categories : [];
-    this.categories = rawCategories
-      .filter(c => c.category_name && c.category_name.toLowerCase() !== 'home')
-      .map(c => {
-        // If category image is missing, find first product in this category
-        let coverImg = c.category_image ? resolveMediaUrl(c.category_image) : '';
-        if (!coverImg) {
-          const match = this.products.find(p => p.category.toLowerCase() === c.category_name.toLowerCase());
-          if (match && match.primary_image) {
-            coverImg = match.primary_image;
-          } else {
-            coverImg = './media/file31.webp';
-          }
-        }
-        
-        const count = this.products.filter(p => p.category.toLowerCase() === c.category_name.toLowerCase()).length;
-
-        return {
+    
+    // Build category map
+    const catMap = new Map();
+    rawCategories
+      .filter(c => c && c.category_name && c.category_name.toLowerCase() !== 'home')
+      .forEach(c => {
+        catMap.set(c.category_name.toUpperCase(), {
           id: c.id,
           name: c.category_name,
-          image: coverImg,
-          raw_image: c.category_image,
-          count: count
-        };
+          raw_image: c.category_image || '',
+          link: c.link || ''
+        });
       });
+
+    // Also include categories derived from products if not already defined
+    this.products.forEach(p => {
+      const catUpper = p.category.toUpperCase();
+      if (!catMap.has(catUpper)) {
+        catMap.set(catUpper, {
+          id: 'cat_' + catUpper.replace(/\s+/g, '_').toLowerCase(),
+          name: p.category,
+          raw_image: p.primary_image,
+          link: ''
+        });
+      }
+    });
+
+    // Compute live product counts and image covers for each category
+    this.categories = Array.from(catMap.values()).map(cat => {
+      const matchingProducts = this.products.filter(p => p.category.toLowerCase() === cat.name.toLowerCase());
+      let coverImage = cat.raw_image;
+      if (!coverImage && matchingProducts.length > 0) {
+        coverImage = matchingProducts[0].primary_image;
+      }
+      return {
+        id: cat.id,
+        name: cat.name,
+        image: coverImage,
+        raw_image: cat.raw_image,
+        count: matchingProducts.length
+      };
+    });
 
     this.isLoaded = true;
     return true;
@@ -181,6 +258,32 @@ const ProductStore = {
   getByCategory(categoryName) {
     if (!categoryName || categoryName === 'all') return this.products;
     return this.products.filter(p => p.category.toLowerCase() === categoryName.toLowerCase());
+  },
+
+  getAvailableSizes() {
+    const sizeSet = new Set();
+    this.products.forEach(p => {
+      p.sizes.forEach(s => sizeSet.add(s));
+    });
+    const standardOrder = ['XS', 'S', 'M', 'L', 'XL', 'XXL', '3XL'];
+    const sorted = Array.from(sizeSet).sort((a, b) => {
+      const ia = standardOrder.indexOf(a);
+      const ib = standardOrder.indexOf(b);
+      if (ia !== -1 && ib !== -1) return ia - ib;
+      return a.localeCompare(b);
+    });
+    return sorted.length > 0 ? sorted : ['S', 'M', 'L', 'XL', 'XXL'];
+  },
+
+  getPriceBounds() {
+    if (this.products.length === 0) return { min: 0, max: 5000 };
+    let min = Infinity;
+    let max = -Infinity;
+    this.products.forEach(p => {
+      if (p.effective_price < min) min = p.effective_price;
+      if (p.effective_price > max) max = p.effective_price;
+    });
+    return { min, max };
   },
 
   filterAndSort({ category = 'all', search = '', maxPrice = null, size = '', sort = 'featured' }) {
@@ -208,7 +311,7 @@ const ProductStore = {
     }
 
     // Filter by Size
-    if (size) {
+    if (size && size !== 'all') {
       result = result.filter(p => p.sizes.includes(size.toUpperCase()));
     }
 
@@ -236,11 +339,10 @@ const ProductStore = {
   }
 };
 
-// UI Component: Product Card HTML Template
+// UI Component: Product Card HTML Template (Dynamic media resolution & tags)
 function renderProductCardHtml(product, isWishlisted = false) {
   const safeName = escapeHtml(product.name);
   const safeCat = escapeHtml(product.category);
-  const safeDesc = escapeHtml(product.description);
   const discountBadge = product.discount_percent > 0 
     ? `<span class="badge-discount">${product.discount_percent}% OFF</span>` 
     : '';
@@ -254,6 +356,11 @@ function renderProductCardHtml(product, isWishlisted = false) {
     : '';
 
   const wishlistClass = isWishlisted ? 'active' : '';
+
+  const primaryImgTag = renderImgTag(product.primary_image, safeName, 'product-img-primary');
+  const secondaryImgTag = renderImgTag(product.secondary_image, `${safeName} - Alternate View`, 'product-img-secondary');
+
+  const defaultSize = product.sizes[0] || 'M';
 
   return `
     <article class="product-card" data-product-id="${product.id}">
@@ -270,20 +377,8 @@ function renderProductCardHtml(product, isWishlisted = false) {
         </button>
 
         <a href="product.html?id=${product.id}" class="card-media-link" aria-label="View details for ${safeName}">
-          <img 
-            src="${product.primary_image}" 
-            alt="${safeName}" 
-            class="product-img-primary" 
-            loading="lazy"
-            onerror="this.onerror=null; this.src='${getRemoteMediaFallback(product.raw_photos[0])}';"
-          />
-          <img 
-            src="${product.secondary_image}" 
-            alt="${safeName} - Alternate View" 
-            class="product-img-secondary" 
-            loading="lazy"
-            onerror="this.onerror=null; this.src='${getRemoteMediaFallback(product.raw_photos[1] || product.raw_photos[0])}';"
-          />
+          ${primaryImgTag}
+          ${secondaryImgTag}
         </a>
 
         <div class="card-quick-actions">
@@ -309,13 +404,13 @@ function renderProductCardHtml(product, isWishlisted = false) {
         <div class="card-sizes-row">
           <span class="size-label">Size:</span>
           ${product.sizes.map(s => `
-            <button type="button" class="size-chip ${s === 'M' ? 'selected' : ''}" data-size="${s}" data-product-id="${product.id}">
+            <button type="button" class="size-chip ${s === defaultSize ? 'selected' : ''}" data-size="${s}" data-product-id="${product.id}">
               ${s}
             </button>
           `).join('')}
         </div>
 
-        <button type="button" class="card-add-btn" data-add-to-cart="${product.id}" data-selected-size="M">
+        <button type="button" class="card-add-btn" data-add-to-cart="${product.id}" data-selected-size="${defaultSize}">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
             <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -328,21 +423,22 @@ function renderProductCardHtml(product, isWishlisted = false) {
   `;
 }
 
-// UI Component: Category Discovery Card HTML
+// UI Component: Category Discovery Card HTML (Dynamic live count and image)
 function renderCategoryCardHtml(cat) {
   const safeName = escapeHtml(cat.name);
+  const imgTag = renderImgTag(cat.image, `${safeName} Collection`);
+  const countText = cat.count === 1 ? '1 Style Available' : `${cat.count} Styles Available`;
+
   return `
     <div class="category-card" data-category-filter="${safeName}">
       <div class="category-img-wrap">
-        <img 
-          src="${cat.image}" 
-          alt="${safeName} Collection" 
-          loading="lazy"
-          onerror="this.onerror=null; this.src='${getRemoteMediaFallback(cat.raw_image)}';"
-        />
+        ${imgTag}
         <div class="category-card-overlay">
           <div class="category-info">
             <h3 class="category-name">${safeName}</h3>
+            <div style="font-size: 0.75rem; color: var(--color-warm-ivory); margin-bottom: 0.35rem; opacity: 0.9;">
+              ${countText}
+            </div>
             <span class="category-cta-pill">
               Explore Collection
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
@@ -360,4 +456,4 @@ window.renderCategoryCardHtml = renderCategoryCardHtml;
 window.formatPrice = formatPrice;
 window.escapeHtml = escapeHtml;
 window.resolveMediaUrl = resolveMediaUrl;
-window.getRemoteMediaFallback = getRemoteMediaFallback;
+window.renderImgTag = renderImgTag;

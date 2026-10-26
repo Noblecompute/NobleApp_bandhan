@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="URBAN EDGE — Product Details. Handcrafted contemporary shirts." />
+  <meta name="description" content="Product Details — URBAN EDGE Contemporary Menswear" />
   <title>Product Details — URBAN EDGE</title>
   
   <link rel="icon" type="image/png" href="media/file1.png" />
@@ -14,21 +14,16 @@
 </head>
 <body>
 
-  <!-- Announcement Bar -->
+  <!-- Dynamic Announcement Bar -->
   <aside class="announcement-bar" aria-label="Offers Announcement">
     <div class="container">
-      <div class="announcement-slider">
-        <div class="announcement-item active">
-          <span>Flat 10% OFF on your 1st Order</span>
-          <button type="button" class="announcement-code-badge" data-copy-code="FIRST10" title="Click to copy code">
-            CODE: FIRST10
-          </button>
-        </div>
+      <div class="announcement-slider" id="announcementSlider">
+        <!-- Injected dynamically -->
       </div>
     </div>
   </aside>
 
-  <!-- Site Header -->
+  <!-- Dynamic Header -->
   <header class="site-header">
     <div class="container">
       <div class="header-inner">
@@ -36,21 +31,12 @@
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
         </button>
 
-        <a href="index.html" class="brand-logo-wrap" aria-label="URBAN EDGE Home">
-          <img src="media/file1.png" alt="URBAN EDGE Logo" class="brand-logo-img" onerror="this.style.display='none'; document.getElementById('brandFallbackText').style.display='flex';" />
-          <div class="brand-fallback-text" id="brandFallbackText" style="display:none;">
-            <span class="brand-name">URBAN EDGE</span>
-            <span class="brand-tagline">Own Your Edge.</span>
-          </div>
+        <a href="index.html" class="brand-logo-wrap" aria-label="Brand Home">
+          <!-- Injected dynamically -->
         </a>
 
-        <nav class="desktop-nav" aria-label="Primary navigation">
-          <a href="index.html#catalog" class="nav-link">Shop All</a>
-          <a href="index.html?category=DATE+READY#catalog" class="nav-link">Date Ready</a>
-          <a href="index.html?category=CONCERT+FITS#catalog" class="nav-link">Concert Fits</a>
-          <a href="index.html?category=LINEN+COLLECTION#catalog" class="nav-link">Linen Collection</a>
-          <a href="index.html?category=CHAIN+TREND#catalog" class="nav-link">Chain Trend</a>
-          <a href="index.html#offers" class="nav-link nav-link-sale">Offers</a>
+        <nav class="desktop-nav" id="desktopNav" aria-label="Primary navigation">
+          <!-- Injected dynamically -->
         </nav>
 
         <div class="header-actions">
@@ -80,18 +66,15 @@
         </button>
       </div>
       <div class="mobile-drawer-body">
-        <ul class="mobile-menu-list">
-          <li class="mobile-menu-item"><a href="index.html#catalog">Shop All Shirts</a></li>
-          <li class="mobile-menu-item"><a href="index.html?category=DATE+READY#catalog">Date Ready</a></li>
-          <li class="mobile-menu-item"><a href="index.html?category=CONCERT+FITS#catalog">Concert Fits</a></li>
-          <li class="mobile-menu-item"><a href="index.html?category=LINEN+COLLECTION#catalog">Linen Collection</a></li>
-          <li class="mobile-menu-item"><a href="index.html#offers" style="color: var(--color-vermilion);">Offers &amp; Coupons</a></li>
+        <ul class="mobile-menu-list" id="mobileMenuList">
+          <!-- Injected dynamically -->
         </ul>
         <div style="margin-top: auto; display: flex; flex-direction: column; gap: 0.75rem;">
           <button type="button" class="btn btn-outline-dark" style="width: 100%;" onclick="closeAllDrawers(); openWishlistDrawer();">View Wishlist</button>
           <a href="cart.html" class="btn btn-primary" style="width: 100%;">Go to Shopping Bag</a>
         </div>
       </div>
+      <div class="mobile-drawer-footer" id="mobileDrawerFooter"></div>
     </div>
   </div>
 
@@ -111,7 +94,7 @@
           <!-- Dynamically populated by renderProductPage() -->
         </div>
 
-        <!-- Related Products Section -->
+        <!-- Related Products Section (Dynamically populated) -->
         <div style="margin-top: 5rem; padding-top: 3.5rem; border-top: 1px solid var(--color-neutral-border);">
           <div style="text-align: center; margin-bottom: 2.5rem;">
             <span style="font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-vermilion); font-weight: 700;">Complete The Wardrobe</span>
@@ -125,23 +108,14 @@
     </section>
   </main>
 
-  <!-- Footer -->
+  <!-- Dynamic Footer -->
   <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
-        <div class="footer-col-brand">
-          <h3 class="footer-brand-name">URBAN EDGE</h3>
-          <div class="footer-brand-tagline">Own Your Edge.</div>
-          <p class="footer-bio">Contemporary Indian menswear label focused on premium linen blends and bold macro checks.</p>
-        </div>
+        <div class="footer-col-brand" id="footerBrandCol"></div>
         <div>
           <h4 class="footer-col-title">Collections</h4>
-          <ul class="footer-links-list">
-            <li><a href="index.html?category=DATE+READY#catalog">Date Ready</a></li>
-            <li><a href="index.html?category=CONCERT+FITS#catalog">Concert Fits</a></li>
-            <li><a href="index.html?category=LINEN+COLLECTION#catalog">Linen Collection</a></li>
-            <li><a href="index.html#catalog">All Shirts</a></li>
-          </ul>
+          <ul class="footer-links-list" id="footerCategoryLinks"></ul>
         </div>
         <div>
           <h4 class="footer-col-title">Customer Care</h4>
@@ -153,21 +127,12 @@
         </div>
         <div>
           <h4 class="footer-col-title">Contact</h4>
-          <div class="footer-contact-info">
-            <div class="footer-contact-item">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-              <a href="tel:+919004580603">+91 9004580603</a>
-            </div>
-            <div class="footer-contact-item">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-              <span>Mon - Sun: 10:00 AM - 06:00 PM</span>
-            </div>
-          </div>
+          <div class="footer-contact-info" id="footerContactInfo"></div>
         </div>
       </div>
       <div class="footer-bottom">
         <div class="container">
-          <div>&copy; 2026 URBAN EDGE Pvt. Ltd. All rights reserved.</div>
+          <div id="footerCopyrightNotice"></div>
         </div>
       </div>
     </div>
@@ -207,7 +172,7 @@
       </button>
       <div class="size-guide-modal-body">
         <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--color-emerald-dark);">Shirt Measurement Guide</h3>
-        <p style="font-size: 0.85rem; color: var(--color-charcoal-muted);">All measurements in inches. Our shirts are tailored in a relaxed contemporary fit.</p>
+        <p style="font-size: 0.85rem; color: var(--color-charcoal-muted);">All measurements in inches. Tailored in a relaxed contemporary fit.</p>
         <table class="size-table">
           <thead>
             <tr><th>Size</th><th>Chest (in)</th><th>Front Length (in)</th><th>Shoulder (in)</th><th>Sleeve (in)</th></tr>
@@ -241,7 +206,6 @@
   </div>
 
   <!-- Scripts -->
-  <script src="js/config-fallback.js"></script>
   <script src="js/products.js"></script>
   <script src="js/cart.js"></script>
   <script src="js/wishlist.js"></script>
@@ -256,6 +220,11 @@
       window.CartStore.init();
       window.WishlistStore.init();
 
+      // Render Dynamic Header, Announcement & Footer
+      renderDynamicHeader();
+      renderDynamicAnnouncementBar();
+      renderDynamicFooter();
+
       // Get product ID from query parameter
       const params = new URLSearchParams(window.location.search);
       const prodId = params.get('id');
@@ -269,15 +238,17 @@
         document.getElementById('pdpMainContent').innerHTML = `
           <div class="empty-state">
             <h2 class="empty-state-title">Product Not Found</h2>
-            <p class="empty-state-desc">The item you are looking for might have been moved or updated.</p>
+            <p class="empty-state-desc">The item you are looking for might have been updated in configuration.json.</p>
             <a href="index.html" class="btn btn-primary">Return to Catalog</a>
           </div>
         `;
         return;
       }
 
+      activePdpSelectedSize = currentProduct.sizes[0] || 'M';
+
       // Update Breadcrumbs & Page Title
-      document.title = `${currentProduct.name} — URBAN EDGE`;
+      document.title = `${currentProduct.name} — ${window.ProductStore.brand.brand_name || 'URBAN EDGE'}`;
       const catCrumb = document.getElementById('pdpCatCrumb');
       const titleCrumb = document.getElementById('pdpTitleCrumb');
       if (catCrumb) {
@@ -297,20 +268,24 @@
       const safeCat = escapeHtml(p.category);
       const safeDesc = escapeHtml(p.description);
 
-      const galleryPhotos = p.photos;
+      const galleryPhotos = p.photos.length > 0 ? p.photos : [p.primary_image];
+      const heroImgTag = renderImgTag(galleryPhotos[0], safeName, 'pdp-hero-img');
 
       document.getElementById('pdpMainContent').innerHTML = `
-        <!-- Gallery -->
+        <!-- Dynamic Multi-Angle Gallery -->
         <div class="pdp-gallery-wrap">
           <div class="pdp-thumbnails">
-            ${galleryPhotos.map((photo, i) => `
-              <button type="button" class="pdp-thumb-btn ${i === 0 ? 'active' : ''}" onclick="selectPdpImage('${photo}', this)" aria-label="View photo ${i + 1}">
-                <img src="${photo}" alt="${safeName} thumbnail ${i + 1}" onerror="this.onerror=null; this.src='${getRemoteMediaFallback(p.raw_photos[i])}';" />
-              </button>
-            `).join('')}
+            ${galleryPhotos.map((photo, i) => {
+              const thumbTag = renderImgTag(photo, `${safeName} thumb ${i + 1}`);
+              return `
+                <button type="button" class="pdp-thumb-btn ${i === 0 ? 'active' : ''}" onclick="selectPdpImage('${escapeHtml(photo)}', this)" aria-label="View photo ${i + 1}">
+                  ${thumbTag}
+                </button>
+              `;
+            }).join('')}
           </div>
-          <div class="pdp-main-image-wrap">
-            <img id="pdpHeroImage" src="${p.primary_image}" alt="${safeName}" onerror="this.onerror=null; this.src='${getRemoteMediaFallback(p.raw_photos[0])}';" />
+          <div class="pdp-main-image-wrap" id="pdpHeroWrap">
+            ${heroImgTag}
             ${p.discount_percent > 0 ? `<span class="badge-discount" style="position: absolute; top: 1rem; left: 1rem; font-size: 0.85rem;">${p.discount_percent}% OFF</span>` : ''}
           </div>
         </div>
@@ -342,8 +317,8 @@
               </button>
             </div>
             <div class="pdp-sizes-grid" id="pdpSizesGrid">
-              ${p.sizes.map(s => `
-                <button type="button" class="pdp-size-btn ${s === 'M' ? 'selected' : ''}" onclick="selectPdpSize('${s}', this)">${s}</button>
+              ${p.sizes.map((s, i) => `
+                <button type="button" class="pdp-size-btn ${s === activePdpSelectedSize ? 'selected' : ''}" onclick="selectPdpSize('${s}', this)">${s}</button>
               `).join('')}
             </div>
           </div>
@@ -367,7 +342,7 @@
           <!-- Pincode Delivery Check -->
           <div class="pdp-delivery-strip">
             <div class="pdp-delivery-title">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
               Check Delivery &amp; Services
             </div>
             <form class="pdp-pincode-form" onsubmit="event.preventDefault(); checkPdpPincode(this.pincode.value);">
@@ -395,7 +370,7 @@
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
               </button>
               <div class="accordion-body">
-                Tailored in our signature contemporary relaxed silhouette. Fits true to size through the chest with slightly dropped shoulders for ease of movement. The model is 6'1" and wearing size M.
+                Tailored in our signature contemporary relaxed silhouette. Fits true to size through the chest with slightly dropped shoulders for ease of movement.
               </div>
             </div>
 
@@ -416,8 +391,13 @@
     function selectPdpImage(url, btn) {
       document.querySelectorAll('.pdp-thumb-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      const hero = document.getElementById('pdpHeroImage');
-      if (hero) hero.src = url;
+      const wrap = document.getElementById('pdpHeroWrap');
+      if (wrap) {
+        wrap.innerHTML = `
+          ${renderImgTag(url, currentProduct.name, 'pdp-hero-img')}
+          ${currentProduct.discount_percent > 0 ? `<span class="badge-discount" style="position: absolute; top: 1rem; left: 1rem; font-size: 0.85rem;">${currentProduct.discount_percent}% OFF</span>` : ''}
+        `;
+      }
     }
 
     function selectPdpSize(size, btn) {
@@ -453,7 +433,7 @@
       if (!res) return;
       if (/^\d{6}$/.test(code.trim())) {
         res.style.display = 'block';
-        res.innerHTML = `✓ Delivery available to <strong>${code}</strong> by ${new Date(Date.now() + 3*86400000).toLocaleDateString('en-IN', { weekday: 'short', month: 'short', day: 'numeric' })}. Free delivery applies!`;
+        res.innerHTML = `✓ Delivery available to <strong>${code}</strong> within 2-4 business days. Free shipping applies!`;
       } else {
         res.style.display = 'block';
         res.innerHTML = `<span style="color: var(--color-vermilion);">Please enter a valid 6-digit Indian PIN code.</span>`;
@@ -473,6 +453,11 @@
       
       const all = window.ProductStore.getAll();
       const related = all.filter(p => p.id !== prod.id).slice(0, 4);
+
+      if (related.length === 0) {
+        grid.parentElement.style.display = 'none';
+        return;
+      }
 
       grid.innerHTML = related.map(p => {
         const isWishlisted = window.WishlistStore ? window.WishlistStore.has(p.id) : false;
