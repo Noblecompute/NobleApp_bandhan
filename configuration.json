@@ -1,13 +1,13 @@
 {
-  "currentCount": 41,
-  "timestamp": "2026-10-23T10:47:12.075Z",
+  "currentCount": 46,
+  "timestamp": "2026-10-26T12:36:10.882Z",
   "data": {
-    "currentCount": 41,
-    "timestamp": "2026-10-23T10:47:12.075Z",
+    "currentCount": 46,
+    "timestamp": "2026-10-26T12:36:10.882Z",
     "brand": {
       "brand_name": "URBAN EDGE",
       "brand_tagline": "Own Your Edge.",
-      "brand_logo": "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file1.png"
+      "brand_logo": "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file43.png"
     },
     "categories": [
       {
@@ -32,8 +32,9 @@
       {
         "id": 1792749782402,
         "category_name": "CONCERT FITS",
-        "category_image": "",
-        "link": ""
+        "category_image": "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file14.webp",
+        "link": "",
+        "cover_product_id": 1792749954069
       },
       {
         "id": 1792749796027,
@@ -90,22 +91,31 @@
       }
     ],
     "instagram": [],
-    "news": [
+    "news": [],
+    "story": [],
+    "topics": [
       {
-        "headline": "Buy 2 Get 250 Rs Off | Use Code : B2G250",
-        "link": ""
+        "id": 1793018050456,
+        "topic_name": "",
+        "topic_image": "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file44.webp",
+        "category": "Home",
+        "link": "/category/home"
       },
       {
-        "headline": "Flat 10% OFF on your 1st Order | Use Code : FIRST10",
-        "link": ""
+        "id": 1793018149329,
+        "topic_name": "",
+        "topic_image": "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file45.webp",
+        "category": "DATE READY",
+        "link": "/category/date-ready"
       },
       {
-        "headline": "Buy 3 Get 500 Rs Off | Use Code : B3G500",
-        "link": ""
+        "id": 1793018149541,
+        "topic_name": "",
+        "topic_image": "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file46.webp",
+        "category": "CONCERT FITS",
+        "link": "/category/concert-fits"
       }
     ],
-    "story": [],
-    "topics": [],
     "footer": {
       "footer_company": "URBAN EDGE Pvt. Ltd.",
       "footer_address": "Lotus Corporate Park Wing G02 - 1502, Ram Mandir Lane, off Western Express Highway, Goregaon, Mumbai, 400063",
@@ -174,7 +184,7 @@
           "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file16.webp",
           "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file17.webp"
         ],
-        "is_category_cover": false,
+        "is_category_cover": true,
         "is_showcase": false,
         "is_new_arrival": false,
         "is_mix": false,
@@ -268,16 +278,16 @@
     "NewArrival": [],
     "Mix": []
   },
-  "filename": "2026-10-23-104712-configuration.json",
+  "filename": "2026-10-26-123610-configuration.json",
   "userEmail": "nitikesh@tambnick25.onmicrosoft.com",
   "userName": "nitikesh",
-  "organizationName": "bandhan",
+  "organizationName": "Bandhan",
   "organizationSlug": "bandhan",
   "workspaceType": "organization",
   "github": {
     "repository": "https://github.com/Noblecompute/customapp-bandhan",
     "branch": "main",
-    "publishedAt": "2026-10-23T10:47:13.243Z",
+    "publishedAt": "2026-10-26T12:36:14.008Z",
     "mediaBaseUrl": "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/"
   }
 }

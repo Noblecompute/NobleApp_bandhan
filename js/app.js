@@ -1,7 +1,7 @@
 /**
  * URBAN EDGE — Main Application Controller
  * Live-renders 100% of website content from configuration.json.
- * Dynamic header, hero, categories, catalog, filters, offers, and footer.
+ * Dynamic header, hero, categories, catalog, filters, editorial, offers, and footer.
  */
 
 // Global Toast Notification Helper
@@ -108,12 +108,25 @@ function extractCouponCode(headline) {
 // DYNAMIC DOM BUILDERS FROM CONFIGURATION.JSON
 // ==========================================================================
 
-// 1. Dynamic Header (Logo, Brand Name, Categories Navigation)
+// 1. Dynamic Header (Logo, Favicon, Title, Navigation Categories)
 function renderDynamicHeader() {
   const brand = window.ProductStore.brand || {};
   const categories = window.ProductStore.categories || [];
+  const isHome = window.location.pathname.endsWith('index.html') || window.location.pathname.endsWith('/') || !window.location.pathname.includes('.html');
+  const linkPrefix = isHome ? '' : 'index.html';
 
-  // Update Brand Logo & Title in Header
+  // Dynamic Browser Favicon
+  const favicon = document.getElementById('siteFavicon');
+  if (favicon && brand.brand_logo) {
+    favicon.href = resolveMediaUrl(brand.brand_logo).src;
+  }
+
+  // Dynamic Page Title
+  if (isHome && brand.brand_name) {
+    document.title = `${brand.brand_name} — ${brand.brand_tagline || "Premium Men's Fashion"}`;
+  }
+
+  // Dynamic Brand Logo & Text in Header
   const brandWrap = document.querySelector('.brand-logo-wrap');
   if (brandWrap) {
     const brandName = escapeHtml(brand.brand_name || 'URBAN EDGE');
@@ -139,12 +152,13 @@ function renderDynamicHeader() {
   // Update Desktop Navigation
   const desktopNav = document.getElementById('desktopNav');
   if (desktopNav) {
-    let navHtml = `<a href="#catalog" class="nav-link active" data-category-filter="all">Shop All</a>`;
+    let navHtml = `<a href="${linkPrefix}#catalog" class="nav-link active" data-category-filter="all">Shop All</a>`;
     categories.forEach(cat => {
-      navHtml += `<a href="#catalog" class="nav-link" data-category-filter="${escapeHtml(cat.name)}">${escapeHtml(cat.name)}</a>`;
+      const targetHref = isHome ? '#catalog' : `index.html?category=${encodeURIComponent(cat.name)}#catalog`;
+      navHtml += `<a href="${targetHref}" class="nav-link" data-category-filter="${escapeHtml(cat.name)}">${escapeHtml(cat.name)}</a>`;
     });
     if (window.ProductStore.news && window.ProductStore.news.length > 0) {
-      navHtml += `<a href="#offers" class="nav-link nav-link-sale">Offers</a>`;
+      navHtml += `<a href="${linkPrefix}#offers" class="nav-link nav-link-sale">Offers</a>`;
     }
     desktopNav.innerHTML = navHtml;
   }
@@ -154,16 +168,17 @@ function renderDynamicHeader() {
   if (mobileList) {
     let mobileHtml = `
       <li class="mobile-menu-item">
-        <a href="#catalog" data-category-filter="all" onclick="closeAllDrawers();">
-          Shop All Shirts
+        <a href="${linkPrefix}#catalog" data-category-filter="all" onclick="closeAllDrawers();">
+          Shop All Collections
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
         </a>
       </li>
     `;
     categories.forEach(cat => {
+      const targetHref = isHome ? '#catalog' : `index.html?category=${encodeURIComponent(cat.name)}#catalog`;
       mobileHtml += `
         <li class="mobile-menu-item">
-          <a href="#catalog" data-category-filter="${escapeHtml(cat.name)}" onclick="closeAllDrawers();">
+          <a href="${targetHref}" data-category-filter="${escapeHtml(cat.name)}" onclick="closeAllDrawers();">
             ${escapeHtml(cat.name)}
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
           </a>
@@ -173,7 +188,7 @@ function renderDynamicHeader() {
     if (window.ProductStore.news && window.ProductStore.news.length > 0) {
       mobileHtml += `
         <li class="mobile-menu-item">
-          <a href="#offers" onclick="closeAllDrawers();" style="color: var(--color-vermilion);">
+          <a href="${linkPrefix}#offers" onclick="closeAllDrawers();" style="color: var(--color-vermilion);">
             Special Offers &amp; Coupons
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
           </a>
@@ -409,13 +424,12 @@ let currentCatalogFilter = {
 };
 
 function renderDynamicCatalogFilters() {
-  // 1. Dynamic Category Filter Pills
   const pillsBox = document.getElementById('categoryFilterPills');
   if (pillsBox) {
     const totalCount = window.ProductStore.products.length;
     let pillsHtml = `
       <button type="button" class="filter-pill ${currentCatalogFilter.category === 'all' ? 'active' : ''}" data-category="all">
-        All Shirts (${totalCount})
+        All Styles (${totalCount})
       </button>
     `;
 
@@ -431,7 +445,6 @@ function renderDynamicCatalogFilters() {
     pillsBox.innerHTML = pillsHtml;
   }
 
-  // 2. Dynamic Price Filter Dropdown based on actual catalog min/max
   const priceSelect = document.getElementById('catalogPriceSelect');
   if (priceSelect) {
     const bounds = window.ProductStore.getPriceBounds();
@@ -446,7 +459,6 @@ function renderDynamicCatalogFilters() {
     `;
   }
 
-  // 3. Dynamic Size Filter Dropdown based on actual sizes present
   const sizeSelect = document.getElementById('catalogSizeSelect');
   if (sizeSelect) {
     const availableSizes = window.ProductStore.getAvailableSizes();
@@ -458,7 +470,57 @@ function renderDynamicCatalogFilters() {
   }
 }
 
-// 6. Dynamic Catalog Product Grid
+// Dynamic Category Navigation & Redirection (smooth scroll, filter update, URL state)
+function navigateToCategory(event, categoryName) {
+  const isHome = window.location.pathname.endsWith('index.html') || 
+                 window.location.pathname.endsWith('/') || 
+                 !window.location.pathname.includes('.html');
+
+  const targetCategory = (!categoryName || categoryName.toLowerCase() === 'home') ? 'all' : categoryName;
+
+  if (!isHome) {
+    window.location.href = `index.html?category=${encodeURIComponent(targetCategory)}#catalog`;
+    return;
+  }
+
+  if (event && event.preventDefault) {
+    event.preventDefault();
+  }
+
+  currentCatalogFilter.category = targetCategory;
+
+  // Update active pill in category toolbar
+  document.querySelectorAll('.filter-pill').forEach(pill => {
+    const pillCat = pill.getAttribute('data-category');
+    if (!pillCat) return;
+    const isActive = (targetCategory === 'all' && pillCat === 'all') || 
+                     (pillCat.toLowerCase() === targetCategory.toLowerCase());
+    pill.classList.toggle('active', isActive);
+  });
+
+  // Re-render product grid
+  renderCatalogGrid();
+
+  // Smooth scroll to catalog section
+  const catalogEl = document.getElementById('catalog');
+  if (catalogEl) {
+    catalogEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  // Update URL history state without reloading
+  const newUrl = targetCategory === 'all' 
+    ? `${window.location.pathname}#catalog` 
+    : `${window.location.pathname}?category=${encodeURIComponent(targetCategory)}#catalog`;
+  window.history.pushState({ category: targetCategory }, '', newUrl);
+
+  // User notification feedback
+  const displayLabel = targetCategory === 'all' ? 'All Collections' : targetCategory;
+  if (window.showToast) {
+    window.showToast(`Viewing ${displayLabel}`, 'emerald');
+  }
+}
+
+// 6. Dynamic Catalog Product Grid (with dynamic interspersal of topic campaign banners)
 function renderCatalogGrid() {
   const grid = document.getElementById('productsGrid');
   const countEl = document.getElementById('resultsCount');
@@ -468,7 +530,7 @@ function renderCatalogGrid() {
   const total = window.ProductStore.products.length;
 
   if (countEl) {
-    countEl.textContent = `Showing ${filtered.length} of ${total} shirts`;
+    countEl.textContent = `Showing ${filtered.length} of ${total} styles`;
   }
 
   if (filtered.length === 0) {
@@ -478,7 +540,7 @@ function renderCatalogGrid() {
           <circle cx="11" cy="11" r="8"></circle>
           <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
         </svg>
-        <h3 class="empty-state-title">No matching shirts found</h3>
+        <h3 class="empty-state-title">No matching styles found</h3>
         <p class="empty-state-desc">Try clearing filters or search terms to browse the entire collection.</p>
         <button type="button" class="btn btn-primary" onclick="resetCatalogFilters()">Clear All Filters</button>
       </div>
@@ -486,10 +548,62 @@ function renderCatalogGrid() {
     return;
   }
 
-  grid.innerHTML = filtered.map(p => {
-    const isWishlisted = window.WishlistStore ? window.WishlistStore.has(p.id) : false;
-    return window.renderProductCardHtml(p, isWishlisted);
-  }).join('');
+  const topics = Array.isArray(window.ProductStore.topics) ? window.ProductStore.topics : [];
+  const isAll = (!currentCatalogFilter.category || currentCatalogFilter.category === 'all');
+  const hasSearch = Boolean(currentCatalogFilter.search && currentCatalogFilter.search.trim().length > 0);
+
+  let html = '';
+
+  if (!isAll && !hasSearch) {
+    // Category-specific view: Check if there is a matching topic banner for this category header
+    const currentCatLower = currentCatalogFilter.category.toLowerCase();
+    const matchingTopic = topics.find(t => {
+      const target = window.ProductStore.resolveTopicTarget(t);
+      return target.toLowerCase() === currentCatLower;
+    });
+
+    if (matchingTopic && window.renderTopicBannerHtml) {
+      html += window.renderTopicBannerHtml(matchingTopic, 0, 'category-header-banner');
+    }
+
+    // Render the filtered products
+    html += filtered.map(p => {
+      const isWishlisted = window.WishlistStore ? window.WishlistStore.has(p.id) : false;
+      return window.renderProductCardHtml(p, isWishlisted);
+    }).join('');
+  } else if (topics.length > 0 && !hasSearch && window.renderTopicBannerHtml) {
+    // "All Collections" view: Dynamically intersperse topic banners between product batches
+    // ("dont show in sequance i want diffrent topic like products topic between them so it will look cool")
+    // Dynamic interval: injects a topic banner every 2 to 4 products based on catalog size
+    const interval = Math.max(2, Math.min(4, Math.ceil(filtered.length / (topics.length + 1))));
+    let topicIdx = 0;
+
+    for (let i = 0; i < filtered.length; i++) {
+      const p = filtered[i];
+      const isWishlisted = window.WishlistStore ? window.WishlistStore.has(p.id) : false;
+      html += window.renderProductCardHtml(p, isWishlisted);
+
+      // Intersperse topic banner between product rows
+      if ((i + 1) % interval === 0 && topicIdx < topics.length) {
+        html += window.renderTopicBannerHtml(topics[topicIdx], topicIdx, 'grid-break');
+        topicIdx++;
+      }
+    }
+
+    // If any topics remain, append at end of catalog
+    while (topicIdx < topics.length) {
+      html += window.renderTopicBannerHtml(topics[topicIdx], topicIdx, 'grid-break');
+      topicIdx++;
+    }
+  } else {
+    // Standard flat products list
+    html = filtered.map(p => {
+      const isWishlisted = window.WishlistStore ? window.WishlistStore.has(p.id) : false;
+      return window.renderProductCardHtml(p, isWishlisted);
+    }).join('');
+  }
+
+  grid.innerHTML = html;
 }
 
 function resetCatalogFilters() {
@@ -522,7 +636,63 @@ function resetCatalogFilters() {
   renderCatalogGrid();
 }
 
-// 7. Dynamic Offers Strip
+// 7. Dynamic Editorial Storytelling Section (Zero hardcoded images)
+function renderDynamicEditorial() {
+  const grid = document.getElementById('editorialGrid');
+  const section = document.getElementById('editorial');
+  if (!grid || !section || !window.ProductStore) return;
+
+  const products = window.ProductStore.products;
+  if (products.length === 0) {
+    section.style.display = 'none';
+    return;
+  }
+
+  section.style.display = 'block';
+
+  // Feature products dynamically from catalog
+  const p1 = products.find(p => p.is_showcase || p.is_category_cover) || products[0];
+  const p2 = products.find(p => p.id !== p1.id) || products[0];
+
+  const img1Tag = renderImgTag(p1.primary_image, p1.name);
+  const img2Tag = renderImgTag(p2.primary_image || p1.secondary_image, p2.name);
+
+  grid.innerHTML = `
+    <div class="editorial-gallery">
+      <div class="editorial-img-large">
+        ${img1Tag}
+      </div>
+      <div class="editorial-img-small">
+        ${img2Tag}
+      </div>
+    </div>
+
+    <div class="editorial-content">
+      <span class="editorial-badge">Signature Edit</span>
+      <h2 class="editorial-heading">${escapeHtml(p1.category)} Collection</h2>
+      <p class="editorial-text">
+        ${escapeHtml(p1.description || 'Designed with relaxed modern tailoring, breathable textures, and deliberate craftsmanship for every day.')}
+      </p>
+      
+      <div class="editorial-features">
+        <div class="editorial-feature-item">
+          <div class="feature-title">Artisanal Craft</div>
+          <div class="feature-desc">Engineered for comfort and modern character.</div>
+        </div>
+        <div class="editorial-feature-item">
+          <div class="feature-title">Breathable Weaves</div>
+          <div class="feature-desc">Natural fibers suited for effortless all-day wear.</div>
+        </div>
+      </div>
+
+      <a href="#catalog" class="btn btn-primary" data-category-filter="${escapeHtml(p1.category)}">
+        Explore ${escapeHtml(p1.category)}
+      </a>
+    </div>
+  `;
+}
+
+// 8. Dynamic Offers Strip
 function renderDynamicOffers() {
   const news = window.ProductStore.news || [];
   const grid = document.getElementById('offersGrid');
@@ -550,11 +720,13 @@ function renderDynamicOffers() {
   }).join('');
 }
 
-// 8. Dynamic Footer
+// 9. Dynamic Footer (Zero hardcoded address, phone, email, hours, links)
 function renderDynamicFooter() {
   const footer = window.ProductStore.footer || {};
   const brand = window.ProductStore.brand || {};
   const categories = window.ProductStore.categories || [];
+  const isHome = window.location.pathname.endsWith('index.html') || window.location.pathname.endsWith('/') || !window.location.pathname.includes('.html');
+  const linkPrefix = isHome ? '' : 'index.html';
 
   const company = footer.footer_company || brand.brand_name || 'URBAN EDGE Pvt. Ltd.';
   const tagline = footer.footer_tagline || brand.brand_tagline || 'Own Your Edge.';
@@ -593,9 +765,10 @@ function renderDynamicFooter() {
   if (catLinksBox) {
     let catLinksHtml = '';
     categories.forEach(cat => {
-      catLinksHtml += `<li><a href="#catalog" data-category-filter="${escapeHtml(cat.name)}">${escapeHtml(cat.name)}</a></li>`;
+      const targetHref = isHome ? '#catalog' : `index.html?category=${encodeURIComponent(cat.name)}#catalog`;
+      catLinksHtml += `<li><a href="${targetHref}" data-category-filter="${escapeHtml(cat.name)}">${escapeHtml(cat.name)}</a></li>`;
     });
-    catLinksHtml += `<li><a href="#catalog" data-category-filter="all">View All Shirts</a></li>`;
+    catLinksHtml += `<li><a href="${linkPrefix}#catalog" data-category-filter="all">View All Collections</a></li>`;
     catLinksBox.innerHTML = catLinksHtml;
   }
 
@@ -779,7 +952,7 @@ function handleLiveSearch(query) {
     container.innerHTML = `
       <div style="text-align: center; padding: 2.5rem 1rem; color: var(--color-charcoal-muted);">
         <p style="font-size: 1rem; font-weight: 600; color: var(--color-charcoal);">No products found matching "${escapeHtml(query)}"</p>
-        <p style="font-size: 0.85rem; margin-top: 0.5rem;">Try searching for "checks", "linen", "stripe", or browse our categories.</p>
+        <p style="font-size: 0.85rem; margin-top: 0.5rem;">Try searching for pattern, color or category.</p>
       </div>
     `;
     return;
@@ -811,28 +984,27 @@ function handleLiveSearch(query) {
 // ==========================================================================
 
 async function initStorefront() {
-  // 1. Live load configuration.json
   const loaded = await window.ProductStore.init();
   if (!loaded) {
     console.error('Failed to initialize ProductStore from configuration.json');
     return;
   }
 
-  // 2. Initialize Cart & Wishlist
   window.CartStore.init();
   window.WishlistStore.init();
 
-  // 3. Render all Dynamic Sections from configuration.json
+  // Render 100% Dynamic Sections from configuration.json
   renderDynamicHeader();
   renderDynamicAnnouncementBar();
   renderDynamicHeroSlider();
   renderDynamicCategories();
   renderDynamicCatalogFilters();
   renderCatalogGrid();
+  renderDynamicEditorial();
   renderDynamicOffers();
   renderDynamicFooter();
 
-  // 4. Sticky Header Scroll Effect
+  // Sticky Header Scroll Effect
   const header = document.querySelector('.site-header');
   if (header) {
     window.addEventListener('scroll', () => {
@@ -844,7 +1016,7 @@ async function initStorefront() {
     }, { passive: true });
   }
 
-  // 5. Global Event Listeners
+  // Global Event Listeners
   initGlobalEvents();
 }
 
@@ -1093,7 +1265,7 @@ function initGlobalEvents() {
               <div><strong>PIN Code:</strong> ${escapeHtml(pin)}</div>
               <div><strong>Total Amount:</strong> ${total}</div>
               <div style="margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px dashed var(--color-neutral-border); color: var(--color-charcoal-muted); font-size: 0.75rem;">
-                * Notice: Static storefront preview mode. In live production, this hands off to Razorpay/Stripe/Shopify.
+                * Notice: Static storefront preview mode. In live production, this hands off to payment gateways.
               </div>
             </div>
             <button type="button" class="btn btn-primary" onclick="window.CartStore.clear(); closeAllDrawers();" style="min-width: 200px;">
@@ -1105,19 +1277,40 @@ function initGlobalEvents() {
     });
   }
 
-  // Handle URL query parameters (e.g. ?category=DATE+READY)
+  // Handle URL query parameters (e.g. ?category=DATE+READY or ?category=date-ready)
   const urlParams = new URLSearchParams(window.location.search);
   const catParam = urlParams.get('category');
   if (catParam) {
-    currentCatalogFilter.category = catParam;
+    let matchedCategory = catParam;
+    if (window.ProductStore && window.ProductStore.categories) {
+      const normalizedParam = catParam.replace(/[-_]/g, ' ').toLowerCase();
+      const found = window.ProductStore.categories.find(c => 
+        c.name.toLowerCase() === normalizedParam || 
+        c.name.toLowerCase() === catParam.toLowerCase()
+      );
+      if (found) {
+        matchedCategory = found.name;
+      }
+    }
+    currentCatalogFilter.category = matchedCategory;
     document.querySelectorAll('.filter-pill').forEach(p => {
-      p.classList.toggle('active', p.getAttribute('data-category').toLowerCase() === catParam.toLowerCase());
+      const pillCat = p.getAttribute('data-category');
+      if (pillCat) {
+        p.classList.toggle('active', pillCat.toLowerCase() === matchedCategory.toLowerCase());
+      }
     });
     renderCatalogGrid();
+    setTimeout(() => {
+      const catalogEl = document.getElementById('catalog');
+      if (catalogEl) {
+        catalogEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 200);
   }
 }
 
 // Expose globals
+window.navigateToCategory = navigateToCategory;
 window.openCartDrawer = openCartDrawer;
 window.openWishlistDrawer = openWishlistDrawer;
 window.openMobileNav = openMobileNav;
@@ -1130,3 +1323,6 @@ window.openSearchModal = openSearchModal;
 window.showToast = showToast;
 window.resetCatalogFilters = resetCatalogFilters;
 window.initStorefront = initStorefront;
+window.renderDynamicHeader = renderDynamicHeader;
+window.renderDynamicAnnouncementBar = renderDynamicAnnouncementBar;
+window.renderDynamicFooter = renderDynamicFooter;

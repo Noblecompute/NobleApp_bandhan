@@ -1,4 +1,4 @@
-# URBAN EDGE — Premium Men's Fashion E-Commerce Website
+# URBAN EDGE — Premium Dynamic Men's Fashion Storefront
 
 A 100% dynamic, high-performance static men's fashion storefront crafted with semantic **HTML5**, modern **CSS3**, and modular **Vanilla JavaScript**.
 
@@ -11,14 +11,14 @@ A 100% dynamic, high-performance static men's fashion storefront crafted with se
 Every section of the website is built dynamically at runtime:
 
 - **Live Cache-Busted Configuration:** Every page load executes `fetch('configuration.json?t=' + Date.now(), { cache: 'no-store' })`. Edits in `configuration.json` are reflected immediately upon page refresh.
-- **Dynamic Media Path Resolution:** Media references can be full HTTP/HTTPS URLs, relative paths (`media/xyz.webp`), or filenames (`xyz.webp`). The dynamic resolver automatically adapts and provides multi-tier fallbacks so images never fail.
+- **Dynamic Media Path Resolution:** Media references can be full HTTP/HTTPS URLs, relative paths (`media/xyz.webp`), or bare filenames (`xyz.webp`). The dynamic resolver automatically adapts and provides multi-tier fallbacks so images never fail.
 - **Automatic Product Scaling:** If you have 3 products, it displays 3; if you add 50 products to `subpages`, it renders all 50 in responsive grids. Zero hardcoded product counters.
 - **Dynamic Category Navigation:** Navigation items and mobile drawer links are generated directly from `data.categories` and active products in `data.subpages`.
 - **Dynamic Filter Controls:**
   - Category filter pills update with live item counts: `"Category Name (X)"`.
   - Price filter dropdown automatically calculates the true minimum and maximum prices in your catalog.
   - Size filter dropdown automatically detects all sizes present across active items.
-- **Dynamic Hero Carousel:** Banners, `<picture>` responsive tags, and slide indicators are rendered from whatever entries are in `data.hero`.
+- **Dynamic Hero Carousel:** Banners, responsive image rendering, and slide indicators are rendered from whatever entries are in `data.hero`.
 - **Dynamic Announcement Ticker & Offers:** Built from `data.news`, automatically extracting promo codes (e.g. `FIRST10`, `B2G250`, `B3G500`) for one-click copy and cart discount calculation.
 - **Dynamic Corporate Footer:** Address, telephone, email, opening hours, copyright, and verified social media links are rendered directly from `data.footer`.
 
@@ -55,7 +55,7 @@ To change anything on the website, simply edit [`configuration.json`](file:///c:
 2. **Remove or Disable a Product:**
    Remove the item from `"subpages"` or set `"is_enabled": false`. The item will immediately disappear from the store.
 3. **Change Images / Media:**
-   Update the `photos` array or `image` fields. You can specify a local path like `media/new_shirt.webp` or an external URL like `https://...`.
+   Update the `photos` array or `image` fields. You can specify a local path like `media/new_shirt.webp`, a bare filename, or an external URL like `https://...`.
 4. **Add or Modify Banners:**
    Add or edit objects in `"hero": [ ... ]`. The carousel automatically generates the exact number of slides and indicator dots.
 5. **Change Promotions or Coupons:**
@@ -84,4 +84,4 @@ Open `http://localhost:3000` or `http://localhost:8000` in your browser.
    git push origin main
    ```
 2. In GitHub, go to **Settings** > **Pages** > **Deploy from a branch** > branch `main` / root `/ (root)`.
-3. The site will deploy instantly to your GitHub Pages or custom domain URL.
+3. The site will deploy instantly to your GitHub Pages or custom domain URL (`website.noblecompute.com`).

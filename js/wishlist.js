@@ -119,7 +119,7 @@ const WishlistStore = {
             <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
           </svg>
           <h4 class="empty-state-title" style="font-size: 1.25rem;">Your Wishlist is Empty</h4>
-          <p class="empty-state-desc" style="font-size: 0.875rem;">Save your favourite shirts here to shop later or check back for offers.</p>
+          <p class="empty-state-desc" style="font-size: 0.875rem;">Save your favourite styles here to shop later or check back for offers.</p>
           <button type="button" class="btn btn-primary" onclick="window.closeAllDrawers();" style="width: 100%;">
             Explore Collections
           </button>

@@ -3,10 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Product Details — URBAN EDGE Contemporary Menswear" />
-  <title>Product Details — URBAN EDGE</title>
+  <meta name="description" content="Product Details — Contemporary Menswear" />
+  <title>Product Details</title>
   
-  <link rel="icon" type="image/png" href="media/file1.png" />
+  <!-- Dynamic Favicon -->
+  <link rel="icon" id="siteFavicon" type="image/png" href="" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -87,7 +89,7 @@
           <span>/</span>
           <a href="index.html#catalog" id="pdpCatCrumb">Collection</a>
           <span>/</span>
-          <span id="pdpTitleCrumb" style="color: var(--color-charcoal); font-weight: 600;">Shirt</span>
+          <span id="pdpTitleCrumb" style="color: var(--color-charcoal); font-weight: 600;">Product</span>
         </nav>
 
         <div class="pdp-grid" id="pdpMainContent">
@@ -103,6 +105,8 @@
           <div class="products-grid" id="relatedProductsGrid">
             <!-- Populated with items from same or adjacent categories -->
           </div>
+          <!-- Dynamic Topic Campaign Banner -->
+          <div id="pdpTopicCampaignWrap" style="margin-top: 3.5rem;"></div>
         </div>
       </div>
     </section>
@@ -171,7 +175,7 @@
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
       </button>
       <div class="size-guide-modal-body">
-        <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--color-emerald-dark);">Shirt Measurement Guide</h3>
+        <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--color-emerald-dark);">Apparel Measurement Guide</h3>
         <p style="font-size: 0.85rem; color: var(--color-charcoal-muted);">All measurements in inches. Tailored in a relaxed contemporary fit.</p>
         <table class="size-table">
           <thead>
@@ -259,6 +263,17 @@
 
       renderPdp(currentProduct);
       renderRelatedProducts(currentProduct);
+
+      // Render Dynamic Thematic Topic Banner
+      if (window.ProductStore && window.ProductStore.topics && window.ProductStore.topics.length > 0) {
+        const topics = window.ProductStore.topics;
+        const matchingTopic = topics.find(t => window.ProductStore.resolveTopicTarget(t).toLowerCase() === currentProduct.category.toLowerCase()) || topics[0];
+        const bannerWrap = document.getElementById('pdpTopicCampaignWrap');
+        if (bannerWrap && window.renderTopicBannerHtml) {
+          bannerWrap.innerHTML = window.renderTopicBannerHtml(matchingTopic, 0, 'grid-break');
+        }
+      }
+
       initGlobalEvents();
     }
 
@@ -352,15 +367,15 @@
             <div id="pincodeResult" class="pdp-pincode-result"></div>
           </div>
 
-          <!-- Product Details Accordion -->
+          <!-- Product Details Accordion (100% Dynamic description) -->
           <div class="pdp-accordion">
             <div class="accordion-item open">
               <button type="button" class="accordion-header" onclick="toggleAccordion(this)">
-                <span>Fabric &amp; Craftsmanship</span>
+                <span>Product Description &amp; Details</span>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
               </button>
               <div class="accordion-body">
-                Crafted from premium long-staple cotton and natural linen fibers for an ultra-breathable texture. Pre-washed for a soft hand-feel that resists shrinkage. Features reinforced double-needle stitching and mother-of-pearl effect buttons.
+                ${safeDesc}
               </div>
             </div>
 
@@ -370,7 +385,7 @@
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
               </button>
               <div class="accordion-body">
-                Tailored in our signature contemporary relaxed silhouette. Fits true to size through the chest with slightly dropped shoulders for ease of movement.
+                Tailored in our signature contemporary relaxed silhouette. Available in sizes ${p.sizes.join(', ')}.
               </div>
             </div>
 

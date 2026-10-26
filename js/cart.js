@@ -24,13 +24,9 @@ const CartStore = {
     this.updateBadges();
   },
 
-  // Dynamically parses active coupon codes from configuration news headlines
+  // 100% Dynamically parses active coupon codes from configuration news headlines
   getAvailableCoupons() {
-    const coupons = {
-      'FIRST10': { type: 'percent', value: 10, label: '10% OFF on 1st Order' },
-      'B2G250': { type: 'fixed', value: 250, minQty: 2, label: '₹250 OFF on 2+ Items' },
-      'B3G500': { type: 'fixed', value: 500, minQty: 3, label: '₹500 OFF on 3+ Items' }
-    };
+    const coupons = {};
 
     if (window.ProductStore && Array.isArray(window.ProductStore.news)) {
       window.ProductStore.news.forEach(n => {
@@ -39,7 +35,6 @@ const CartStore = {
         if (match && match[1]) {
           const code = match[1].toUpperCase();
           if (!coupons[code]) {
-            // Determine type and value
             const percentMatch = h.match(/(\d+)%/);
             const flatMatch = h.match(/(\d+)\s*(?:rs|inr|off)/i);
             const qtyMatch = h.match(/buy\s*(\d+)/i);
@@ -63,7 +58,7 @@ const CartStore = {
                 type: 'percent',
                 value: 10,
                 minQty: 1,
-                label: 'Special Promotional Discount'
+                label: 'Promotional Discount'
               };
             }
           }
@@ -169,7 +164,7 @@ const CartStore = {
     const coupon = availableCoupons[cleanCode];
 
     if (!coupon) {
-      return { success: false, message: `Coupon "${cleanCode}" is not valid.` };
+      return { success: false, message: `Coupon "${cleanCode}" is not active or valid.` };
     }
 
     const totalQty = this.getTotalCount();
@@ -262,7 +257,7 @@ const CartStore = {
             <path d="M16 10a4 4 0 0 1-8 0"></path>
           </svg>
           <h4 class="empty-state-title" style="font-size: 1.25rem;">Your Shopping Bag is Empty</h4>
-          <p class="empty-state-desc" style="font-size: 0.875rem;">Explore our latest collection of contemporary shirts.</p>
+          <p class="empty-state-desc" style="font-size: 0.875rem;">Explore our latest collection of contemporary styles.</p>
           <button type="button" class="btn btn-primary" onclick="window.closeAllDrawers();" style="width: 100%;">
             Start Shopping
           </button>

@@ -63,7 +63,7 @@ function resolveMediaUrl(rawPath) {
     };
   }
 
-  // 3. Just a filename e.g. "file8.webp" or "shirt.jpg"
+  // 3. Bare filename e.g. "photo.webp" or "apparel.jpg"
   return {
     src: `./media/${trimmed}`,
     fallback: `${mediaBaseUrl}/${trimmed}`,
@@ -94,14 +94,18 @@ function deriveProductName(rawProduct) {
   }
   if (rawProduct.description) {
     const firstSentence = rawProduct.description.split('.')[0].trim();
-    if (firstSentence.toLowerCase().includes('shirt')) {
-      const match = firstSentence.match(/^(.*?shirt)/i);
-      if (match && match[1]) {
-        return match[1].trim();
-      }
+    if (firstSentence.length > 0 && firstSentence.length <= 50) {
+      return firstSentence;
+    }
+    const match = firstSentence.match(/^(.*?)(?:,|\.|\bwith\b|\bfeaturing\b)/i);
+    if (match && match[1] && match[1].trim().length > 3) {
+      return match[1].trim();
     }
   }
-  return 'Contemporary Linen Shirt';
+  const cat = (rawProduct.category && rawProduct.category.trim()) 
+    ? rawProduct.category.charAt(0).toUpperCase() + rawProduct.category.slice(1).toLowerCase() 
+    : 'Style';
+  return `Contemporary ${cat}`;
 }
 
 // Normalize raw product object from JSON
@@ -118,12 +122,12 @@ function normalizeProduct(raw) {
   return {
     id: String(raw.id || Math.floor(Math.random() * 1000000)),
     name: deriveProductName(raw),
-    category: (raw.category && raw.category.trim()) ? raw.category.trim() : 'SHIRTS',
+    category: (raw.category && raw.category.trim()) ? raw.category.trim() : 'COLLECTION',
     price: price,
     discount_price: discountPrice,
     effective_price: effectivePrice,
     discount_percent: discountPercent,
-    description: raw.description || 'Premium crafted contemporary shirt designed for comfort and modern style.',
+    description: raw.description || 'Premium crafted contemporary apparel designed for comfort and modern style.',
     photos: rawPhotos,
     primary_image: rawPhotos[0] || '',
     secondary_image: rawPhotos[1] || rawPhotos[0] || '',
@@ -140,6 +144,7 @@ const ProductStore = {
   config: null,
   products: [],
   categories: [],
+  topics: [],
   brand: {},
   hero: [],
   news: [],
@@ -200,6 +205,15 @@ const ProductStore = {
 
     // 6. Dynamic Categories (from configuration.json + any categories present in products)
     const rawCategories = Array.isArray(d.categories) ? d.categories : [];
+
+    // 7. Dynamic Topics / Thematic Campaigns (from configuration.json)
+    this.topics = Array.isArray(d.topics) ? d.topics.map(t => ({
+      id: String(t.id || ''),
+      name: (t.topic_name || '').trim(),
+      image: (t.topic_image || '').trim(),
+      category: (t.category || '').trim(),
+      link: (t.link || '').trim()
+    })).filter(t => t.image) : [];
     
     // Build category map
     const catMap = new Map();
@@ -258,6 +272,15 @@ const ProductStore = {
   getByCategory(categoryName) {
     if (!categoryName || categoryName === 'all') return this.products;
     return this.products.filter(p => p.category.toLowerCase() === categoryName.toLowerCase());
+  },
+
+  resolveTopicTarget(topic) {
+    if (!topic) return 'all';
+    const cat = (topic.category || '').trim();
+    if (!cat || cat.toLowerCase() === 'home' || cat.toLowerCase() === 'all') {
+      return 'all';
+    }
+    return cat;
   },
 
   getAvailableSizes() {
@@ -450,9 +473,39 @@ function renderCategoryCardHtml(cat) {
   `;
 }
 
+// UI Component: Thematic Topic Campaign Banner HTML (Dynamic category redirect & image)
+function renderTopicBannerHtml(topic, index = 0, variant = 'grid-break') {
+  if (!topic || !topic.image) return '';
+  const targetCategory = window.ProductStore ? window.ProductStore.resolveTopicTarget(topic) : (topic.category || 'all');
+  const safeCat = escapeHtml(targetCategory);
+  const safeName = escapeHtml(topic.name || topic.category || 'Curated Style Campaign');
+  const tagText = targetCategory.toLowerCase() === 'all' ? 'SHOP ALL STYLES' : `SHOP ${safeCat.toUpperCase()}`;
+  const bannerImgTag = renderImgTag(topic.image, safeName, 'topic-banner-img', 'lazy');
+
+  return `
+    <aside class="topic-campaign-card ${escapeHtml(variant)}" data-topic-index="${index}" data-topic-category="${safeCat}">
+      <a href="index.html?category=${encodeURIComponent(targetCategory)}#catalog" 
+         class="topic-banner-link" 
+         onclick="window.navigateToCategory && window.navigateToCategory(event, '${safeCat}')"
+         aria-label="Explore ${safeName}">
+        <div class="topic-banner-media">
+          ${bannerImgTag}
+          <div class="topic-banner-overlay">
+            <span class="topic-category-tag">
+              ${tagText}
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </span>
+          </div>
+        </div>
+      </a>
+    </aside>
+  `;
+}
+
 window.ProductStore = ProductStore;
 window.renderProductCardHtml = renderProductCardHtml;
 window.renderCategoryCardHtml = renderCategoryCardHtml;
+window.renderTopicBannerHtml = renderTopicBannerHtml;
 window.formatPrice = formatPrice;
 window.escapeHtml = escapeHtml;
 window.resolveMediaUrl = resolveMediaUrl;

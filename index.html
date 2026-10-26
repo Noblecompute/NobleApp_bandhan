@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="URBAN EDGE — Contemporary Men's Fashion. Premium linen and macro check shirts designed for every day." />
+  <meta name="description" content="URBAN EDGE — Contemporary Men's Fashion." />
   <title>URBAN EDGE — Premium Men's Fashion</title>
   
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="media/file1.png" />
+  <!-- Dynamic Favicon (Populated by app.js from data.brand.brand_logo) -->
+  <link rel="icon" id="siteFavicon" type="image/png" href="" />
 
   <!-- Google Fonts: Editorial Serif & Clean Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -242,7 +242,7 @@
         <div class="section-header">
           <span class="section-subtitle">The Complete Collection</span>
           <h2 class="section-title">Contemporary Essentials</h2>
-          <p class="section-desc">Hand-tailored shirts in macro check patterns, breathable linen textures, and crisp vertical stripes.</p>
+          <p class="section-desc">Hand-tailored apparel crafted with breathable textures, modern silhouettes, and refined patterns.</p>
         </div>
 
         <!-- Catalog Toolbar: Dynamic Filters, Search & Sorting -->
@@ -264,7 +264,7 @@
 
           <div class="toolbar-controls-row">
             <div class="active-filters-bar">
-              <span class="results-count-text" id="resultsCount">Loading shirts...</span>
+              <span class="results-count-text" id="resultsCount">Loading products...</span>
               <button type="button" class="clear-all-filters-btn" onclick="resetCatalogFilters()">Reset</button>
             </div>
 
@@ -296,42 +296,12 @@
     </section>
 
     <!-- ========================================================================
-         EDITORIAL STORYTELLING SECTION
+         EDITORIAL STORYTELLING SECTION (100% Dynamic from configuration.json)
          ======================================================================== -->
     <section class="section editorial-section" id="editorial" aria-label="Editorial Campaign">
       <div class="container">
-        <div class="editorial-grid">
-          <div class="editorial-gallery">
-            <div class="editorial-img-large">
-              <img src="media/file22.jpg" alt="Artisanal craftmanship" loading="lazy" />
-            </div>
-            <div class="editorial-img-small">
-              <img src="media/file18.webp" alt="Linen collection silhouette" loading="lazy" />
-            </div>
-          </div>
-
-          <div class="editorial-content">
-            <span class="editorial-badge">Signature Edit</span>
-            <h2 class="editorial-heading">The Contemporary Silhouette</h2>
-            <p class="editorial-text">
-              We started with a single conviction: Indian men's contemporary fashion deserves authentic character, natural fibers, and deliberate tailoring. Our shirts pair comfortable dropped shoulders with crisp structured collars, allowing you to transition seamlessly from daytime conversations to evening plans.
-            </p>
-            
-            <div class="editorial-features">
-              <div class="editorial-feature-item">
-                <div class="feature-title">Artisanal Patches</div>
-                <div class="feature-desc">Subtle tonal embroidery designed for depth without loud logos.</div>
-              </div>
-              <div class="editorial-feature-item">
-                <div class="feature-title">Breathable Weaves</div>
-                <div class="feature-desc">Temperature-regulating linen and cotton blends suited for all day wear.</div>
-              </div>
-            </div>
-
-            <a href="#catalog" class="btn btn-primary" data-category-filter="all">
-              Explore Entire Catalog
-            </a>
-          </div>
+        <div class="editorial-grid" id="editorialGrid">
+          <!-- Injected dynamically by renderDynamicEditorial() -->
         </div>
       </div>
     </section>
@@ -504,8 +474,8 @@
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
       </button>
       <div class="size-guide-modal-body">
-        <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--color-emerald-dark);">Shirt Measurement Guide</h3>
-        <p style="font-size: 0.85rem; color: var(--color-charcoal-muted);">All measurements in inches. Our shirts are tailored in a relaxed contemporary fit.</p>
+        <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--color-emerald-dark);">Apparel Measurement Guide</h3>
+        <p style="font-size: 0.85rem; color: var(--color-charcoal-muted);">All measurements in inches. Our garments are tailored in a relaxed contemporary fit.</p>
         
         <table class="size-table">
           <thead>
@@ -625,7 +595,7 @@
           </div>
 
           <div class="demo-checkout-alert">
-            <strong>Static Storefront Notice:</strong> This website is hosted on static infrastructure. Submitting this order demonstrates the frontend user flow without collecting sensitive card details or processing actual bank funds.
+            <strong>Static Storefront Notice:</strong> Static storefront preview mode. Submitting this order demonstrates the frontend user flow without collecting sensitive card details or processing actual bank funds.
           </div>
 
           <button type="submit" class="btn btn-vermilion" style="width: 100%; margin-top: 1.5rem; padding: 1rem; font-size: 1rem;">
