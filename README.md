@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # URBAN EDGE — Premium Dynamic Men's Fashion Storefront
 
 A 100% dynamic, high-performance static men's fashion storefront crafted with semantic **HTML5**, modern **CSS3**, and modular **Vanilla JavaScript**.
@@ -85,3 +86,13 @@ Open `http://localhost:3000` or `http://localhost:8000` in your browser.
    ```
 2. In GitHub, go to **Settings** > **Pages** > **Deploy from a branch** > branch `main` / root `/ (root)`.
 3. The site will deploy instantly to your GitHub Pages or custom domain URL (`website.noblecompute.com`).
+=======
+# NobleApp_bandhan
+
+Public website configuration and media assets for **bandhan**.
+
+### Live Configuration
+- **Raw JSON:** [configuration.json](https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/configuration.json)
+- **Media CDN Folder:** [`media/`](./media/)
+- **Last Published:** Tue, 27 Oct 2026 14:01:22 GMT
+>>>>>>> 5a34ff1b1d049ccc9a4b17ea9dfaf07cd8710c2a
