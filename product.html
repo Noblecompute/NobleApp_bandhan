@@ -11,7 +11,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cinzel:wght@600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
@@ -99,8 +99,8 @@
         <!-- Related Products Section (Dynamically populated) -->
         <div style="margin-top: 5rem; padding-top: 3.5rem; border-top: 1px solid var(--color-neutral-border);">
           <div style="text-align: center; margin-bottom: 2.5rem;">
-            <span style="font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-vermilion); font-weight: 700;">Complete The Wardrobe</span>
-            <h2 style="font-family: var(--font-serif); font-size: 2rem; color: var(--color-emerald-dark); margin-top: 0.25rem;">You May Also Admire</h2>
+            <span class="section-subtitle">PAIR IT WITH</span>
+            <h2 class="section-title">YOU MAY ALSO LIKE</h2>
           </div>
           <div class="products-grid" id="relatedProductsGrid">
             <!-- Populated with items from same or adjacent categories -->
@@ -307,13 +307,18 @@
 
         <!-- Info Column -->
         <div class="pdp-info-wrap">
+          <div class="pdp-badges-row">
+            ${p.discount_percent > 0 ? `<span class="badge-discount">${p.discount_percent}% OFF</span>` : ''}
+            ${(p.is_new_arrival || p.is_new) ? `<span class="badge-new-arrival">NEW ARRIVAL</span>` : ''}
+            ${p.is_mix ? `<span class="badge-mix">⚡ MIX</span>` : ''}
+          </div>
           <span class="pdp-category-tag">${safeCat}</span>
           <h1 class="pdp-title">${safeName}</h1>
 
           <div class="pdp-price-row">
             <span class="pdp-price-current">${formatPrice(p.effective_price)}</span>
             ${p.price > p.effective_price ? `<span class="pdp-price-original">${formatPrice(p.price)}</span>` : ''}
-            ${p.discount_percent > 0 ? `<span class="pdp-discount-badge">Save ${formatPrice(p.price - p.effective_price)}</span>` : ''}
+            ${p.discount_percent > 0 ? `<span class="pdp-discount-badge">${p.discount_percent}% OFF</span>` : ''}
           </div>
 
           <div class="pdp-tax-notice">Inclusive of all taxes. Free express shipping on orders ₹999+</div>

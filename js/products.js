@@ -119,6 +119,11 @@ function normalizeProduct(raw) {
     ? raw.photos 
     : [];
 
+  const isNewArrival = Boolean(raw.is_new_arrival || raw.is_new);
+  const isMix = Boolean(raw.is_mix);
+  const isShowcase = Boolean(raw.is_showcase);
+  const isCategoryCover = Boolean(raw.is_category_cover);
+
   return {
     id: String(raw.id || Math.floor(Math.random() * 1000000)),
     name: deriveProductName(raw),
@@ -132,9 +137,11 @@ function normalizeProduct(raw) {
     primary_image: rawPhotos[0] || '',
     secondary_image: rawPhotos[1] || rawPhotos[0] || '',
     sizes: (Array.isArray(raw.sizes) && raw.sizes.length > 0) ? raw.sizes : ['S', 'M', 'L', 'XL', 'XXL'],
-    is_category_cover: Boolean(raw.is_category_cover),
-    is_new: Boolean(raw.is_new_arrival),
-    is_showcase: Boolean(raw.is_showcase),
+    is_category_cover: isCategoryCover,
+    is_new_arrival: isNewArrival,
+    is_new: isNewArrival,
+    is_mix: isMix,
+    is_showcase: isShowcase,
     is_enabled: raw.is_enabled !== false
   };
 }
@@ -224,7 +231,8 @@ const ProductStore = {
           id: c.id,
           name: c.category_name,
           raw_image: c.category_image || '',
-          link: c.link || ''
+          link: c.link || '',
+          cover_product_id: c.cover_product_id || null
         });
       });
 
@@ -236,23 +244,33 @@ const ProductStore = {
           id: 'cat_' + catUpper.replace(/\s+/g, '_').toLowerCase(),
           name: p.category,
           raw_image: p.primary_image,
-          link: ''
+          link: '',
+          cover_product_id: null
         });
       }
     });
 
     // Compute live product counts and image covers for each category
+    // "when they click on category and and mentioned photos to in front"
     this.categories = Array.from(catMap.values()).map(cat => {
       const matchingProducts = this.products.filter(p => p.category.toLowerCase() === cat.name.toLowerCase());
-      let coverImage = cat.raw_image;
+      
+      // Look for the designated category cover product (is_category_cover: true or matching cover_product_id)
+      const coverProd = matchingProducts.find(p => p.is_category_cover || (cat.cover_product_id && String(p.id) === String(cat.cover_product_id))) || matchingProducts[0];
+
+      // Prioritize explicit category image from configuration.json (Powerlook 3x2 grid photography), falling back to product cover
+      let coverImage = cat.raw_image || (coverProd ? coverProd.primary_image : '');
       if (!coverImage && matchingProducts.length > 0) {
         coverImage = matchingProducts[0].primary_image;
       }
+
       return {
         id: cat.id,
         name: cat.name,
         image: coverImage,
         raw_image: cat.raw_image,
+        cover_product_id: cat.cover_product_id || (coverProd ? coverProd.id : null),
+        cover_product: coverProd || null,
         count: matchingProducts.length
       };
     });
@@ -272,6 +290,38 @@ const ProductStore = {
   getByCategory(categoryName) {
     if (!categoryName || categoryName === 'all') return this.products;
     return this.products.filter(p => p.category.toLowerCase() === categoryName.toLowerCase());
+  },
+
+  // "and show case only show photos not details"
+  // Extracts pure photo URLs prioritizing items marked is_showcase: true
+  getShowcasePhotos() {
+    const showcaseProducts = this.products.filter(p => p.is_showcase);
+    let photos = [];
+    if (showcaseProducts.length > 0) {
+      showcaseProducts.forEach(p => {
+        if (Array.isArray(p.photos) && p.photos.length > 0) {
+          p.photos.forEach(photo => {
+            if (photo && !photos.includes(photo)) photos.push(photo);
+          });
+        } else if (p.primary_image && !photos.includes(p.primary_image)) {
+          photos.push(p.primary_image);
+        }
+      });
+    }
+
+    // Graceful fallback to all catalog photos if no products marked showcase yet
+    if (photos.length === 0) {
+      this.products.forEach(p => {
+        if (p.primary_image && !photos.includes(p.primary_image)) {
+          photos.push(p.primary_image);
+        }
+        if (p.secondary_image && !photos.includes(p.secondary_image)) {
+          photos.push(p.secondary_image);
+        }
+      });
+    }
+
+    return photos;
   },
 
   resolveTopicTarget(topic) {
@@ -309,12 +359,23 @@ const ProductStore = {
     return { min, max };
   },
 
-  filterAndSort({ category = 'all', search = '', maxPrice = null, size = '', sort = 'featured' }) {
+  filterAndSort({ category = 'all', flag = 'all', search = '', maxPrice = null, size = '', sort = 'featured' }) {
     let result = [...this.products];
 
     // Filter by Category
     if (category && category !== 'all') {
       result = result.filter(p => p.category.toLowerCase() === category.toLowerCase());
+    }
+
+    // Filter by Flag (new, mix, showcase)
+    if (flag && flag !== 'all') {
+      if (flag === 'new') {
+        result = result.filter(p => p.is_new_arrival || p.is_new);
+      } else if (flag === 'mix') {
+        result = result.filter(p => p.is_mix);
+      } else if (flag === 'showcase') {
+        result = result.filter(p => p.is_showcase);
+      }
     }
 
     // Filter by Search Query
@@ -358,25 +419,37 @@ const ProductStore = {
         break;
     }
 
+    // "when they click on category and and mentioned photos to in front"
+    // When a category is actively selected, sort so the category cover product/photo is strictly IN FRONT (index 0)
+    if (category && category !== 'all') {
+      const catObj = this.categories.find(c => c.name.toLowerCase() === category.toLowerCase());
+      const coverId = catObj ? String(catObj.cover_product_id || '') : '';
+      result.sort((a, b) => {
+        const aIsCover = (a.is_category_cover || (coverId && String(a.id) === coverId)) ? 1 : 0;
+        const bIsCover = (b.is_category_cover || (coverId && String(b.id) === coverId)) ? 1 : 0;
+        return bIsCover - aIsCover; // 1 before 0 -> cover item is IN FRONT
+      });
+    }
+
     return result;
   }
 };
 
-// UI Component: Product Card HTML Template (Dynamic media resolution & tags)
+// UI Component: Product Card HTML Template (Powerlook authentic styling)
 function renderProductCardHtml(product, isWishlisted = false) {
   const safeName = escapeHtml(product.name);
   const safeCat = escapeHtml(product.category);
-  const discountBadge = product.discount_percent > 0 
-    ? `<span class="badge-discount">${product.discount_percent}% OFF</span>` 
-    : '';
-  
-  const originalPriceHtml = (product.price > product.effective_price)
-    ? `<span class="price-original">${formatPrice(product.price)}</span>`
-    : '';
 
-  const savingsHtml = (product.price > product.effective_price)
-    ? `<span class="price-saved">Save ${formatPrice(product.price - product.effective_price)}</span>`
-    : '';
+  // Powerlook minimal badge: "i want like this mix same as new arrival"
+  // Both NEW ARRIVAL and THE MIX use the exact same subtle, quiet-luxury dark matte badge
+  let badgeHtml = '';
+  if (product.is_mix) {
+    badgeHtml = `<span class="badge-powerlook">THE MIX</span>`;
+  } else if (product.is_new_arrival || product.is_new) {
+    badgeHtml = `<span class="badge-powerlook">NEW ARRIVAL</span>`;
+  } else if (product.discount_percent > 0) {
+    badgeHtml = `<span class="badge-powerlook-discount">${product.discount_percent}% OFF</span>`;
+  }
 
   const wishlistClass = isWishlisted ? 'active' : '';
 
@@ -385,16 +458,16 @@ function renderProductCardHtml(product, isWishlisted = false) {
 
   const defaultSize = product.sizes[0] || 'M';
 
+  // Powerlook dynamic member price (~8% member privilege discount)
+  const memberPrice = Math.round(product.effective_price * 0.92);
+
   return `
     <article class="product-card" data-product-id="${product.id}">
       <div class="product-card-media">
-        <div class="card-badges">
-          ${discountBadge}
-          <span class="badge-editorial">PREMIUM</span>
-        </div>
+        ${badgeHtml ? `<div class="card-badges">${badgeHtml}</div>` : ''}
         
         <button type="button" class="card-wishlist-btn ${wishlistClass}" data-wishlist-id="${product.id}" aria-label="Save ${safeName} to wishlist">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="${isWishlisted ? '#E34222' : 'none'}" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="${isWishlisted ? '#E34222' : 'none'}" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
           </svg>
         </button>
@@ -404,69 +477,50 @@ function renderProductCardHtml(product, isWishlisted = false) {
           ${secondaryImgTag}
         </a>
 
-        <div class="card-quick-actions">
-          <button type="button" class="btn-quick-view" data-quickview-id="${product.id}">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-            Quick View
-          </button>
+        <!-- High-Fashion Quick Add Bar on Hover (1-click size add like Powerlook) -->
+        <div class="card-quick-sizes-bar">
+          <span class="quick-size-label">QUICK ADD</span>
+          <div class="quick-size-pills">
+            ${product.sizes.map(s => `
+              <button type="button" class="quick-size-btn" onclick="event.preventDefault(); event.stopPropagation(); window.CartStore && window.CartStore.addItem('${product.id}', '${s}', 1); window.openCartDrawer && window.openCartDrawer();" title="Add size ${s} to bag">
+                ${s}
+              </button>
+            `).join('')}
+          </div>
         </div>
       </div>
 
       <div class="product-card-body">
-        <span class="card-category">${safeCat}</span>
         <h3 class="card-title">
           <a href="product.html?id=${product.id}">${safeName}</a>
         </h3>
 
         <div class="card-price-row">
           <span class="price-current">${formatPrice(product.effective_price)}</span>
-          ${originalPriceHtml}
-          ${savingsHtml}
+          ${product.price > product.effective_price ? `
+            <del class="price-original">${formatPrice(product.price)}</del>
+          ` : ''}
         </div>
 
-        <div class="card-sizes-row">
-          <span class="size-label">Size:</span>
-          ${product.sizes.map(s => `
-            <button type="button" class="size-chip ${s === defaultSize ? 'selected' : ''}" data-size="${s}" data-product-id="${product.id}">
-              ${s}
-            </button>
-          `).join('')}
+        <div class="member-price-tag">
+          Member Price : ${formatPrice(memberPrice)}
         </div>
-
-        <button type="button" class="card-add-btn" data-add-to-cart="${product.id}" data-selected-size="${defaultSize}">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
-            <line x1="3" y1="6" x2="21" y2="6"></line>
-            <path d="M16 10a4 4 0 0 1-8 0"></path>
-          </svg>
-          Add To Bag
-        </button>
       </div>
     </article>
   `;
 }
 
-// UI Component: Category Discovery Card HTML (Dynamic live count and image)
+// UI Component: Occasion Category Card HTML (Matching Powerlook Image 1: Clean, full-bleed photo with centered white title)
 function renderCategoryCardHtml(cat) {
   const safeName = escapeHtml(cat.name);
-  const imgTag = renderImgTag(cat.image, `${safeName} Collection`);
-  const countText = cat.count === 1 ? '1 Style Available' : `${cat.count} Styles Available`;
+  const imgTag = renderImgTag(cat.image, `${safeName} Occasion`);
 
   return `
-    <div class="category-card" data-category-filter="${safeName}">
+    <div class="category-card" data-category-filter="${safeName}" onclick="window.navigateToCategory && window.navigateToCategory(event, '${safeName}')">
       <div class="category-img-wrap">
         ${imgTag}
         <div class="category-card-overlay">
-          <div class="category-info">
-            <h3 class="category-name">${safeName}</h3>
-            <div style="font-size: 0.75rem; color: var(--color-warm-ivory); margin-bottom: 0.35rem; opacity: 0.9;">
-              ${countText}
-            </div>
-            <span class="category-cta-pill">
-              Explore Collection
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
-            </span>
-          </div>
+          <h3 class="category-title-overlay">${safeName}</h3>
         </div>
       </div>
     </div>

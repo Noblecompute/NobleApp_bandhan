@@ -149,17 +149,62 @@ function renderDynamicHeader() {
     `;
   }
 
-  // Update Desktop Navigation
+  // Update Desktop Navigation (Powerlook style: Clean high-level links with Collections dropdown)
   const desktopNav = document.getElementById('desktopNav');
+  const allProds = window.ProductStore.products || [];
+  const hasNewArrivals = allProds.some(p => p.is_new_arrival || p.is_new);
+  const hasMix = allProds.some(p => p.is_mix);
+
   if (desktopNav) {
-    let navHtml = `<a href="${linkPrefix}#catalog" class="nav-link active" data-category-filter="all">Shop All</a>`;
-    categories.forEach(cat => {
-      const targetHref = isHome ? '#catalog' : `index.html?category=${encodeURIComponent(cat.name)}#catalog`;
-      navHtml += `<a href="${targetHref}" class="nav-link" data-category-filter="${escapeHtml(cat.name)}">${escapeHtml(cat.name)}</a>`;
-    });
+    let navHtml = `
+      <a href="${linkPrefix}#catalog" class="nav-link active" data-category-filter="all" onclick="if(window.navigateToCategory) window.navigateToCategory(event, 'all');">
+        Shop All
+      </a>
+    `;
+    
+    if (hasNewArrivals) {
+      navHtml += `
+        <a href="${linkPrefix}#catalog" class="nav-link nav-link-new" onclick="if(window.filterByFlag) { event.preventDefault(); window.filterByFlag('new'); }">
+          New Arrivals
+        </a>
+      `;
+    }
+
+    if (hasMix) {
+      navHtml += `
+        <a href="${linkPrefix}#catalog" class="nav-link nav-link-mix" onclick="if(window.filterByFlag) { event.preventDefault(); window.filterByFlag('mix'); }">
+          The Mix
+        </a>
+      `;
+    }
+
+    // Collections Dropdown (Powerlook style: Clean dropdown showing occasions without cluttering the navbar)
+    if (categories.length > 0) {
+      navHtml += `
+        <div class="nav-dropdown-wrap">
+          <a href="${linkPrefix}#catalog" class="nav-link nav-dropdown-trigger" onclick="if(window.navigateToCategory) window.navigateToCategory(event, 'all');">
+            Collections
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </a>
+          <div class="nav-dropdown-menu">
+            ${categories.map(cat => {
+              const targetHref = isHome ? '#catalog' : `index.html?category=${encodeURIComponent(cat.name)}#catalog`;
+              return `
+                <a href="${targetHref}" class="nav-dropdown-link" onclick="if(window.navigateToCategory) window.navigateToCategory(event, '${escapeHtml(cat.name)}');">
+                  <span>${escapeHtml(cat.name)}</span>
+                  ${cat.count ? `<span class="nav-dropdown-count">${cat.count}</span>` : ''}
+                </a>
+              `;
+            }).join('')}
+          </div>
+        </div>
+      `;
+    }
+
     if (window.ProductStore.news && window.ProductStore.news.length > 0) {
       navHtml += `<a href="${linkPrefix}#offers" class="nav-link nav-link-sale">Offers</a>`;
     }
+
     desktopNav.innerHTML = navHtml;
   }
 
@@ -168,23 +213,52 @@ function renderDynamicHeader() {
   if (mobileList) {
     let mobileHtml = `
       <li class="mobile-menu-item">
-        <a href="${linkPrefix}#catalog" data-category-filter="all" onclick="closeAllDrawers();">
-          Shop All Collections
+        <a href="${linkPrefix}#catalog" data-category-filter="all" onclick="closeAllDrawers(); if(window.navigateToCategory) window.navigateToCategory(event, 'all');">
+          Shop All Silhouettes
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
         </a>
       </li>
     `;
-    categories.forEach(cat => {
-      const targetHref = isHome ? '#catalog' : `index.html?category=${encodeURIComponent(cat.name)}#catalog`;
+
+    if (hasNewArrivals) {
       mobileHtml += `
         <li class="mobile-menu-item">
-          <a href="${targetHref}" data-category-filter="${escapeHtml(cat.name)}" onclick="closeAllDrawers();">
-            ${escapeHtml(cat.name)}
+          <a href="${linkPrefix}#catalog" onclick="closeAllDrawers(); if(window.filterByFlag) window.filterByFlag('new');" style="color: var(--color-emerald); font-weight: 700;">
+            ✨ New Arrivals
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
           </a>
         </li>
       `;
-    });
+    }
+
+    if (hasMix) {
+      mobileHtml += `
+        <li class="mobile-menu-item">
+          <a href="${linkPrefix}#catalog" onclick="closeAllDrawers(); if(window.filterByFlag) window.filterByFlag('mix');">
+            The Mix
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </a>
+        </li>
+      `;
+    }
+
+    if (categories.length > 0) {
+      mobileHtml += `
+        <li class="mobile-menu-section-header">Curated Collections</li>
+        ${categories.map(cat => {
+          const targetHref = isHome ? '#catalog' : `index.html?category=${encodeURIComponent(cat.name)}#catalog`;
+          return `
+            <li class="mobile-menu-item mobile-menu-subitem">
+              <a href="${targetHref}" onclick="closeAllDrawers(); if(window.navigateToCategory) window.navigateToCategory(event, '${escapeHtml(cat.name)}');">
+                ${escapeHtml(cat.name)}
+                <span style="font-size: 0.75rem; color: var(--color-charcoal-muted);">${cat.count || ''}</span>
+              </a>
+            </li>
+          `;
+        }).join('')}
+      `;
+    }
+
     if (window.ProductStore.news && window.ProductStore.news.length > 0) {
       mobileHtml += `
         <li class="mobile-menu-item">
@@ -195,6 +269,7 @@ function renderDynamicHeader() {
         </li>
       `;
     }
+
     mobileList.innerHTML = mobileHtml;
   }
 
@@ -414,9 +489,10 @@ function renderDynamicCategories() {
   grid.innerHTML = categories.map(window.renderCategoryCardHtml).join('');
 }
 
-// 5. Dynamic Catalog Filter Controls
+// 5. Dynamic Catalog Filter Controls (Powerlook style: Clean, minimal tabs without category pill clutter)
 let currentCatalogFilter = {
   category: 'all',
+  flag: 'all', // 'all' | 'new' | 'mix'
   search: '',
   maxPrice: null,
   size: '',
@@ -426,21 +502,55 @@ let currentCatalogFilter = {
 function renderDynamicCatalogFilters() {
   const pillsBox = document.getElementById('categoryFilterPills');
   if (pillsBox) {
-    const totalCount = window.ProductStore.products.length;
+    const products = window.ProductStore.products || [];
+    const categories = window.ProductStore.categories || [];
+    const newCount = products.filter(p => p.is_new_arrival || p.is_new).length;
+    const mixCount = products.filter(p => p.is_mix).length;
+
+    const isAllActive = currentCatalogFilter.category === 'all' && currentCatalogFilter.flag === 'all';
+    const isNewActive = currentCatalogFilter.flag === 'new';
+    const isMixActive = currentCatalogFilter.flag === 'mix';
+
     let pillsHtml = `
-      <button type="button" class="filter-pill ${currentCatalogFilter.category === 'all' ? 'active' : ''}" data-category="all">
-        All Styles (${totalCount})
+      <button type="button" class="filter-pill ${isAllActive ? 'active' : ''}" data-category="all" onclick="navigateToCategory(event, 'all')">
+        All Products
       </button>
     `;
 
-    window.ProductStore.categories.forEach(cat => {
-      const isActive = currentCatalogFilter.category.toLowerCase() === cat.name.toLowerCase();
+    // 1. Dynamic New Arrivals Tab
+    if (newCount > 0) {
       pillsHtml += `
-        <button type="button" class="filter-pill ${isActive ? 'active' : ''}" data-category="${escapeHtml(cat.name)}">
-          ${escapeHtml(cat.name)} (${cat.count})
+        <button type="button" class="filter-pill ${isNewActive ? 'active' : ''}" data-flag="new" onclick="filterByFlag('new')">
+          New Arrivals
+        </button>
+      `;
+    }
+
+    // 2. Dynamic The Mix Tab (styled identically minimal)
+    if (mixCount > 0) {
+      pillsHtml += `
+        <button type="button" class="filter-pill ${isMixActive ? 'active' : ''}" data-flag="mix" onclick="filterByFlag('mix')">
+          The Mix
+        </button>
+      `;
+    }
+
+    // 3. Dynamic Category Tabs (Matching Powerlook Image 2 & 3)
+    categories.forEach(cat => {
+      const isCatActive = currentCatalogFilter.flag === 'all' && currentCatalogFilter.category.toLowerCase() === cat.name.toLowerCase();
+      pillsHtml += `
+        <button type="button" class="filter-pill ${isCatActive ? 'active' : ''}" data-category="${escapeHtml(cat.name)}" onclick="navigateToCategory(event, '${escapeHtml(cat.name)}')">
+          ${escapeHtml(cat.name)}
         </button>
       `;
     });
+
+    // 4. Powerlook "VIEW ALL" Action Link
+    pillsHtml += `
+      <a href="#catalog" class="view-all-pill-link" onclick="navigateToCategory(event, 'all'); return false;" aria-label="View all collection products">
+        VIEW ALL <span>→</span>
+      </a>
+    `;
 
     pillsBox.innerHTML = pillsHtml;
   }
@@ -470,6 +580,41 @@ function renderDynamicCatalogFilters() {
   }
 }
 
+// Filter by Flag (New Arrivals, Mix, Showcase)
+function filterByFlag(flagName) {
+  currentCatalogFilter.flag = flagName;
+  currentCatalogFilter.category = 'all';
+
+  const titleEl = document.getElementById('catalogMainTitle');
+  const noticeEl = document.getElementById('catalogActiveFilterNotice');
+  if (titleEl) {
+    titleEl.textContent = (flagName === 'mix') ? 'THE MIX' : ((flagName === 'new') ? 'NEW ARRIVALS' : 'CURATED EDITS');
+  }
+  if (noticeEl) {
+    if (flagName !== 'all') {
+      const label = flagName === 'mix' ? 'The Mix' : 'New Arrivals';
+      noticeEl.style.display = 'block';
+      noticeEl.innerHTML = `Viewing ${label} • <a href="#catalog" onclick="navigateToCategory(event, 'all')">View All New Arrivals</a>`;
+    } else {
+      noticeEl.style.display = 'none';
+      noticeEl.innerHTML = '';
+    }
+  }
+
+  renderDynamicCatalogFilters();
+  renderCatalogGrid();
+
+  const catalogEl = document.getElementById('catalog');
+  if (catalogEl) {
+    catalogEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  const label = flagName === 'new' ? 'New Arrivals' : (flagName === 'mix' ? 'The Mix' : 'Editorial Showcase');
+  if (window.showToast) {
+    window.showToast(`Filtered: ${label}`, 'emerald');
+  }
+}
+
 // Dynamic Category Navigation & Redirection (smooth scroll, filter update, URL state)
 function navigateToCategory(event, categoryName) {
   const isHome = window.location.pathname.endsWith('index.html') || 
@@ -488,17 +633,26 @@ function navigateToCategory(event, categoryName) {
   }
 
   currentCatalogFilter.category = targetCategory;
+  currentCatalogFilter.flag = 'all'; // reset flag when category is chosen
 
-  // Update active pill in category toolbar
-  document.querySelectorAll('.filter-pill').forEach(pill => {
-    const pillCat = pill.getAttribute('data-category');
-    if (!pillCat) return;
-    const isActive = (targetCategory === 'all' && pillCat === 'all') || 
-                     (pillCat.toLowerCase() === targetCategory.toLowerCase());
-    pill.classList.toggle('active', isActive);
-  });
+  // Update Section Title & Active Filter Notice
+  const titleEl = document.getElementById('catalogMainTitle');
+  const noticeEl = document.getElementById('catalogActiveFilterNotice');
+  if (titleEl) {
+    titleEl.textContent = (targetCategory === 'all') ? 'NEW ARRIVALS' : targetCategory.toUpperCase();
+  }
+  if (noticeEl) {
+    if (targetCategory !== 'all') {
+      noticeEl.style.display = 'block';
+      noticeEl.innerHTML = `Viewing curated ${escapeHtml(targetCategory)} styles • <a href="#catalog" onclick="navigateToCategory(event, 'all')">View All New Arrivals</a>`;
+    } else {
+      noticeEl.style.display = 'none';
+      noticeEl.innerHTML = '';
+    }
+  }
 
   // Re-render product grid
+  renderDynamicCatalogFilters();
   renderCatalogGrid();
 
   // Smooth scroll to catalog section
@@ -520,7 +674,25 @@ function navigateToCategory(event, categoryName) {
   }
 }
 
-// 6. Dynamic Catalog Product Grid (with dynamic interspersal of topic campaign banners)
+// Dynamic Mix Spotlight Section (Dedicated Curated Streetwear Drops)
+function renderDynamicMixSpotlight() {
+  const grid = document.getElementById('mixProductsGrid');
+  if (!grid || !window.ProductStore) return;
+
+  const mixProducts = window.ProductStore.products.filter(p => p.is_mix);
+  if (mixProducts.length === 0) {
+    const section = document.getElementById('mix');
+    if (section) section.style.display = 'none';
+    return;
+  }
+
+  grid.innerHTML = mixProducts.map(p => {
+    const isWishlisted = window.WishlistStore ? window.WishlistStore.has(p.id) : false;
+    return window.renderProductCardHtml(p, isWishlisted);
+  }).join('');
+}
+
+// 6. Dynamic Catalog Product Grid (Clean, luxury fashion presentation without bulky debug banners)
 function renderCatalogGrid() {
   const grid = document.getElementById('productsGrid');
   const countEl = document.getElementById('resultsCount');
@@ -529,8 +701,19 @@ function renderCatalogGrid() {
   const filtered = window.ProductStore.filterAndSort(currentCatalogFilter);
   const total = window.ProductStore.products.length;
 
+  const isAll = (!currentCatalogFilter.category || currentCatalogFilter.category === 'all');
+  const hasFlag = currentCatalogFilter.flag && currentCatalogFilter.flag !== 'all';
+  const hasSearch = Boolean(currentCatalogFilter.search && currentCatalogFilter.search.trim().length > 0);
+
   if (countEl) {
-    countEl.textContent = `Showing ${filtered.length} of ${total} styles`;
+    if (!isAll) {
+      countEl.textContent = `Showing ${filtered.length} styles in ${currentCatalogFilter.category}`;
+    } else if (hasFlag) {
+      const flagLabel = currentCatalogFilter.flag === 'new' ? 'New Arrivals' : 'The Mix';
+      countEl.textContent = `Showing ${filtered.length} styles in ${flagLabel}`;
+    } else {
+      countEl.textContent = `Showing ${filtered.length} of ${total} styles`;
+    }
   }
 
   if (filtered.length === 0) {
@@ -549,13 +732,10 @@ function renderCatalogGrid() {
   }
 
   const topics = Array.isArray(window.ProductStore.topics) ? window.ProductStore.topics : [];
-  const isAll = (!currentCatalogFilter.category || currentCatalogFilter.category === 'all');
-  const hasSearch = Boolean(currentCatalogFilter.search && currentCatalogFilter.search.trim().length > 0);
-
   let html = '';
 
   if (!isAll && !hasSearch) {
-    // Category-specific view: Check if there is a matching topic banner for this category header
+    // Category-specific view: Check if there is an editorial topic banner for this category
     const currentCatLower = currentCatalogFilter.category.toLowerCase();
     const matchingTopic = topics.find(t => {
       const target = window.ProductStore.resolveTopicTarget(t);
@@ -566,15 +746,13 @@ function renderCatalogGrid() {
       html += window.renderTopicBannerHtml(matchingTopic, 0, 'category-header-banner');
     }
 
-    // Render the filtered products
+    // Render filtered products (with the designated category cover photo naturally placed at index 0 in front!)
     html += filtered.map(p => {
       const isWishlisted = window.WishlistStore ? window.WishlistStore.has(p.id) : false;
       return window.renderProductCardHtml(p, isWishlisted);
     }).join('');
   } else if (topics.length > 0 && !hasSearch && window.renderTopicBannerHtml) {
     // "All Collections" view: Dynamically intersperse topic banners between product batches
-    // ("dont show in sequance i want diffrent topic like products topic between them so it will look cool")
-    // Dynamic interval: injects a topic banner every 2 to 4 products based on catalog size
     const interval = Math.max(2, Math.min(4, Math.ceil(filtered.length / (topics.length + 1))));
     let topicIdx = 0;
 
@@ -596,7 +774,7 @@ function renderCatalogGrid() {
       topicIdx++;
     }
   } else {
-    // Standard flat products list
+    // Standard flat products list (for flag filters or search)
     html = filtered.map(p => {
       const isWishlisted = window.WishlistStore ? window.WishlistStore.has(p.id) : false;
       return window.renderProductCardHtml(p, isWishlisted);
@@ -609,15 +787,12 @@ function renderCatalogGrid() {
 function resetCatalogFilters() {
   currentCatalogFilter = {
     category: 'all',
+    flag: 'all',
     search: '',
     maxPrice: null,
     size: '',
     sort: 'featured'
   };
-
-  document.querySelectorAll('.filter-pill').forEach(p => {
-    p.classList.toggle('active', p.getAttribute('data-category') === 'all');
-  });
 
   const searchInput = document.getElementById('inlineCatalogSearch');
   if (searchInput) searchInput.value = '';
@@ -633,63 +808,87 @@ function resetCatalogFilters() {
   const sizeSelect = document.getElementById('catalogSizeSelect');
   if (sizeSelect) sizeSelect.value = 'all';
 
+  renderDynamicCatalogFilters();
   renderCatalogGrid();
 }
 
-// 7. Dynamic Editorial Storytelling Section (Zero hardcoded images)
-function renderDynamicEditorial() {
+// 7. Dynamic Lookbook Showcase ("and show case only show photos not details")
+function renderDynamicShowcase() {
   const grid = document.getElementById('editorialGrid');
   const section = document.getElementById('editorial');
   if (!grid || !section || !window.ProductStore) return;
 
-  const products = window.ProductStore.products;
-  if (products.length === 0) {
+  const photos = window.ProductStore.getShowcasePhotos();
+  if (!photos || photos.length === 0) {
     section.style.display = 'none';
     return;
   }
 
   section.style.display = 'block';
 
-  // Feature products dynamically from catalog
-  const p1 = products.find(p => p.is_showcase || p.is_category_cover) || products[0];
-  const p2 = products.find(p => p.id !== p1.id) || products[0];
-
-  const img1Tag = renderImgTag(p1.primary_image, p1.name);
-  const img2Tag = renderImgTag(p2.primary_image || p1.secondary_image, p2.name);
-
-  grid.innerHTML = `
-    <div class="editorial-gallery">
-      <div class="editorial-img-large">
-        ${img1Tag}
-      </div>
-      <div class="editorial-img-small">
-        ${img2Tag}
-      </div>
-    </div>
-
-    <div class="editorial-content">
-      <span class="editorial-badge">Signature Edit</span>
-      <h2 class="editorial-heading">${escapeHtml(p1.category)} Collection</h2>
-      <p class="editorial-text">
-        ${escapeHtml(p1.description || 'Designed with relaxed modern tailoring, breathable textures, and deliberate craftsmanship for every day.')}
-      </p>
-      
-      <div class="editorial-features">
-        <div class="editorial-feature-item">
-          <div class="feature-title">Artisanal Craft</div>
-          <div class="feature-desc">Engineered for comfort and modern character.</div>
-        </div>
-        <div class="editorial-feature-item">
-          <div class="feature-title">Breathable Weaves</div>
-          <div class="feature-desc">Natural fibers suited for effortless all-day wear.</div>
+  // Strictly ONLY PHOTOS, NO DETAILS (no descriptions, no prices, no titles, no add to cart)
+  grid.className = 'showcase-photos-only-grid';
+  grid.innerHTML = photos.slice(0, 8).map((photoUrl, index) => {
+    const imgTag = renderImgTag(photoUrl, `Lookbook Showcase Editorial Photo ${index + 1}`, 'showcase-photo-img');
+    return `
+      <div class="showcase-photo-tile" onclick="openPhotoLightbox('${escapeHtml(photoUrl)}')">
+        <div class="showcase-photo-media">
+          ${imgTag}
+          <div class="showcase-hover-veil">
+            <span class="showcase-zoom-pill">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+              LOOKBOOK VIEW
+            </span>
+          </div>
         </div>
       </div>
+    `;
+  }).join('');
+}
 
-      <a href="#catalog" class="btn btn-primary" data-category-filter="${escapeHtml(p1.category)}">
-        Explore ${escapeHtml(p1.category)}
-      </a>
-    </div>
-  `;
+// Alias to ensure backwards compatibility
+function renderDynamicEditorial() {
+  renderDynamicShowcase();
+}
+
+// Fullscreen Lookbook Lightbox (Clean, minimal viewer for pure photography)
+function openPhotoLightbox(photoUrl) {
+  let modal = document.getElementById('photoLightboxModal');
+  if (!modal) {
+    modal = document.createElement('div');
+    modal.id = 'photoLightboxModal';
+    modal.className = 'lightbox-modal';
+    modal.innerHTML = `
+      <button type="button" class="lightbox-close-btn" onclick="closePhotoLightbox()" aria-label="Close photo preview">✕</button>
+      <div class="lightbox-img-wrap" id="lightboxImgWrap"></div>
+    `;
+    modal.onclick = (e) => {
+      if (e.target === modal) closePhotoLightbox();
+    };
+    document.body.appendChild(modal);
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('open')) {
+        closePhotoLightbox();
+      }
+    });
+  }
+
+  const wrap = document.getElementById('lightboxImgWrap');
+  if (wrap) {
+    wrap.innerHTML = `<img src="${escapeHtml(photoUrl)}" alt="Lookbook Fullscreen Editorial Preview" />`;
+  }
+
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closePhotoLightbox() {
+  const modal = document.getElementById('photoLightboxModal');
+  if (modal) {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
 }
 
 // 8. Dynamic Offers Strip
@@ -1000,6 +1199,7 @@ async function initStorefront() {
   renderDynamicCategories();
   renderDynamicCatalogFilters();
   renderCatalogGrid();
+  renderDynamicMixSpotlight();
   renderDynamicEditorial();
   renderDynamicOffers();
   renderDynamicFooter();
