@@ -32,24 +32,29 @@ function calculateDiscount(original, discounted) {
 
 // Dynamic Media Path Resolver:
 // Inspects whatever rawPath is currently in configuration.json,
-// resolves relative/absolute paths, and provides fallback resolution.
+// resolves relative/absolute paths, and provides fallback resolution across extensions (.jpg, .webp, .png).
 function resolveMediaUrl(rawPath) {
-  if (!rawPath) return { src: '', fallback: '', altFallback: '' };
+  if (!rawPath) return { src: '', fallback: '', altFallback: '', extFallback: '' };
   const trimmed = String(rawPath).trim();
-  if (!trimmed) return { src: '', fallback: '', altFallback: '' };
+  if (!trimmed) return { src: '', fallback: '', altFallback: '', extFallback: '' };
 
   const filename = trimmed.includes('/') ? trimmed.split('/').pop().split('?')[0] : trimmed.split('?')[0];
+  const nameWithoutExt = filename.replace(/\.[^/.]+$/, '');
+  const ext = (filename.includes('.') ? filename.split('.').pop() : '').toLowerCase();
+  const altExt = (ext === 'jpg' || ext === 'jpeg') ? 'webp' : (ext === 'webp' ? 'jpg' : 'png');
+  const altFilename = `${nameWithoutExt}.${altExt}`;
 
   const mediaBaseUrl = (window.ProductStore && window.ProductStore.config && window.ProductStore.config.github && window.ProductStore.config.github.mediaBaseUrl)
     ? window.ProductStore.config.github.mediaBaseUrl.replace(/\/$/, '')
-    : 'https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media';
+    : 'https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media';
 
   // 1. If it's a full remote URL (HTTP/HTTPS)
   if (trimmed.startsWith('http://') || trimmed.startsWith('https://')) {
     return {
       src: trimmed,
       fallback: `./media/${filename}`,
-      altFallback: `${mediaBaseUrl}/${filename}`
+      altFallback: `./media/${altFilename}`,
+      extFallback: `${mediaBaseUrl}/${filename}`
     };
   }
 
@@ -58,17 +63,80 @@ function resolveMediaUrl(rawPath) {
     const clean = trimmed.startsWith('./') ? trimmed : `./${trimmed}`;
     return {
       src: clean,
-      fallback: `${mediaBaseUrl}/${filename}`,
-      altFallback: `./media/${filename}`
+      fallback: `./media/${altFilename}`,
+      altFallback: `${mediaBaseUrl}/${filename}`,
+      extFallback: `${mediaBaseUrl}/${altFilename}`
     };
   }
 
   // 3. Bare filename e.g. "photo.webp" or "apparel.jpg"
   return {
     src: `./media/${trimmed}`,
-    fallback: `${mediaBaseUrl}/${trimmed}`,
-    altFallback: trimmed
+    fallback: `./media/${altFilename}`,
+    altFallback: `${mediaBaseUrl}/${trimmed}`,
+    extFallback: `${mediaBaseUrl}/${altFilename}`
   };
+}
+
+// Resolves responsive desktop and mobile media with mutual cross-fallback:
+// "for topic also have two diffrent option desktop and mobile here for diffrent devices use diffrent photos but if anyone is empty use avaialbe photo from any desktop or mobile for other to same for all"
+function resolveResponsiveMedia(item, defaultAlt = '') {
+  if (!item) return null;
+
+  // Extract raw candidate paths
+  const rawDesktop = (item.desktop_image || item.image || item.topic_image || '').trim();
+  const rawMobile = (item.mobile_image || '').trim();
+
+  // If one is empty, use the available photo from the other
+  const finalDesktopPath = rawDesktop || rawMobile;
+  const finalMobilePath = rawMobile || rawDesktop;
+
+  if (!finalDesktopPath && !finalMobilePath) {
+    return null;
+  }
+
+  const desktopMedia = resolveMediaUrl(finalDesktopPath);
+  const mobileMedia = resolveMediaUrl(finalMobilePath);
+
+  const desktopFitMode = item.desktop_fit_mode || item.fit_mode || 'cover';
+  const mobileFitMode = item.mobile_fit_mode || item.fit_mode || 'cover';
+  const viewMode = item.view_mode || 'auto';
+
+  return {
+    desktop: desktopMedia,
+    mobile: mobileMedia,
+    desktopFitMode,
+    mobileFitMode,
+    viewMode,
+    alt: item.topic_name || item.name || item.title || defaultAlt || 'Fashion Media'
+  };
+}
+
+// Renders a semantic responsive <picture> tag with desktop and mobile <source> tags
+function renderResponsivePictureTag(responsiveData, imgClassName = '', loading = 'lazy') {
+  if (!responsiveData) return '';
+
+  const desktop = responsiveData.desktop;
+  const mobile = responsiveData.mobile;
+  const alt = escapeHtml(responsiveData.alt || 'Fashion Campaign');
+  const safeClass = escapeHtml(imgClassName);
+
+  // Multi-tier onerror handler
+  const onerrorStr = `if(!this.dataset.fallbackTried){ this.dataset.fallbackTried='1'; this.src='${escapeHtml(desktop.fallback)}'; } else if(!this.dataset.altTried && '${escapeHtml(desktop.altFallback)}'){ this.dataset.altTried='1'; this.src='${escapeHtml(desktop.altFallback)}'; } else if(!this.dataset.extTried && '${escapeHtml(desktop.extFallback || '')}'){ this.dataset.extTried='1'; this.src='${escapeHtml(desktop.extFallback || '')}'; }`;
+
+  return `
+    <picture class="responsive-picture">
+      <source media="(max-width: 768px)" srcset="${escapeHtml(mobile.src)}" />
+      <source media="(min-width: 769px)" srcset="${escapeHtml(desktop.src)}" />
+      <img 
+        src="${escapeHtml(desktop.src)}" 
+        alt="${alt}" 
+        class="${safeClass}" 
+        loading="${loading}"
+        onerror="${onerrorStr}"
+      />
+    </picture>
+  `;
 }
 
 // Helper to generate dynamic <img> tag with automatic multi-tier fallback
@@ -214,13 +282,23 @@ const ProductStore = {
     const rawCategories = Array.isArray(d.categories) ? d.categories : [];
 
     // 7. Dynamic Topics / Thematic Campaigns (from configuration.json)
-    this.topics = Array.isArray(d.topics) ? d.topics.map(t => ({
-      id: String(t.id || ''),
-      name: (t.topic_name || '').trim(),
-      image: (t.topic_image || '').trim(),
-      category: (t.category || '').trim(),
-      link: (t.link || '').trim()
-    })).filter(t => t.image) : [];
+    // "for topic also have two diffrent option desktop and mobile here for diffrent devices use diffrent photos but if anyone is empty use avaialbe photo from any desktop or mobile for other to same for all"
+    this.topics = Array.isArray(d.topics) ? d.topics.map(t => {
+      const resp = resolveResponsiveMedia(t, t.topic_name || t.category || 'Curated Style Campaign');
+      return {
+        id: String(t.id || ''),
+        name: (t.topic_name || '').trim(),
+        image: resp ? resp.desktop.src : (t.desktop_image || t.image || t.topic_image || '').trim(),
+        desktop_image: (t.desktop_image || t.image || t.topic_image || '').trim(),
+        mobile_image: (t.mobile_image || '').trim(),
+        desktop_fit_mode: t.desktop_fit_mode || 'contain',
+        mobile_fit_mode: t.mobile_fit_mode || 'contain',
+        view_mode: t.view_mode || 'auto',
+        category: (t.category || '').trim(),
+        link: (t.link || '').trim(),
+        responsive: resp
+      };
+    }).filter(t => t.responsive !== null) : [];
     
     // Build category map
     const catMap = new Map();
@@ -527,14 +605,19 @@ function renderCategoryCardHtml(cat) {
   `;
 }
 
-// UI Component: Thematic Topic Campaign Banner HTML (Dynamic category redirect & image)
+// UI Component: Thematic Topic Campaign Banner HTML (Responsive Desktop & Mobile support with cross-fallback)
 function renderTopicBannerHtml(topic, index = 0, variant = 'grid-break') {
-  if (!topic || !topic.image) return '';
+  if (!topic) return '';
+  const resp = topic.responsive || resolveResponsiveMedia(topic, topic.name);
+  if (!resp) return '';
+
   const targetCategory = window.ProductStore ? window.ProductStore.resolveTopicTarget(topic) : (topic.category || 'all');
   const safeCat = escapeHtml(targetCategory);
   const safeName = escapeHtml(topic.name || topic.category || 'Curated Style Campaign');
   const tagText = targetCategory.toLowerCase() === 'all' ? 'SHOP ALL STYLES' : `SHOP ${safeCat.toUpperCase()}`;
-  const bannerImgTag = renderImgTag(topic.image, safeName, 'topic-banner-img', 'lazy');
+
+  const pictureTag = renderResponsivePictureTag(resp, 'topic-banner-img', 'lazy');
+  const fitClass = `fit-desktop-${escapeHtml(resp.desktopFitMode || 'contain')} fit-mobile-${escapeHtml(resp.mobileFitMode || 'contain')}`;
 
   return `
     <aside class="topic-campaign-card ${escapeHtml(variant)}" data-topic-index="${index}" data-topic-category="${safeCat}">
@@ -542,8 +625,8 @@ function renderTopicBannerHtml(topic, index = 0, variant = 'grid-break') {
          class="topic-banner-link" 
          onclick="window.navigateToCategory && window.navigateToCategory(event, '${safeCat}')"
          aria-label="Explore ${safeName}">
-        <div class="topic-banner-media">
-          ${bannerImgTag}
+        <div class="topic-banner-media ${fitClass}">
+          ${pictureTag}
           <div class="topic-banner-overlay">
             <span class="topic-category-tag">
               ${tagText}
@@ -560,6 +643,8 @@ window.ProductStore = ProductStore;
 window.renderProductCardHtml = renderProductCardHtml;
 window.renderCategoryCardHtml = renderCategoryCardHtml;
 window.renderTopicBannerHtml = renderTopicBannerHtml;
+window.resolveResponsiveMedia = resolveResponsiveMedia;
+window.renderResponsivePictureTag = renderResponsivePictureTag;
 window.formatPrice = formatPrice;
 window.escapeHtml = escapeHtml;
 window.resolveMediaUrl = resolveMediaUrl;

@@ -380,21 +380,26 @@ function renderDynamicHeroSlider() {
   heroSection.style.display = 'block';
 
   wrap.innerHTML = heroList.map((h, i) => {
-    const desktopMedia = resolveMediaUrl(h.desktop_image || h.image);
-    const mobileMedia = resolveMediaUrl(h.mobile_image || h.desktop_image || h.image);
+    const resp = (window.resolveResponsiveMedia && window.resolveResponsiveMedia(h, h.category || 'Contemporary Fashion Campaign')) || {
+      desktop: resolveMediaUrl(h.desktop_image || h.image || h.mobile_image),
+      mobile: resolveMediaUrl(h.mobile_image || h.desktop_image || h.image)
+    };
+    const desktopMedia = resp.desktop;
+    const mobileMedia = resp.mobile;
     const title = h.title || 'Designed for Every Day.<br />Styled for Every Occasion.';
     const category = h.category || 'Contemporary Fashion';
     const link = h.link || '#catalog';
 
     return `
       <article class="hero-slide ${i === 0 ? 'active' : ''}">
-        <div class="hero-media-wrap">
+        <div class="hero-media-wrap fit-desktop-${escapeHtml(h.desktop_fit_mode || 'cover')} fit-mobile-${escapeHtml(h.mobile_fit_mode || 'cover')}">
           <picture>
             <source media="(max-width: 768px)" srcset="${escapeHtml(mobileMedia.src)}" />
+            <source media="(min-width: 769px)" srcset="${escapeHtml(desktopMedia.src)}" />
             <img 
               src="${escapeHtml(desktopMedia.src)}" 
               alt="${escapeHtml(category)} Campaign" 
-              onerror="if(!this.dataset.fallbackTried){ this.dataset.fallbackTried='1'; this.src='${escapeHtml(desktopMedia.fallback)}'; }"
+              onerror="if(!this.dataset.fallbackTried){ this.dataset.fallbackTried='1'; this.src='${escapeHtml(desktopMedia.fallback)}'; } else if(!this.dataset.altTried && '${escapeHtml(desktopMedia.altFallback)}'){ this.dataset.altTried='1'; this.src='${escapeHtml(desktopMedia.altFallback)}'; }"
             />
           </picture>
           <div class="hero-overlay-gradient"></div>
