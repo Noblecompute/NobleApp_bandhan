@@ -1139,9 +1139,12 @@ main {
 .campaign-editorial-strip {
   position: relative;
   width: 100%;
-  margin: clamp(2.5rem, 4.5vw, 4rem) 0;
+  max-width: var(--container-max, 1280px);
+  margin: clamp(1.5rem, 3vw, 2.5rem) auto;
+  padding: 0 var(--container-gutter, 1.25rem);
+  box-sizing: border-box;
   overflow: hidden;
-  background-color: #111111;
+  border-radius: var(--border-radius-sm, 6px);
 }
 
 .campaign-strip-link {
@@ -1555,6 +1558,8 @@ main {
 
 .topic-campaign-card {
   position: relative;
+  display: block;
+  width: 100%;
   border-radius: var(--border-radius-sm, 6px);
   overflow: hidden;
   background-color: var(--color-warm-ivory, #f9ebd7);

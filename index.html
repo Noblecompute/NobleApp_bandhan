@@ -188,21 +188,33 @@
     </section>
 
     <!-- ========================================================================
-         CAMPAIGN EDITORIAL STRIP (Full-Width High-Impact Streetwear Break)
+         FEATURED TOPIC BANNER (Container-Aligned — Matching Second & Third Topic Photos)
          ======================================================================== -->
-    <section class="campaign-editorial-strip" aria-label="Autumn Winter Campaign Edit">
-      <a href="#catalog" class="campaign-strip-link" onclick="if(window.navigateToCategory) window.navigateToCategory(event, 'all');" aria-label="Explore Autumn Winter Collection">
-        <img src="media/file44.webp" alt="Autumn Winter Contemporary Menswear Campaign" class="campaign-strip-img" loading="lazy" />
-        <div class="campaign-strip-overlay">
-          <div class="campaign-strip-content">
-            <span class="campaign-strip-tag">AUTUMN / WINTER 26</span>
-            <h3 class="campaign-strip-title">CONTEMPORARY SILHOUETTES</h3>
-            <p class="campaign-strip-desc">Relaxed cuts, raw textures &amp; refined drapecraft engineered for modern streetwear.</p>
-            <span class="campaign-strip-btn">EXPLORE THE DROP →</span>
+    <div class="container" style="margin-top: clamp(1.5rem, 3vw, 2.5rem); margin-bottom: clamp(1.5rem, 2.5vw, 2.5rem);">
+      <aside class="topic-campaign-card" aria-label="Exclusive Membership Campaign">
+        <a href="#catalog" class="topic-banner-link" onclick="if(window.navigateToCategory) window.navigateToCategory(event, 'all');" aria-label="Explore Exclusive Membership Campaign">
+          <div class="topic-banner-media fit-desktop-contain fit-mobile-contain">
+            <picture class="responsive-picture">
+              <source media="(max-width: 768px)" srcset="./media/file44.webp" />
+              <source media="(min-width: 769px)" srcset="./media/file44.webp" />
+              <img 
+                src="./media/file44.webp" 
+                alt="Exclusive Membership Campaign" 
+                class="topic-banner-img" 
+                loading="lazy" 
+                onerror="window.handlePictureFallback && window.handlePictureFallback(this, './media/file44.webp', './media/file44.webp')"
+              />
+            </picture>
+            <div class="topic-banner-overlay">
+              <span class="topic-category-tag">
+                EXPLORE COLLECTION
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </span>
+            </div>
           </div>
-        </div>
-      </a>
-    </section>
+        </a>
+      </aside>
+    </div>
 
     <!-- ========================================================================
          NEW ARRIVALS (Pure 4-Column Product Grid — Zero Clutter Selection Bar)
