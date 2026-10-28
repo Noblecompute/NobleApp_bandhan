@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="URBAN EDGE — Contemporary Men's Fashion." />
+  <title>URBAN EDGE — Premium Men's Fashion</title>
+  
+  <!-- Dynamic Favicon (Populated by app.js from data.brand.brand_logo) -->
+  <link rel="icon" id="siteFavicon" type="image/png" href="" />
+
+  <!-- Google Fonts: Editorial Serif & Clean Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cinzel:wght@600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- ========================================================================
+       ANNOUNCEMENT BAR TICKER (100% Dynamic from configuration.json)
+       ======================================================================== -->
+  <aside class="announcement-bar" aria-label="Offers Announcement">
+    <div class="container">
+      <button type="button" class="announcement-nav-btn" id="announcementPrev" aria-label="Previous announcement">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+
+      <div class="announcement-slider" id="announcementSlider">
+        <!-- Injected dynamically by renderDynamicAnnouncementBar() -->
+      </div>
+
+      <button type="button" class="announcement-nav-btn" id="announcementNext" aria-label="Next announcement">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
+    </div>
+  </aside>
+
+  <!-- ========================================================================
+       NAVIGATION HEADER (100% Dynamic from configuration.json)
+       ======================================================================== -->
+  <header class="site-header">
+    <div class="container">
+      <div class="header-inner">
+        <!-- Mobile Menu Hamburger -->
+        <button type="button" class="action-btn mobile-menu-toggle" data-open-mobile-menu aria-label="Open navigation menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+
+        <!-- Brand Identity (Rendered dynamically) -->
+        <a href="index.html" class="brand-logo-wrap" aria-label="Brand Home">
+          <!-- Injected dynamically by renderDynamicHeader() -->
+        </a>
+
+        <!-- Desktop Navigation (Rendered dynamically) -->
+        <nav class="desktop-nav" id="desktopNav" aria-label="Primary navigation">
+          <!-- Injected dynamically by renderDynamicHeader() -->
+        </nav>
+
+        <!-- Header Actions: Search, Wishlist, Bag -->
+        <div class="header-actions">
+          <button type="button" class="action-btn" data-open-search aria-label="Search catalog">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </button>
+
+          <button type="button" class="action-btn" data-open-wishlist aria-label="Saved items wishlist">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+            </svg>
+            <span class="action-badge action-badge-wishlist" style="display: none;">0</span>
+          </button>
+
+          <button type="button" class="action-btn" data-open-cart aria-label="Shopping bag">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <path d="M16 10a4 4 0 0 1-8 0"></path>
+            </svg>
+            <span class="action-badge action-badge-cart" style="display: none;">0</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       MOBILE NAVIGATION OFF-CANVAS DRAWER (100% Dynamic)
+       ======================================================================== -->
+  <div class="mobile-nav-backdrop" id="mobileNavBackdrop">
+    <div class="mobile-nav-drawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+      <div class="mobile-drawer-header">
+        <span class="brand-name" style="font-size: 1.25rem;">URBAN EDGE</span>
+        <button type="button" class="mobile-drawer-close" data-close-drawer aria-label="Close menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <div class="mobile-drawer-body">
+        <ul class="mobile-menu-list" id="mobileMenuList">
+          <!-- Injected dynamically by renderDynamicHeader() -->
+        </ul>
+
+        <div style="margin-top: auto; display: flex; flex-direction: column; gap: 0.75rem;">
+          <button type="button" class="btn btn-outline-dark" style="width: 100%;" onclick="closeAllDrawers(); openWishlistDrawer();">
+            View Wishlist
+          </button>
+          <a href="cart.html" class="btn btn-primary" style="width: 100%;">
+            Go to Shopping Bag
+          </a>
+        </div>
+      </div>
+
+      <div class="mobile-drawer-footer" id="mobileDrawerFooter">
+        <!-- Injected dynamically from footer data -->
+      </div>
+    </div>
+  </div>
+
+  <main id="mainContent">
+
+    <!-- ========================================================================
+         HERO SECTION CAROUSEL (100% Dynamic from data.hero in configuration.json)
+         ======================================================================== -->
+    <section class="hero-section" aria-label="Seasonal Campaign Hero">
+      <div class="hero-slider-wrap" id="heroSliderWrap">
+        <!-- Injected dynamically by renderDynamicHeroSlider() -->
+      </div>
+
+      <!-- Controls & Indicators (Dynamically sized to hero array length) -->
+      <div class="hero-controls">
+        <div class="hero-indicators" id="heroIndicators">
+          <!-- Injected dynamically -->
+        </div>
+        <div style="display: flex; gap: 0.5rem;">
+          <button type="button" class="hero-arrow-btn" id="heroPrevBtn" aria-label="Previous slide">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          </button>
+          <button type="button" class="hero-arrow-btn" id="heroNextBtn" aria-label="Next slide">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         HIGH-FASHION MARQUEE TICKER (Powerlook/Streetwear Pulse)
+         ======================================================================== -->
+    <section class="fashion-marquee-bar" aria-label="Brand Highlights">
+      <div class="marquee-track">
+        <span class="marquee-item"><span class="marquee-dot">✦</span> FREE EXPRESS SHIPPING ₹999+</span>
+        <span class="marquee-item"><span class="marquee-dot">✦</span> 10-DAY DOORSTEP EASY EXCHANGE</span>
+        <span class="marquee-item"><span class="marquee-dot">✦</span> CASH ON DELIVERY &amp; INSTANT UPI</span>
+        <span class="marquee-item"><span class="marquee-dot">✦</span> RELAXED CONTEMPORARY FIT</span>
+        <span class="marquee-item"><span class="marquee-dot">✦</span> 100% BREATHABLE FABRIC CRAFT</span>
+        <span class="marquee-item"><span class="marquee-dot">✦</span> 15+ STORES PAN-INDIA</span>
+        <span class="marquee-item"><span class="marquee-dot">✦</span> FREE EXPRESS SHIPPING ₹999+</span>
+        <span class="marquee-item"><span class="marquee-dot">✦</span> 10-DAY DOORSTEP EASY EXCHANGE</span>
+        <span class="marquee-item"><span class="marquee-dot">✦</span> CASH ON DELIVERY &amp; INSTANT UPI</span>
+        <span class="marquee-item"><span class="marquee-dot">✦</span> RELAXED CONTEMPORARY FIT</span>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         CURATED OCCASIONS (Matching Powerlook Image 1: 3x2 Grid of Full-Bleed Photography)
+         ======================================================================== -->
+    <section class="section categories-section" aria-label="Curated Occasions">
+      <div class="container-wide">
+        <div class="section-header-powerlook">
+          <h2 class="section-title-powerlook">THE SALE YOUR CART MANIFESTED</h2>
+        </div>
+
+        <div class="categories-grid" id="categoriesGrid">
+          <!-- Injected dynamically by renderDynamicCategories() -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         CAMPAIGN EDITORIAL STRIP (Full-Width High-Impact Streetwear Break)
+         ======================================================================== -->
+    <section class="campaign-editorial-strip" aria-label="Autumn Winter Campaign Edit">
+      <a href="#catalog" class="campaign-strip-link" onclick="if(window.navigateToCategory) window.navigateToCategory(event, 'all');" aria-label="Explore Autumn Winter Collection">
+        <img src="media/file44.webp" alt="Autumn Winter Contemporary Menswear Campaign" class="campaign-strip-img" loading="lazy" />
+        <div class="campaign-strip-overlay">
+          <div class="campaign-strip-content">
+            <span class="campaign-strip-tag">AUTUMN / WINTER 26</span>
+            <h3 class="campaign-strip-title">CONTEMPORARY SILHOUETTES</h3>
+            <p class="campaign-strip-desc">Relaxed cuts, raw textures &amp; refined drapecraft engineered for modern streetwear.</p>
+            <span class="campaign-strip-btn">EXPLORE THE DROP →</span>
+          </div>
+        </div>
+      </a>
+    </section>
+
+    <!-- ========================================================================
+         NEW ARRIVALS (Pure 4-Column Product Grid — Zero Clutter Selection Bar)
+         ======================================================================== -->
+    <section class="section catalog-section" id="catalog" aria-label="Product Catalog">
+      <div class="container">
+        <div class="section-header-powerlook">
+          <h2 class="section-title-powerlook" id="catalogMainTitle">NEW ARRIVALS</h2>
+          <div id="catalogActiveFilterNotice" class="catalog-filter-notice" style="display: none;"></div>
+        </div>
+
+        <!-- Products Grid Container -->
+        <div class="products-grid" id="productsGrid">
+          <!-- Injected dynamically by renderCatalogGrid() -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         THE MIX — CURATED STREETWEAR DROPS (Elevated Spotlight Section)
+         ======================================================================== -->
+    <section class="section mix-spotlight-section" id="mix" aria-label="The Mix Streetwear Drops">
+      <div class="container">
+        <div class="section-header-powerlook">
+          <span class="spotlight-badge-tag">EXCLUSIVE DROPS</span>
+          <h2 class="section-title-powerlook">THE MIX</h2>
+          <p class="section-desc-subtle">Hybrid streetwear cuts, utilitarian accents &amp; effortless draping.</p>
+        </div>
+
+        <div class="products-grid" id="mixProductsGrid">
+          <!-- Injected dynamically by renderDynamicMixSpotlight() -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         BRAND PILLARS & CRAFT GUARANTEE (Why Urban Edge)
+         ======================================================================== -->
+    <section class="section brand-pillars-section" aria-label="Brand Pillars and Craft Guarantee">
+      <div class="container">
+        <div class="section-header-powerlook">
+          <span class="spotlight-badge-tag">THE STANDARD</span>
+          <h2 class="section-title-powerlook">CRAFTED WITHOUT COMPROMISE</h2>
+          <p class="section-desc-subtle">Every garment is engineered from scratch for heavyweight comfort and timeless silhouette.</p>
+        </div>
+
+        <div class="brand-pillars-grid">
+          <div class="pillar-card">
+            <div class="pillar-icon">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            </div>
+            <h3 class="pillar-title">240+ GSM Fabrics</h3>
+            <p class="pillar-desc">Heavyweight combed cotton and breathable European linen blends that drape cleanly and never lose form.</p>
+          </div>
+
+          <div class="pillar-card">
+            <div class="pillar-icon">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+            </div>
+            <h3 class="pillar-title">Signature Relaxed Fit</h3>
+            <p class="pillar-desc">Dropped shoulder geometry and generous chest dimensions calibrated for relaxed, contemporary ease.</p>
+          </div>
+
+          <div class="pillar-card">
+            <div class="pillar-icon">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+            </div>
+            <h3 class="pillar-title">10-Day Doorstep Exchange</h3>
+            <p class="pillar-desc">Instant doorstep pickup and replacement across 19,000+ Indian pin codes. Completely hassle-free.</p>
+          </div>
+
+          <div class="pillar-card">
+            <div class="pillar-icon">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <h3 class="pillar-title">Member Privilege Savings</h3>
+            <p class="pillar-desc">Direct-to-consumer honest pricing plus automatic Member Privilege discounts on every single style.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         EDITORIAL SHOWCASE / LOOKBOOK (100% Dynamic — Pure Photography Only)
+         ======================================================================== -->
+    <section class="section editorial-section" id="editorial" aria-label="Lookbook Showcase">
+      <div class="container">
+        <div class="section-header-powerlook">
+          <span class="spotlight-badge-tag">THE LOOKBOOK</span>
+          <h2 class="section-title-powerlook">EDITORIAL SHOWCASE</h2>
+          <p class="section-desc-subtle">A pure visual study in contemporary silhouette, drape, and movement.</p>
+        </div>
+        <div class="showcase-photos-only-grid" id="editorialGrid">
+          <!-- Injected dynamically by renderDynamicShowcase() — strictly ONLY photos, no details -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         COMMUNITY REVIEWS & SOCIAL PROOF (Loved By 50,000+ Men)
+         ======================================================================== -->
+    <section class="section reviews-section" aria-label="Customer Reviews">
+      <div class="container">
+        <div class="section-header-powerlook">
+          <span class="spotlight-badge-tag">VERIFIED REVIEWS</span>
+          <h2 class="section-title-powerlook">LOVED BY 50,000+ MEN</h2>
+          <p class="section-desc-subtle">Real feedback from gentlemen styling our contemporary cuts across India.</p>
+        </div>
+
+        <div class="reviews-grid">
+          <div class="review-card">
+            <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <p class="review-quote">"The linen blend shirt quality is genuinely rivaling Zara at half the cost. The relaxed fit is spot on with a great shoulder drop."</p>
+            <div class="review-author">
+              <span class="author-name">Aman Sharma</span>
+              <span class="author-meta">Mumbai • Verified Buyer</span>
+            </div>
+          </div>
+
+          <div class="review-card">
+            <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <p class="review-quote">"Ordered the Concert Fits overshirt for a weekend event. Got so many compliments on the boxy cut and drape. 10/10 streetwear."</p>
+            <div class="review-author">
+              <span class="author-name">Rohan Verma</span>
+              <span class="author-meta">Bengaluru • Verified Buyer</span>
+            </div>
+          </div>
+
+          <div class="review-card">
+            <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <p class="review-quote">"Member pricing is real value. Delivery reached in 48 hours to Delhi. Fabric feels heavy and premium, washed 3 times with zero shrinkage."</p>
+            <div class="review-author">
+              <span class="author-name">Kabir Mehta</span>
+              <span class="author-meta">New Delhi • Verified Buyer</span>
+            </div>
+          </div>
+
+          <div class="review-card">
+            <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <p class="review-quote">"Finally a brand that understands oversized without looking sloppy. The collar holds its shape and the chest pockets are functional."</p>
+            <div class="review-author">
+              <span class="author-name">Dev Patel</span>
+              <span class="author-meta">Pune • Verified Buyer</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         OFFERS & PROMO CODES BANNER (100% Dynamic from data.news in configuration.json)
+         ======================================================================== -->
+    <section class="offers-strip" id="offers" aria-label="Active Offers and Promo Codes">
+      <div class="container">
+        <div style="text-align: center; max-width: 600px; margin: 0 auto 2rem;">
+          <span style="font-size: 0.75rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--color-chartreuse); font-weight: 800;">SEASON PASS</span>
+          <h2 style="font-family: var(--font-display); font-size: clamp(2.4rem, 4vw, 3.5rem); color: #FFFFFF; margin-top: 0.25rem; letter-spacing: 0.04em; text-transform: uppercase;">UNLOCK STOREWIDE DROPS</h2>
+        </div>
+
+        <div class="offers-grid" id="offersGrid">
+          <!-- Injected dynamically by renderDynamicOffers() -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         NEWSLETTER / VIP CLUB
+         ======================================================================== -->
+    <section class="section newsletter-section" aria-label="Newsletter Subscription">
+      <div class="container">
+        <div class="newsletter-box">
+          <span class="section-subtitle">THE INNER CIRCLE</span>
+          <h2 class="section-title">GET 10% OFF YOUR FIRST DROP</h2>
+          <p class="section-desc">Unlock secret archive access, seasonal streetwear edits, and private trunk previews before public launch.</p>
+          
+          <form class="newsletter-form" id="newsletterForm">
+            <input type="email" required placeholder="Enter your email for the secret code" class="newsletter-input" aria-label="Email address" />
+            <button type="submit" class="btn btn-primary">UNLOCK ACCESS</button>
+          </form>
+
+          <p class="newsletter-disclaimer">
+            * Instant 10% discount applied to your checkout session. Unsubscribe anytime.
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================================================
+       FOOTER (100% Dynamic from data.footer and data.brand in configuration.json)
+       ======================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Col 1: Brand (Dynamic) -->
+        <div class="footer-col-brand" id="footerBrandCol">
+          <!-- Injected dynamically -->
+        </div>
+
+        <!-- Col 2: Categories (Dynamic) -->
+        <div>
+          <h4 class="footer-col-title">Collections</h4>
+          <ul class="footer-links-list" id="footerCategoryLinks">
+            <!-- Injected dynamically -->
+          </ul>
+        </div>
+
+        <!-- Col 3: Customer Care -->
+        <div>
+          <h4 class="footer-col-title">Customer Care</h4>
+          <ul class="footer-links-list">
+            <li><a href="javascript:void(0)" onclick="openSizeGuideModal()">Size Measurement Guide</a></li>
+            <li><a href="javascript:void(0)" onclick="alert('Our Policy: All items are eligible for 7-day doorstep size exchange or store credit returns in original condition with tags.')">Exchange &amp; Returns Policy</a></li>
+            <li><a href="javascript:void(0)" onclick="alert('Shipping: Orders are dispatched within 24-48 hours via premium express couriers with live tracking.')">Shipping Information</a></li>
+            <li><a href="cart.html">View Shopping Bag</a></li>
+            <li><a href="javascript:void(0)" onclick="openWishlistDrawer()">Saved Wishlist</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Corporate & Contact (Dynamic) -->
+        <div>
+          <h4 class="footer-col-title">Get In Touch</h4>
+          <div class="footer-contact-info" id="footerContactInfo">
+            <!-- Injected dynamically -->
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="container">
+          <div id="footerCopyrightNotice">
+            <!-- Injected dynamically -->
+          </div>
+          <div style="display: flex; gap: 1rem;">
+            <span>100% Genuine Catalog Data</span>
+            <span>•</span>
+            <span>Live Sync with configuration.json</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       SLIDE-OVER CART DRAWER
+       ======================================================================== -->
+  <div class="drawer-backdrop" id="cartDrawerBackdrop">
+    <aside class="side-drawer" role="dialog" aria-modal="true" aria-label="Shopping Bag">
+      <div class="drawer-header">
+        <h3 class="drawer-title">
+          Shopping Bag
+          <span class="drawer-count-pill" id="cartDrawerCount">0 items</span>
+        </h3>
+        <button type="button" class="drawer-close-btn" data-close-drawer aria-label="Close bag drawer">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+
+      <div class="drawer-shipping-banner" id="cartDrawerShipping">
+        <!-- Shipping progress injected by CartStore -->
+      </div>
+
+      <div class="drawer-body" id="cartDrawerBody">
+        <!-- Cart items or empty state injected by CartStore -->
+      </div>
+
+      <div class="drawer-footer" id="cartDrawerFooter">
+        <!-- Subtotals, coupons & checkout button injected by CartStore -->
+      </div>
+    </aside>
+  </div>
+
+  <!-- ========================================================================
+       SLIDE-OVER WISHLIST DRAWER
+       ======================================================================== -->
+  <div class="drawer-backdrop" id="wishlistDrawerBackdrop">
+    <aside class="side-drawer" role="dialog" aria-modal="true" aria-label="Saved Wishlist">
+      <div class="drawer-header">
+        <h3 class="drawer-title">
+          Saved Wishlist
+          <span class="drawer-count-pill" id="wishlistDrawerCount" style="background-color: var(--color-vermilion);">0 items</span>
+        </h3>
+        <button type="button" class="drawer-close-btn" data-close-drawer aria-label="Close wishlist drawer">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+
+      <div class="drawer-body" id="wishlistDrawerBody">
+        <!-- Wishlist items or empty state injected by WishlistStore -->
+      </div>
+    </aside>
+  </div>
+
+  <!-- ========================================================================
+       QUICK VIEW MODAL
+       ======================================================================== -->
+  <div class="modal-backdrop" id="quickViewBackdrop">
+    <div class="modal-window" role="dialog" aria-modal="true" aria-label="Product Quick View" style="max-width: 840px;">
+      <button type="button" class="modal-close-btn" data-close-drawer aria-label="Close modal">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+      <div class="modal-body" id="quickViewModalBody" style="padding: 2rem;">
+        <!-- Injected dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       SIZE GUIDE MODAL
+       ======================================================================== -->
+  <div class="modal-backdrop" id="sizeGuideBackdrop">
+    <div class="modal-window" role="dialog" aria-modal="true" aria-label="Size Guide">
+      <button type="button" class="modal-close-btn" data-close-drawer aria-label="Close size guide">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+      <div class="size-guide-modal-body">
+        <h3 style="font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--color-emerald-dark);">Apparel Measurement Guide</h3>
+        <p style="font-size: 0.85rem; color: var(--color-charcoal-muted);">All measurements in inches. Our garments are tailored in a relaxed contemporary fit.</p>
+        
+        <table class="size-table">
+          <thead>
+            <tr>
+              <th>Size</th>
+              <th>Chest (in)</th>
+              <th>Front Length (in)</th>
+              <th>Shoulder (in)</th>
+              <th>Sleeve (in)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>S</strong></td><td>38</td><td>28.5</td><td>17.5</td><td>24.5</td></tr>
+            <tr><td><strong>M</strong></td><td>40</td><td>29.5</td><td>18.5</td><td>25.0</td></tr>
+            <tr><td><strong>L</strong></td><td>42</td><td>30.5</td><td>19.5</td><td>25.5</td></tr>
+            <tr><td><strong>XL</strong></td><td>44</td><td>31.5</td><td>20.5</td><td>26.0</td></tr>
+            <tr><td><strong>XXL</strong></td><td>46</td><td>32.5</td><td>21.5</td><td>26.5</td></tr>
+          </tbody>
+        </table>
+        
+        <div style="margin-top: 1.5rem; font-size: 0.8125rem; color: var(--color-charcoal-muted); line-height: 1.6;">
+          <strong>How to measure:</strong> Measure around the fullest part of your chest with a soft measuring tape held horizontal.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       LIVE SEARCH MODAL
+       ======================================================================== -->
+  <div class="modal-backdrop" id="searchBackdrop">
+    <div class="modal-window" role="dialog" aria-modal="true" aria-label="Catalog Search" style="max-width: 640px; margin-top: 5vh;">
+      <button type="button" class="modal-close-btn" data-close-drawer aria-label="Close search">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+      <div style="padding: 1.5rem 1.5rem 0.5rem;">
+        <h3 style="font-family: var(--font-serif); font-size: 1.35rem; margin-bottom: 1rem;">Search Catalog</h3>
+        <div style="position: relative; display: flex; align-items: center;">
+          <input type="text" id="liveSearchInput" placeholder="Type a style, color or pattern..." style="width: 100%; padding: 0.85rem 1rem 0.85rem 2.5rem; font-size: 0.95rem; border: 1px solid var(--color-neutral-border); border-radius: 4px; background: var(--color-warm-ivory);" />
+          <svg style="position: absolute; left: 0.85rem; width: 18px; height: 18px; color: var(--color-charcoal-muted);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        </div>
+      </div>
+      <div id="liveSearchResults" style="padding: 1rem 1.5rem 1.5rem;">
+        <!-- Live search results injected -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       DEMO CHECKOUT MODAL
+       ======================================================================== -->
+  <div class="modal-backdrop" id="checkoutBackdrop">
+    <div class="modal-window" role="dialog" aria-modal="true" aria-label="Checkout Process">
+      <button type="button" class="modal-close-btn" data-close-drawer aria-label="Close checkout">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+      <div class="checkout-modal-body" id="checkoutModalBody">
+        <h3 style="font-family: var(--font-serif); font-size: 1.6rem; margin-bottom: 0.25rem; color: var(--color-charcoal);">Express Shipping &amp; Payment</h3>
+        <p style="font-size: 0.85rem; color: var(--color-charcoal-muted); margin-bottom: 1.5rem;">Complete your delivery details for express dispatch across India.</p>
+
+        <div id="checkoutOrderSummary" style="background: var(--color-ivory-light); border: 1px solid var(--color-neutral-border); padding: 1rem 1.25rem; border-radius: 4px; margin-bottom: 1.5rem;">
+          <!-- Dynamically populated -->
+        </div>
+
+        <form id="demoCheckoutForm">
+          <div class="checkout-step-title">1. Shipping Address</div>
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label" for="custName">Full Name *</label>
+              <input type="text" id="custName" name="custName" required class="form-control" placeholder="Rahul Sharma" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="custPhone">Phone Number *</label>
+              <input type="tel" id="custPhone" name="custPhone" required class="form-control" placeholder="+91 98765 43210" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="custAddress">Street Address *</label>
+            <input type="text" id="custAddress" name="custAddress" required class="form-control" placeholder="Flat / House No., Building Name, Street" />
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label" for="custCity">City *</label>
+              <input type="text" id="custCity" name="custCity" required class="form-control" placeholder="Mumbai" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="custPin">PIN Code *</label>
+              <input type="text" id="custPin" name="custPin" required class="form-control" placeholder="400063" maxlength="6" />
+            </div>
+          </div>
+
+          <div class="checkout-step-title" style="margin-top: 1.5rem;">2. Payment Method</div>
+          <div class="payment-options-grid">
+            <label class="payment-option-label active">
+              <input type="radio" name="payMethod" value="upi" checked />
+              <div>
+                <strong>Instant UPI (Google Pay, PhonePe, Paytm, BHIM)</strong>
+                <div style="font-size: 0.75rem; color: var(--color-charcoal-muted);">Fast, zero convenience fee transaction</div>
+              </div>
+            </label>
+            <label class="payment-option-label">
+              <input type="radio" name="payMethod" value="card" />
+              <div>
+                <strong>Credit / Debit Card</strong>
+                <div style="font-size: 0.75rem; color: var(--color-charcoal-muted);">Visa, MasterCard, RuPay, American Express</div>
+              </div>
+            </label>
+            <label class="payment-option-label">
+              <input type="radio" name="payMethod" value="cod" />
+              <div>
+                <strong>Cash on Delivery (COD)</strong>
+                <div style="font-size: 0.75rem; color: var(--color-charcoal-muted);">Pay upon doorstep delivery</div>
+              </div>
+            </label>
+          </div>
+
+          <div class="demo-checkout-alert">
+            <strong>Static Storefront Notice:</strong> Static storefront preview mode. Submitting this order demonstrates the frontend user flow without collecting sensitive card details or processing actual bank funds.
+          </div>
+
+          <button type="submit" class="btn btn-vermilion" style="width: 100%; margin-top: 1.5rem; padding: 1rem; font-size: 1rem;">
+            Confirm &amp; Place Demo Order
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dynamic Application Scripts -->
+    <!-- Embedded Offline / Local Fallback Configuration (guarantees zero CORS failures when opened via file://) -->
+  <script id="bandhan-embedded-config" type="application/json">
+{
+  "currentCount": 46,
+  "timestamp": "2026-10-27T14:01:05.171Z",
+  "data": {
+    "currentCount": 12,
+    "timestamp": "2026-10-26T12:36:10.882Z",
+    "brand": {
+      "brand_name": "UrbanEdge",
+      "brand_tagline": "Wear Your Edge",
+      "brand_logo": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file1.png"
+    },
+    "categories": [
+      {
+        "id": 1,
+        "category_name": "Home",
+        "category_image": "",
+        "link": ""
+      },
+      {
+        "id": 1792749763143,
+        "category_name": "CHAIN TREND",
+        "category_image": "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file31.webp",
+        "link": "",
+        "cover_product_id": 1792753000001
+      },
+      {
+        "id": 1792749774692,
+        "category_name": "DATE READY",
+        "category_image": "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file8.webp",
+        "link": "",
+        "cover_product_id": 1792749834198
+      },
+      {
+        "id": 1792749782402,
+        "category_name": "CONCERT FITS",
+        "category_image": "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file14.webp",
+        "link": "",
+        "cover_product_id": 1792749954069
+      },
+      {
+        "id": 1792749796027,
+        "category_name": "LINEN COLLECTION",
+        "category_image": "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file18.webp",
+        "link": "",
+        "cover_product_id": 1792750147622
+      },
+      {
+        "id": 1792749802244,
+        "category_name": "AFTER OFFICE",
+        "category_image": "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file20.webp",
+        "link": "",
+        "cover_product_id": 1792753000003
+      },
+      {
+        "id": 1792749809721,
+        "category_name": "9 TO 5",
+        "category_image": "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file24.webp",
+        "link": "",
+        "cover_product_id": 1792753000005
+      }
+    ],
+    "hero": [
+      {
+        "title": "",
+        "link": "",
+        "image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file2.jpg",
+        "desktop_image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file2.jpg",
+        "mobile_image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file3.jpg",
+        "desktop_fit_mode": "contain",
+        "mobile_fit_mode": "contain",
+        "view_mode": "auto",
+        "category": "Home"
+      },
+      {
+        "title": "",
+        "link": "",
+        "image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file4.jpg",
+        "desktop_image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file4.jpg",
+        "mobile_image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file5.jpg",
+        "desktop_fit_mode": "contain",
+        "mobile_fit_mode": "contain",
+        "view_mode": "auto",
+        "category": "Home"
+      },
+      {
+        "title": "",
+        "link": "",
+        "image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file6.jpg",
+        "desktop_image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file6.jpg",
+        "mobile_image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file7.jpg",
+        "desktop_fit_mode": "contain",
+        "mobile_fit_mode": "contain",
+        "view_mode": "auto",
+        "category": "Home"
+      }
+    ],
+    "instagram": [],
+    "news": [
+      {
+        "headline": "Buy 2 Get 250 Rs Off | Use Code : B2G250",
+        "link": ""
+      },
+      {
+        "headline": "Flat 10% OFF on your 1st Order | Use Code : FIRST10",
+        "link": ""
+      },
+      {
+        "headline": "Buy 3 Get 500 Rs Off | Use Code",
+        "link": ""
+      }
+    ],
+    "story": [],
+    "topics": [
+      {
+        "id": 1793108390218,
+        "topic_name": "",
+        "topic_image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file8.jpg",
+        "image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file8.jpg",
+        "desktop_image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file8.jpg",
+        "mobile_image": "",
+        "desktop_fit_mode": "contain",
+        "mobile_fit_mode": "contain",
+        "view_mode": "auto",
+        "category": "",
+        "link": ""
+      },
+      {
+        "id": 1793108418117,
+        "topic_name": "",
+        "topic_image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file9.jpg",
+        "image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file9.jpg",
+        "desktop_image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file9.jpg",
+        "mobile_image": "",
+        "desktop_fit_mode": "contain",
+        "mobile_fit_mode": "contain",
+        "view_mode": "auto",
+        "category": "",
+        "link": ""
+      },
+      {
+        "id": 1793109552643,
+        "topic_name": "",
+        "topic_image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file10.jpg",
+        "image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file10.jpg",
+        "desktop_image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file10.jpg",
+        "mobile_image": "",
+        "desktop_fit_mode": "contain",
+        "mobile_fit_mode": "contain",
+        "view_mode": "auto",
+        "category": "",
+        "link": ""
+      },
+      {
+        "id": 1793109552807,
+        "topic_name": "",
+        "topic_image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file11.jpg",
+        "image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file11.jpg",
+        "desktop_image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file11.jpg",
+        "mobile_image": "",
+        "desktop_fit_mode": "contain",
+        "mobile_fit_mode": "contain",
+        "view_mode": "auto",
+        "category": "",
+        "link": ""
+      },
+      {
+        "id": 1793109606390,
+        "topic_name": "",
+        "topic_image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file12.jpg",
+        "image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file12.jpg",
+        "desktop_image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file12.jpg",
+        "mobile_image": "",
+        "desktop_fit_mode": "contain",
+        "mobile_fit_mode": "contain",
+        "view_mode": "auto",
+        "category": "",
+        "link": ""
+      }
+    ],
+    "footer": {
+      "footer_company": "URBAN EDGE Pvt. Ltd.",
+      "footer_address": "Lotus Corporate Park Wing G02 - 1502, Ram Mandir Lane, off Western Express Highway, Goregaon, Mumbai, 400063",
+      "footer_phone": "+919004580603",
+      "footer_email": "tambenick25@gmail.com",
+      "footer_hours": "Mon - Sun : 10:00 AM - 06:00 PM",
+      "footer_copyright": "A copyright notice is a short line of text that lets the public know that your work is protected by copyright law and is not to be copied.",
+      "footer_tagline": "Own Your Edge.",
+      "company_links": [],
+      "policy_links": [],
+      "social_links": {
+        "facebook": "https://www.facebook.com/powerlookofficial",
+        "instagram": "https://www.instagram.com/powerlookofficial",
+        "youtube": "https://www.youtube.com/@powerlook6252",
+        "whatsapp": "https://wa.me/919004580603",
+        "twitter": "https://www.powerlook.in/"
+      }
+    },
+    "subpages": [
+      {
+        "id": 1792749834198,
+        "name": "Yellow Macro Checks Shirt",
+        "category": "DATE READY",
+        "price": "1999",
+        "discount_price": "1599",
+        "description": "Yellow Macro Checks Shirt featuring a bold check pattern for a stylish, modern look. Perfect for casual outings and everyday wear.",
+        "photos": [
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file8.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file9.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file10.webp"
+        ],
+        "is_category_cover": true,
+        "is_showcase": true,
+        "is_new_arrival": false,
+        "is_mix": true,
+        "is_enabled": true
+      },
+      {
+        "id": 1792749937780,
+        "name": "Yellow Macro Checks Shirt",
+        "category": "CONCERT FITS",
+        "price": "1999",
+        "discount_price": "1599",
+        "description": "Yellow Macro Checks Shirt featuring a bold check pattern for a stylish, modern look. Perfect for casual outings and everyday wear.",
+        "photos": [
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file11.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file12.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file13.webp"
+        ],
+        "is_category_cover": false,
+        "is_showcase": false,
+        "is_new_arrival": false,
+        "is_mix": false,
+        "is_enabled": true
+      },
+      {
+        "id": 1792749954069,
+        "name": "Light Blue Linen Blend Overshirt",
+        "category": "CONCERT FITS",
+        "price": "1999",
+        "discount_price": "1599",
+        "description": "Light Blue Linen Blend Shirt featuring a clean, elegant design for a fresh and sophisticated look. Perfect for casual outings and everyday wear.",
+        "photos": [
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file14.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file15.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file16.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file17.webp"
+        ],
+        "is_category_cover": true,
+        "is_showcase": true,
+        "is_new_arrival": true,
+        "is_mix": false,
+        "is_enabled": true
+      },
+      {
+        "id": 1792750147622,
+        "name": "Brown Embroidered Patch Linen Blend Shirt",
+        "category": "LINEN COLLECTION",
+        "price": "1999",
+        "discount_price": "1099",
+        "description": "Brown Linen Blend Shirt featuring stylish embroidered patches for a premium, modern look. Perfect for casual outings and everyday wear.",
+        "photos": [
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file18.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file19.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file20.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file21.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file22.jpg",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file23.webp"
+        ],
+        "is_category_cover": true,
+        "is_showcase": true,
+        "is_new_arrival": true,
+        "is_mix": false,
+        "is_enabled": true
+      },
+      {
+        "id": 1792750148998,
+        "name": "Brown Linen Blend Embroidery Shirt",
+        "category": "DATE READY",
+        "price": "1599",
+        "discount_price": "1500",
+        "description": "Light Blue Linen Blend Shirt featuring a clean, elegant design for a fresh and sophisticated look. Perfect for casual outings and everyday wear.",
+        "photos": [
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file24.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file25.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file26.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file27.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file28.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file29.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file30.webp"
+        ],
+        "is_category_cover": false,
+        "is_showcase": false,
+        "is_new_arrival": false,
+        "is_mix": false,
+        "is_enabled": true
+      },
+      {
+        "id": 1792750149230,
+        "name": "Blue Printed Stripe Shirt",
+        "category": "LINEN COLLECTION",
+        "price": "1599",
+        "discount_price": "1499",
+        "description": "Blue Printed Stripe Shirt featuring a modern striped pattern for a smart, stylish look. Perfect for casual outings and everyday wear.",
+        "photos": [
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file32.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file33.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file34.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file35.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file36.webp"
+        ],
+        "is_category_cover": false,
+        "is_showcase": false,
+        "is_new_arrival": false,
+        "is_mix": false,
+        "is_enabled": true
+      },
+      {
+        "id": 1792752146464,
+        "name": "Blue Printed Stripe Shirt",
+        "category": "DATE READY",
+        "price": "1599",
+        "discount_price": "1499",
+        "description": "Blue Printed Stripe Shirt featuring a modern striped pattern for a smart, stylish look. Perfect for casual outings and everyday wear.",
+        "photos": [
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file37.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file38.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file39.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file40.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file41.webp"
+        ],
+        "is_category_cover": true,
+        "is_showcase": true,
+        "is_new_arrival": true,
+        "is_mix": true,
+        "is_enabled": true
+      },
+      {
+        "id": 1792753000001,
+        "name": "Heavyweight Cuban Chain Overshirt",
+        "category": "CHAIN TREND",
+        "price": "2299",
+        "discount_price": "1699",
+        "description": "Heavyweight relaxed overshirt featuring bespoke metallic chain detailing and reinforced dual chest pockets.",
+        "photos": [
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file31.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file32.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file33.webp"
+        ],
+        "is_category_cover": true,
+        "is_showcase": true,
+        "is_new_arrival": true,
+        "is_mix": true,
+        "is_enabled": true
+      },
+      {
+        "id": 1792753000002,
+        "name": "Urban Street Accent Cargo Shirt",
+        "category": "CHAIN TREND",
+        "price": "2499",
+        "discount_price": "1899",
+        "description": "Industrial-inspired utility shirt with metal accents, relaxed drop shoulders, and durable cotton canvas weave.",
+        "photos": [
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file34.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file35.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file36.webp"
+        ],
+        "is_category_cover": false,
+        "is_showcase": true,
+        "is_new_arrival": false,
+        "is_mix": true,
+        "is_enabled": true
+      },
+      {
+        "id": 1792753000003,
+        "name": "Midnight Textured Knit Overshirt",
+        "category": "AFTER OFFICE",
+        "price": "2199",
+        "discount_price": "1599",
+        "description": "Soft-touch textured waffle knit designed for seamless transition from work hours to evening social gatherings.",
+        "photos": [
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file20.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file21.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file22.jpg"
+        ],
+        "is_category_cover": true,
+        "is_showcase": true,
+        "is_new_arrival": true,
+        "is_mix": true,
+        "is_enabled": true
+      },
+      {
+        "id": 1792753000004,
+        "name": "Minimalist Camp Collar Evening Shirt",
+        "category": "AFTER OFFICE",
+        "price": "2399",
+        "discount_price": "1799",
+        "description": "Clean camp collar silhouette cut from breathable rayon-linen blend with clean drape and effortless fluidity.",
+        "photos": [
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file27.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file28.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file29.webp"
+        ],
+        "is_category_cover": false,
+        "is_showcase": false,
+        "is_new_arrival": false,
+        "is_mix": true,
+        "is_enabled": true
+      },
+      {
+        "id": 1792753000005,
+        "name": "Contemporary Structured Workwear Shirt",
+        "category": "9 TO 5",
+        "price": "2499",
+        "discount_price": "1899",
+        "description": "Crisp executive workwear shirt with structured collar, breathable stretch weave, and tailored modern fit.",
+        "photos": [
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file24.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file25.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file26.webp"
+        ],
+        "is_category_cover": true,
+        "is_showcase": true,
+        "is_new_arrival": true,
+        "is_mix": false,
+        "is_enabled": true
+      },
+      {
+        "id": 1792753000006,
+        "name": "Refined Pinstripe Desk-to-Dinner Shirt",
+        "category": "9 TO 5",
+        "price": "2599",
+        "discount_price": "1999",
+        "description": "Subtle monochromatic pinstripes on premium combed poplin with crease-resistant finish.",
+        "photos": [
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file40.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file41.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file38.webp"
+        ],
+        "is_category_cover": false,
+        "is_showcase": false,
+        "is_new_arrival": true,
+        "is_mix": false,
+        "is_enabled": true
+      }
+    ],
+    "showcase": [],
+    "NewArrival": [],
+    "Mix": []
+  },
+  "filename": "2026-10-26-123610-configuration.json",
+  "userEmail": "nitikesh@tambnick25.onmicrosoft.com",
+  "userName": "nitikesh",
+  "organizationName": "Bandhan",
+  "organizationSlug": "bandhan",
+  "workspaceType": "organization",
+  "github": {
+    "repository": "https://github.com/Noblecompute/NobleApp_bandhan",
+    "branch": "main",
+    "publishedAt": "2026-10-27T14:01:22.948Z",
+    "mediaBaseUrl": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/"
+  }
+}
+  </script>
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/wishlist.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      initStorefront();
+    });
+  </script>
+</body>
+</html>
