@@ -1,9 +1,9 @@
 {
-  "currentCount": 99,
-  "timestamp": "2026-10-30T14:01:50.265Z",
+  "currentCount": 104,
+  "timestamp": "2026-10-30T14:02:44.017Z",
   "data": {
-    "currentCount": 99,
-    "timestamp": "2026-10-30T14:01:50.265Z",
+    "currentCount": 104,
+    "timestamp": "2026-10-30T14:02:44.017Z",
     "brand": {
       "brand_name": "UrbanEdge",
       "brand_tagline": "Wear Your Edge",
@@ -405,13 +405,33 @@
         "is_new_arrival": false,
         "is_mix": false,
         "is_enabled": true
+      },
+      {
+        "id": 1793368916598,
+        "name": "Off White Jacquard Shirt",
+        "category": "CONCERT FITS",
+        "price": "1,499",
+        "discount_price": "1222",
+        "description": "Elegant off-white jacquard shirt featuring a subtle textured pattern for a refined, premium look. Comfortable, versatile and perfect for casual and smart-casual occasions.",
+        "photos": [
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file100.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file101.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file102.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file103.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file104.webp"
+        ],
+        "is_category_cover": false,
+        "is_showcase": false,
+        "is_new_arrival": false,
+        "is_mix": false,
+        "is_enabled": true
       }
     ],
     "showcase": [],
     "NewArrival": [],
     "Mix": []
   },
-  "filename": "2026-10-30-140150-configuration.json",
+  "filename": "2026-10-30-140244-configuration.json",
   "userEmail": "nitikesh@tambnick25.onmicrosoft.com",
   "userName": "nitikesh",
   "organizationName": "Bandhan",
@@ -420,7 +440,7 @@
   "github": {
     "repository": "https://github.com/Noblecompute/NobleApp_bandhan",
     "branch": "main",
-    "publishedAt": "2026-10-30T14:01:57.840Z",
+    "publishedAt": "2026-10-30T14:02:50.368Z",
     "mediaBaseUrl": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/"
   }
 }
