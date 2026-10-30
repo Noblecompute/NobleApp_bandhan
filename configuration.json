@@ -1,9 +1,9 @@
 {
-  "currentCount": 70,
-  "timestamp": "2026-10-30T13:01:57.992Z",
+  "currentCount": 76,
+  "timestamp": "2026-10-30T13:53:09.722Z",
   "data": {
-    "currentCount": 70,
-    "timestamp": "2026-10-30T13:01:57.992Z",
+    "currentCount": 76,
+    "timestamp": "2026-10-30T13:53:09.722Z",
     "brand": {
       "brand_name": "UrbanEdge",
       "brand_tagline": "Wear Your Edge",
@@ -267,12 +267,33 @@
         "discount_price": "1234",
         "description": "Beige embroidery adds measured surface detailing across the knitted construction of this T-shirt. Crafted from knitted fabric, it features a regular silhouette, crew neckline and short sleeves, with embroidered elements distributed across the body. The beige base keeps the threadwork clearly visible while preserving the consistent texture of the knit. Add this POWERLOOK T-shirt when embroidered detailing and a defined knitted surface form the central design elements.",
         "photos": [
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file68.webp",
           "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file65.webp",
           "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file66.webp",
           "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file67.webp",
-          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file68.webp",
           "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file69.webp",
           "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file70.webp"
+        ],
+        "is_category_cover": false,
+        "is_showcase": false,
+        "is_new_arrival": false,
+        "is_mix": false,
+        "is_enabled": true
+      },
+      {
+        "id": 1793367609596,
+        "name": "Off White Structure Stripe Shirt",
+        "category": "Home",
+        "price": "",
+        "discount_price": "",
+        "description": "",
+        "photos": [
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file71.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file72.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file73.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file74.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file75.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file76.webp"
         ],
         "is_category_cover": false,
         "is_showcase": false,
@@ -285,7 +306,7 @@
     "NewArrival": [],
     "Mix": []
   },
-  "filename": "2026-10-30-130157-configuration.json",
+  "filename": "2026-10-30-135309-configuration.json",
   "userEmail": "nitikesh@tambnick25.onmicrosoft.com",
   "userName": "nitikesh",
   "organizationName": "Bandhan",
@@ -294,7 +315,7 @@
   "github": {
     "repository": "https://github.com/Noblecompute/NobleApp_bandhan",
     "branch": "main",
-    "publishedAt": "2026-10-30T13:01:59.328Z",
+    "publishedAt": "2026-10-30T13:53:16.413Z",
     "mediaBaseUrl": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/"
   }
 }
