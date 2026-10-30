@@ -1,9 +1,9 @@
 {
-  "currentCount": 76,
-  "timestamp": "2026-10-30T13:53:09.722Z",
+  "currentCount": 94,
+  "timestamp": "2026-10-30T13:58:32.129Z",
   "data": {
-    "currentCount": 76,
-    "timestamp": "2026-10-30T13:53:09.722Z",
+    "currentCount": 94,
+    "timestamp": "2026-10-30T13:58:32.129Z",
     "brand": {
       "brand_name": "UrbanEdge",
       "brand_tagline": "Wear Your Edge",
@@ -216,7 +216,7 @@
       {
         "id": 1793365313537,
         "name": "Black Kurta Style Regular Fit Full Sleeves Shirt",
-        "category": "DATE READY",
+        "category": "CONCERT FITS",
         "price": "1,399",
         "discount_price": "1329",
         "description": "Take tradition and mix it with a modern vibeâ€”that's this black kurta-style shirt. Just a sharp, black kurta-style shirt that speaks volumes without saying a word. With its full sleeves, structured collar, and a relaxed yet put-together fit, this piece is the definition of effortless power dressing. Crafted from 86% viscose and 14% nylon, itâ€™s soft, smooth, and drapes like a dreamâ€”making you look sharp without even trying.",
@@ -283,10 +283,10 @@
       {
         "id": 1793367609596,
         "name": "Off White Structure Stripe Shirt",
-        "category": "Home",
-        "price": "",
-        "discount_price": "",
-        "description": "",
+        "category": "DATE READY",
+        "price": "1,299",
+        "discount_price": "1234",
+        "description": "A stylish, minimal casual shirt with a subtle striped pattern and textured appearance. Its off-white shade gives it a clean, premium look.",
         "photos": [
           "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file71.webp",
           "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file72.webp",
@@ -300,13 +300,76 @@
         "is_new_arrival": false,
         "is_mix": false,
         "is_enabled": true
+      },
+      {
+        "id": 1793368505800,
+        "name": "Black & Brown Knitted Stripe T-Shirt 100% Cotton",
+        "category": "DATE READY",
+        "price": "1,299",
+        "discount_price": "1222",
+        "description": "A premium-looking casual T-shirt featuring black and brown horizontal stripes with a knitted texture. Unlike printed stripes, the knitted construction adds depth and a richer appearance.",
+        "photos": [
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file77.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file78.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file79.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file80.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file81.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file82.jpg"
+        ],
+        "is_category_cover": false,
+        "is_showcase": false,
+        "is_new_arrival": false,
+        "is_mix": false,
+        "is_enabled": true
+      },
+      {
+        "id": 1793368506991,
+        "name": "Grey & Black Knitted Stripe T-Shirt 100% Cotton",
+        "category": "CONCERT FITS",
+        "price": "1,599",
+        "discount_price": "1,299",
+        "description": "Stylish Grey & Black knitted stripe T-shirt made from 100% cotton for a soft, breathable and comfortable feel. Perfect for a modern, effortless casual look.",
+        "photos": [
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file83.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file84.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file85.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file86.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file87.jpg",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file88.jpg"
+        ],
+        "is_category_cover": false,
+        "is_showcase": false,
+        "is_new_arrival": false,
+        "is_mix": false,
+        "is_enabled": true
+      },
+      {
+        "id": 1793368507160,
+        "name": "Wine Geometric Jacquard Cotton T-Shirt",
+        "category": "CONCERT FITS",
+        "price": "1,599",
+        "discount_price": "1,399",
+        "description": "Stylish Wine Geometric Jacquard T-shirt crafted from cotton, featuring a unique textured pattern for a premium look. Comfortable, breathable and perfect for casual outings and everyday wear.",
+        "photos": [
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file89.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file90.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file91.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file92.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file93.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file94.webp"
+        ],
+        "is_category_cover": false,
+        "is_showcase": false,
+        "is_new_arrival": false,
+        "is_mix": false,
+        "is_enabled": true
       }
     ],
     "showcase": [],
     "NewArrival": [],
     "Mix": []
   },
-  "filename": "2026-10-30-135309-configuration.json",
+  "filename": "2026-10-30-135832-configuration.json",
   "userEmail": "nitikesh@tambnick25.onmicrosoft.com",
   "userName": "nitikesh",
   "organizationName": "Bandhan",
@@ -315,7 +378,7 @@
   "github": {
     "repository": "https://github.com/Noblecompute/NobleApp_bandhan",
     "branch": "main",
-    "publishedAt": "2026-10-30T13:53:16.413Z",
+    "publishedAt": "2026-10-30T13:58:53.242Z",
     "mediaBaseUrl": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/"
   }
 }
