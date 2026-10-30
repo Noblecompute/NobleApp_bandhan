@@ -1,9 +1,9 @@
 {
-  "currentCount": 104,
-  "timestamp": "2026-10-30T14:02:44.017Z",
+  "currentCount": 105,
+  "timestamp": "2026-10-30T14:03:20.030Z",
   "data": {
-    "currentCount": 104,
-    "timestamp": "2026-10-30T14:02:44.017Z",
+    "currentCount": 105,
+    "timestamp": "2026-10-30T14:03:20.030Z",
     "brand": {
       "brand_name": "UrbanEdge",
       "brand_tagline": "Wear Your Edge",
@@ -398,7 +398,8 @@
           "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file96.webp",
           "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file97.webp",
           "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file98.webp",
-          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file99.webp"
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file99.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file105.jpg"
         ],
         "is_category_cover": true,
         "is_showcase": false,
@@ -431,7 +432,7 @@
     "NewArrival": [],
     "Mix": []
   },
-  "filename": "2026-10-30-140244-configuration.json",
+  "filename": "2026-10-30-140320-configuration.json",
   "userEmail": "nitikesh@tambnick25.onmicrosoft.com",
   "userName": "nitikesh",
   "organizationName": "Bandhan",
@@ -440,7 +441,7 @@
   "github": {
     "repository": "https://github.com/Noblecompute/NobleApp_bandhan",
     "branch": "main",
-    "publishedAt": "2026-10-30T14:02:50.368Z",
+    "publishedAt": "2026-10-30T14:03:22.451Z",
     "mediaBaseUrl": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/"
   }
 }
