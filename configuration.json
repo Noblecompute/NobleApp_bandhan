@@ -1,9 +1,9 @@
 {
-  "currentCount": 94,
-  "timestamp": "2026-10-30T13:58:32.129Z",
+  "currentCount": 99,
+  "timestamp": "2026-10-30T14:01:50.265Z",
   "data": {
-    "currentCount": 94,
-    "timestamp": "2026-10-30T13:58:32.129Z",
+    "currentCount": 99,
+    "timestamp": "2026-10-30T14:01:50.265Z",
     "brand": {
       "brand_name": "UrbanEdge",
       "brand_tagline": "Wear Your Edge",
@@ -33,7 +33,8 @@
         "id": 1792749782402,
         "category_name": "CONCERT FITS",
         "category_image": "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file14.webp",
-        "link": ""
+        "link": "",
+        "cover_product_id": 1793368846447
       },
       {
         "id": 1792749796027,
@@ -302,6 +303,27 @@
         "is_enabled": true
       },
       {
+        "id": 1793368821743,
+        "name": "Off White Structure Stripe Shirt",
+        "category": "CONCERT FITS",
+        "price": "1,299",
+        "discount_price": "1234",
+        "description": "A stylish, minimal casual shirt with a subtle striped pattern and textured appearance. Its off-white shade gives it a clean, premium look.",
+        "photos": [
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file71.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file72.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file73.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file74.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file75.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file76.webp"
+        ],
+        "is_category_cover": false,
+        "is_showcase": false,
+        "is_new_arrival": false,
+        "is_mix": false,
+        "is_enabled": true
+      },
+      {
         "id": 1793368505800,
         "name": "Black & Brown Knitted Stripe T-Shirt 100% Cotton",
         "category": "DATE READY",
@@ -363,13 +385,33 @@
         "is_new_arrival": false,
         "is_mix": false,
         "is_enabled": true
+      },
+      {
+        "id": 1793368846447,
+        "name": "Red Embroidered Micro Checks Shirt",
+        "category": "CONCERT FITS",
+        "price": "1,299",
+        "discount_price": "1222",
+        "description": "Stylish red shirt featuring subtle micro-check patterns and elegant embroidery. Comfortable, versatile and perfect for casual outings and smart-casual occasions.",
+        "photos": [
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file95.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file96.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file97.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file98.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file99.webp"
+        ],
+        "is_category_cover": true,
+        "is_showcase": false,
+        "is_new_arrival": false,
+        "is_mix": false,
+        "is_enabled": true
       }
     ],
     "showcase": [],
     "NewArrival": [],
     "Mix": []
   },
-  "filename": "2026-10-30-135832-configuration.json",
+  "filename": "2026-10-30-140150-configuration.json",
   "userEmail": "nitikesh@tambnick25.onmicrosoft.com",
   "userName": "nitikesh",
   "organizationName": "Bandhan",
@@ -378,7 +420,7 @@
   "github": {
     "repository": "https://github.com/Noblecompute/NobleApp_bandhan",
     "branch": "main",
-    "publishedAt": "2026-10-30T13:58:53.242Z",
+    "publishedAt": "2026-10-30T14:01:57.840Z",
     "mediaBaseUrl": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/"
   }
 }
