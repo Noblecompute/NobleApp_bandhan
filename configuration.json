@@ -1,13 +1,13 @@
 {
-  "currentCount": 46,
-  "timestamp": "2026-10-27T14:01:05.171Z",
+  "currentCount": 47,
+  "timestamp": "2026-10-30T08:19:00.987Z",
   "data": {
-    "currentCount": 12,
-    "timestamp": "2026-10-26T12:36:10.882Z",
+    "currentCount": 47,
+    "timestamp": "2026-10-30T08:19:00.987Z",
     "brand": {
       "brand_name": "UrbanEdge",
       "brand_tagline": "Wear Your Edge",
-      "brand_logo": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file1.png"
+      "brand_logo": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file47.webp"
     },
     "categories": [
       {
@@ -328,7 +328,7 @@
           "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file40.webp",
           "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file41.webp"
         ],
-        "is_category_cover": true,
+        "is_category_cover": false,
         "is_showcase": true,
         "is_new_arrival": true,
         "is_mix": true,
@@ -443,11 +443,406 @@
         "is_enabled": true
       }
     ],
-    "showcase": [],
-    "NewArrival": [],
-    "Mix": []
+    "showcase": [
+      {
+        "id": 1792749834198,
+        "name": "Yellow Macro Checks Shirt",
+        "category": "DATE READY",
+        "price": "1999",
+        "discount_price": "1599",
+        "description": "Yellow Macro Checks Shirt featuring a bold check pattern for a stylish, modern look. Perfect for casual outings and everyday wear.",
+        "photos": [
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file8.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file9.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file10.webp"
+        ],
+        "is_category_cover": true,
+        "is_showcase": true,
+        "is_new_arrival": false,
+        "is_mix": true,
+        "is_enabled": true
+      },
+      {
+        "id": 1792749954069,
+        "name": "Light Blue Linen Blend Overshirt",
+        "category": "CONCERT FITS",
+        "price": "1999",
+        "discount_price": "1599",
+        "description": "Light Blue Linen Blend Shirt featuring a clean, elegant design for a fresh and sophisticated look. Perfect for casual outings and everyday wear.",
+        "photos": [
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file14.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file15.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file16.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file17.webp"
+        ],
+        "is_category_cover": true,
+        "is_showcase": true,
+        "is_new_arrival": true,
+        "is_mix": false,
+        "is_enabled": true
+      },
+      {
+        "id": 1792750147622,
+        "name": "Brown Embroidered Patch Linen Blend Shirt",
+        "category": "LINEN COLLECTION",
+        "price": "1999",
+        "discount_price": "1099",
+        "description": "Brown Linen Blend Shirt featuring stylish embroidered patches for a premium, modern look. Perfect for casual outings and everyday wear.",
+        "photos": [
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file18.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file19.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file20.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file21.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file22.jpg",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file23.webp"
+        ],
+        "is_category_cover": true,
+        "is_showcase": true,
+        "is_new_arrival": true,
+        "is_mix": false,
+        "is_enabled": true
+      },
+      {
+        "id": 1792752146464,
+        "name": "Blue Printed Stripe Shirt",
+        "category": "DATE READY",
+        "price": "1599",
+        "discount_price": "1499",
+        "description": "Blue Printed Stripe Shirt featuring a modern striped pattern for a smart, stylish look. Perfect for casual outings and everyday wear.",
+        "photos": [
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file37.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file38.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file39.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file40.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file41.webp"
+        ],
+        "is_category_cover": false,
+        "is_showcase": true,
+        "is_new_arrival": true,
+        "is_mix": true,
+        "is_enabled": true
+      },
+      {
+        "id": 1792753000001,
+        "name": "Heavyweight Cuban Chain Overshirt",
+        "category": "CHAIN TREND",
+        "price": "2299",
+        "discount_price": "1699",
+        "description": "Heavyweight relaxed overshirt featuring bespoke metallic chain detailing and reinforced dual chest pockets.",
+        "photos": [
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file31.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file32.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file33.webp"
+        ],
+        "is_category_cover": true,
+        "is_showcase": true,
+        "is_new_arrival": true,
+        "is_mix": true,
+        "is_enabled": true
+      },
+      {
+        "id": 1792753000002,
+        "name": "Urban Street Accent Cargo Shirt",
+        "category": "CHAIN TREND",
+        "price": "2499",
+        "discount_price": "1899",
+        "description": "Industrial-inspired utility shirt with metal accents, relaxed drop shoulders, and durable cotton canvas weave.",
+        "photos": [
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file34.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file35.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file36.webp"
+        ],
+        "is_category_cover": false,
+        "is_showcase": true,
+        "is_new_arrival": false,
+        "is_mix": true,
+        "is_enabled": true
+      },
+      {
+        "id": 1792753000003,
+        "name": "Midnight Textured Knit Overshirt",
+        "category": "AFTER OFFICE",
+        "price": "2199",
+        "discount_price": "1599",
+        "description": "Soft-touch textured waffle knit designed for seamless transition from work hours to evening social gatherings.",
+        "photos": [
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file20.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file21.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file22.jpg"
+        ],
+        "is_category_cover": true,
+        "is_showcase": true,
+        "is_new_arrival": true,
+        "is_mix": true,
+        "is_enabled": true
+      },
+      {
+        "id": 1792753000005,
+        "name": "Contemporary Structured Workwear Shirt",
+        "category": "9 TO 5",
+        "price": "2499",
+        "discount_price": "1899",
+        "description": "Crisp executive workwear shirt with structured collar, breathable stretch weave, and tailored modern fit.",
+        "photos": [
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file24.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file25.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file26.webp"
+        ],
+        "is_category_cover": true,
+        "is_showcase": true,
+        "is_new_arrival": true,
+        "is_mix": false,
+        "is_enabled": true
+      }
+    ],
+    "NewArrival": [
+      {
+        "id": 1792749954069,
+        "name": "Light Blue Linen Blend Overshirt",
+        "category": "CONCERT FITS",
+        "price": "1999",
+        "discount_price": "1599",
+        "description": "Light Blue Linen Blend Shirt featuring a clean, elegant design for a fresh and sophisticated look. Perfect for casual outings and everyday wear.",
+        "photos": [
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file14.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file15.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file16.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file17.webp"
+        ],
+        "is_category_cover": true,
+        "is_showcase": true,
+        "is_new_arrival": true,
+        "is_mix": false,
+        "is_enabled": true
+      },
+      {
+        "id": 1792750147622,
+        "name": "Brown Embroidered Patch Linen Blend Shirt",
+        "category": "LINEN COLLECTION",
+        "price": "1999",
+        "discount_price": "1099",
+        "description": "Brown Linen Blend Shirt featuring stylish embroidered patches for a premium, modern look. Perfect for casual outings and everyday wear.",
+        "photos": [
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file18.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file19.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file20.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file21.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file22.jpg",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file23.webp"
+        ],
+        "is_category_cover": true,
+        "is_showcase": true,
+        "is_new_arrival": true,
+        "is_mix": false,
+        "is_enabled": true
+      },
+      {
+        "id": 1792752146464,
+        "name": "Blue Printed Stripe Shirt",
+        "category": "DATE READY",
+        "price": "1599",
+        "discount_price": "1499",
+        "description": "Blue Printed Stripe Shirt featuring a modern striped pattern for a smart, stylish look. Perfect for casual outings and everyday wear.",
+        "photos": [
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file37.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file38.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file39.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file40.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file41.webp"
+        ],
+        "is_category_cover": false,
+        "is_showcase": true,
+        "is_new_arrival": true,
+        "is_mix": true,
+        "is_enabled": true
+      },
+      {
+        "id": 1792753000001,
+        "name": "Heavyweight Cuban Chain Overshirt",
+        "category": "CHAIN TREND",
+        "price": "2299",
+        "discount_price": "1699",
+        "description": "Heavyweight relaxed overshirt featuring bespoke metallic chain detailing and reinforced dual chest pockets.",
+        "photos": [
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file31.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file32.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file33.webp"
+        ],
+        "is_category_cover": true,
+        "is_showcase": true,
+        "is_new_arrival": true,
+        "is_mix": true,
+        "is_enabled": true
+      },
+      {
+        "id": 1792753000003,
+        "name": "Midnight Textured Knit Overshirt",
+        "category": "AFTER OFFICE",
+        "price": "2199",
+        "discount_price": "1599",
+        "description": "Soft-touch textured waffle knit designed for seamless transition from work hours to evening social gatherings.",
+        "photos": [
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file20.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file21.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file22.jpg"
+        ],
+        "is_category_cover": true,
+        "is_showcase": true,
+        "is_new_arrival": true,
+        "is_mix": true,
+        "is_enabled": true
+      },
+      {
+        "id": 1792753000005,
+        "name": "Contemporary Structured Workwear Shirt",
+        "category": "9 TO 5",
+        "price": "2499",
+        "discount_price": "1899",
+        "description": "Crisp executive workwear shirt with structured collar, breathable stretch weave, and tailored modern fit.",
+        "photos": [
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file24.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file25.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file26.webp"
+        ],
+        "is_category_cover": true,
+        "is_showcase": true,
+        "is_new_arrival": true,
+        "is_mix": false,
+        "is_enabled": true
+      },
+      {
+        "id": 1792753000006,
+        "name": "Refined Pinstripe Desk-to-Dinner Shirt",
+        "category": "9 TO 5",
+        "price": "2599",
+        "discount_price": "1999",
+        "description": "Subtle monochromatic pinstripes on premium combed poplin with crease-resistant finish.",
+        "photos": [
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file40.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file41.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file38.webp"
+        ],
+        "is_category_cover": false,
+        "is_showcase": false,
+        "is_new_arrival": true,
+        "is_mix": false,
+        "is_enabled": true
+      }
+    ],
+    "Mix": [
+      {
+        "id": 1792749834198,
+        "name": "Yellow Macro Checks Shirt",
+        "category": "DATE READY",
+        "price": "1999",
+        "discount_price": "1599",
+        "description": "Yellow Macro Checks Shirt featuring a bold check pattern for a stylish, modern look. Perfect for casual outings and everyday wear.",
+        "photos": [
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file8.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file9.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file10.webp"
+        ],
+        "is_category_cover": true,
+        "is_showcase": true,
+        "is_new_arrival": false,
+        "is_mix": true,
+        "is_enabled": true
+      },
+      {
+        "id": 1792752146464,
+        "name": "Blue Printed Stripe Shirt",
+        "category": "DATE READY",
+        "price": "1599",
+        "discount_price": "1499",
+        "description": "Blue Printed Stripe Shirt featuring a modern striped pattern for a smart, stylish look. Perfect for casual outings and everyday wear.",
+        "photos": [
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file37.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file38.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file39.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file40.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file41.webp"
+        ],
+        "is_category_cover": false,
+        "is_showcase": true,
+        "is_new_arrival": true,
+        "is_mix": true,
+        "is_enabled": true
+      },
+      {
+        "id": 1792753000001,
+        "name": "Heavyweight Cuban Chain Overshirt",
+        "category": "CHAIN TREND",
+        "price": "2299",
+        "discount_price": "1699",
+        "description": "Heavyweight relaxed overshirt featuring bespoke metallic chain detailing and reinforced dual chest pockets.",
+        "photos": [
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file31.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file32.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file33.webp"
+        ],
+        "is_category_cover": true,
+        "is_showcase": true,
+        "is_new_arrival": true,
+        "is_mix": true,
+        "is_enabled": true
+      },
+      {
+        "id": 1792753000002,
+        "name": "Urban Street Accent Cargo Shirt",
+        "category": "CHAIN TREND",
+        "price": "2499",
+        "discount_price": "1899",
+        "description": "Industrial-inspired utility shirt with metal accents, relaxed drop shoulders, and durable cotton canvas weave.",
+        "photos": [
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file34.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file35.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file36.webp"
+        ],
+        "is_category_cover": false,
+        "is_showcase": true,
+        "is_new_arrival": false,
+        "is_mix": true,
+        "is_enabled": true
+      },
+      {
+        "id": 1792753000003,
+        "name": "Midnight Textured Knit Overshirt",
+        "category": "AFTER OFFICE",
+        "price": "2199",
+        "discount_price": "1599",
+        "description": "Soft-touch textured waffle knit designed for seamless transition from work hours to evening social gatherings.",
+        "photos": [
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file20.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file21.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file22.jpg"
+        ],
+        "is_category_cover": true,
+        "is_showcase": true,
+        "is_new_arrival": true,
+        "is_mix": true,
+        "is_enabled": true
+      },
+      {
+        "id": 1792753000004,
+        "name": "Minimalist Camp Collar Evening Shirt",
+        "category": "AFTER OFFICE",
+        "price": "2399",
+        "discount_price": "1799",
+        "description": "Clean camp collar silhouette cut from breathable rayon-linen blend with clean drape and effortless fluidity.",
+        "photos": [
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file27.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file28.webp",
+          "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file29.webp"
+        ],
+        "is_category_cover": false,
+        "is_showcase": false,
+        "is_new_arrival": false,
+        "is_mix": true,
+        "is_enabled": true
+      }
+    ]
   },
-  "filename": "2026-10-26-123610-configuration.json",
+  "filename": "2026-10-30-081900-configuration.json",
   "userEmail": "nitikesh@tambnick25.onmicrosoft.com",
   "userName": "nitikesh",
   "organizationName": "Bandhan",
@@ -456,7 +851,7 @@
   "github": {
     "repository": "https://github.com/Noblecompute/NobleApp_bandhan",
     "branch": "main",
-    "publishedAt": "2026-10-27T14:01:22.948Z",
+    "publishedAt": "2026-10-30T08:19:02.928Z",
     "mediaBaseUrl": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/"
   }
 }
