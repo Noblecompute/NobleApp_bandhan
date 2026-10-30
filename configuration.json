@@ -1,9 +1,9 @@
 {
-  "currentCount": 47,
-  "timestamp": "2026-10-30T11:21:30.425Z",
+  "currentCount": 54,
+  "timestamp": "2026-10-30T11:59:57.740Z",
   "data": {
-    "currentCount": 47,
-    "timestamp": "2026-10-30T11:21:30.425Z",
+    "currentCount": 54,
+    "timestamp": "2026-10-30T11:59:57.740Z",
     "brand": {
       "brand_name": "UrbanEdge",
       "brand_tagline": "Wear Your Edge",
@@ -13,8 +13,9 @@
       {
         "id": 1,
         "category_name": "Home",
-        "category_image": "",
-        "link": ""
+        "category_image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file48.webp",
+        "link": "",
+        "cover_product_id": 1793361389746
       },
       {
         "id": 1792749763143,
@@ -189,12 +190,35 @@
         "twitter": "https://www.powerlook.in/"
       }
     },
-    "subpages": [],
+    "subpages": [
+      {
+        "id": 1793361389746,
+        "name": "Black Kurta Style Regular Fit Full Sleeves Shirt",
+        "category": "Home",
+        "price": "1,399",
+        "discount_price": "1329",
+        "description": "Take tradition and mix it with a modern vibeâ€”that's this black kurta-style shirt. Just a sharp, black kurta-style shirt that speaks volumes without saying a word. With its full sleeves, structured collar, and a relaxed yet put-together fit, this piece is the definition of effortless power dressing. Crafted from 86% viscose and 14% nylon, itâ€™s soft, smooth, and drapes like a dreamâ€”making you look sharp without even trying.",
+        "photos": [
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file48.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file49.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file50.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file51.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file52.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file53.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file54.webp"
+        ],
+        "is_category_cover": true,
+        "is_showcase": false,
+        "is_new_arrival": false,
+        "is_mix": false,
+        "is_enabled": true
+      }
+    ],
     "showcase": [],
     "NewArrival": [],
     "Mix": []
   },
-  "filename": "2026-10-30-112130-configuration.json",
+  "filename": "2026-10-30-115957-configuration.json",
   "userEmail": "nitikesh@tambnick25.onmicrosoft.com",
   "userName": "nitikesh",
   "organizationName": "Bandhan",
@@ -203,7 +227,7 @@
   "github": {
     "repository": "https://github.com/Noblecompute/NobleApp_bandhan",
     "branch": "main",
-    "publishedAt": "2026-10-30T11:21:31.640Z",
+    "publishedAt": "2026-10-30T12:00:06.182Z",
     "mediaBaseUrl": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/"
   }
 }
