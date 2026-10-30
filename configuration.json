@@ -1,9 +1,9 @@
 {
-  "currentCount": 55,
-  "timestamp": "2026-10-30T12:10:44.853Z",
+  "currentCount": 70,
+  "timestamp": "2026-10-30T12:14:33.373Z",
   "data": {
-    "currentCount": 55,
-    "timestamp": "2026-10-30T12:10:44.853Z",
+    "currentCount": 70,
+    "timestamp": "2026-10-30T12:14:33.373Z",
     "brand": {
       "brand_name": "UrbanEdge",
       "brand_tagline": "Wear Your Edge",
@@ -14,8 +14,7 @@
         "id": 1,
         "category_name": "Home",
         "category_image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file48.webp",
-        "link": "",
-        "cover_product_id": 1793361389746
+        "link": ""
       },
       {
         "id": 1792749763143,
@@ -27,7 +26,8 @@
         "id": 1792749774692,
         "category_name": "DATE READY",
         "category_image": "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file8.webp",
-        "link": ""
+        "link": "",
+        "cover_product_id": 1793361389746
       },
       {
         "id": 1792749782402,
@@ -194,7 +194,7 @@
       {
         "id": 1793361389746,
         "name": "Black Kurta Style Regular Fit Full Sleeves Shirt",
-        "category": "Home",
+        "category": "DATE READY",
         "price": "1,399",
         "discount_price": "1329",
         "description": "Take tradition and mix it with a modern vibeâ€”that's this black kurta-style shirt. Just a sharp, black kurta-style shirt that speaks volumes without saying a word. With its full sleeves, structured collar, and a relaxed yet put-together fit, this piece is the definition of effortless power dressing. Crafted from 86% viscose and 14% nylon, itâ€™s soft, smooth, and drapes like a dreamâ€”making you look sharp without even trying.",
@@ -212,13 +212,58 @@
         "is_new_arrival": false,
         "is_mix": false,
         "is_enabled": true
+      },
+      {
+        "id": 1793362284790,
+        "name": "Beige Corduroy Buttondown Shirt 100% Cotton",
+        "category": "DATE READY",
+        "price": "1,199",
+        "discount_price": "1139",
+        "description": "Clean, calm, and endlessly wearable. This beige corduroy shirt keeps things minimal but elevated with its fine texture and relaxed structure. Perfect for days when you want to look put-together",
+        "photos": [
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file56.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file57.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file58.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file59.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file60.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file61.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file62.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file63.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file64.webp"
+        ],
+        "is_category_cover": false,
+        "is_showcase": false,
+        "is_new_arrival": false,
+        "is_mix": false,
+        "is_enabled": true
+      },
+      {
+        "id": 1793362347376,
+        "name": "Beige Embroidered Knitted T-Shirt",
+        "category": "DATE READY",
+        "price": "1,299",
+        "discount_price": "1234",
+        "description": "Beige embroidery adds measured surface detailing across the knitted construction of this T-shirt. Crafted from knitted fabric, it features a regular silhouette, crew neckline and short sleeves, with embroidered elements distributed across the body. The beige base keeps the threadwork clearly visible while preserving the consistent texture of the knit. Add this POWERLOOK T-shirt when embroidered detailing and a defined knitted surface form the central design elements.",
+        "photos": [
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file65.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file66.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file67.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file68.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file69.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file70.webp"
+        ],
+        "is_category_cover": false,
+        "is_showcase": false,
+        "is_new_arrival": false,
+        "is_mix": false,
+        "is_enabled": true
       }
     ],
     "showcase": [],
     "NewArrival": [],
     "Mix": []
   },
-  "filename": "2026-10-30-121044-configuration.json",
+  "filename": "2026-10-30-121433-configuration.json",
   "userEmail": "nitikesh@tambnick25.onmicrosoft.com",
   "userName": "nitikesh",
   "organizationName": "Bandhan",
@@ -227,7 +272,7 @@
   "github": {
     "repository": "https://github.com/Noblecompute/NobleApp_bandhan",
     "branch": "main",
-    "publishedAt": "2026-10-30T12:10:47.646Z",
+    "publishedAt": "2026-10-30T12:14:50.435Z",
     "mediaBaseUrl": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/"
   }
 }
