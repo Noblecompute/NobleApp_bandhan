@@ -1,11 +1,11 @@
 {
   "currentCount": 1,
-  "timestamp": "2026-11-04T13:21:06.900Z",
+  "timestamp": "2026-11-04T13:55:50.081Z",
   "data": {
     "currentCount": 1,
-    "timestamp": "2026-11-04T13:21:06.900Z",
+    "timestamp": "2026-11-04T13:55:50.081Z",
     "brand": {
-      "brand_name": "x",
+      "brand_name": "awdfesdgfhn",
       "brand_tagline": "Wear Your Edge",
       "brand_logo": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file1.png"
     },
@@ -128,7 +128,7 @@
     "NewArrival": [],
     "Mix": []
   },
-  "filename": "2026-11-04-132106-configuration.json",
+  "filename": "2026-11-04-135550-configuration.json",
   "userEmail": "nitikesh@tambnick25.onmicrosoft.com",
   "userName": "nitikesh",
   "organizationName": "Bandhan",
@@ -137,7 +137,7 @@
   "github": {
     "repository": "https://github.com/Noblecompute/NobleApp_bandhan",
     "branch": "main",
-    "publishedAt": "2026-11-04T13:21:15.431Z",
+    "publishedAt": "2026-11-04T13:55:51.484Z",
     "mediaBaseUrl": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/"
   }
 }
