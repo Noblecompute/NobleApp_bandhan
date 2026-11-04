@@ -1,9 +1,9 @@
 {
-  "currentCount": 1,
-  "timestamp": "2026-11-04T13:56:51.184Z",
+  "currentCount": 7,
+  "timestamp": "2026-11-04T14:03:25.554Z",
   "data": {
-    "currentCount": 1,
-    "timestamp": "2026-11-04T13:56:51.184Z",
+    "currentCount": 7,
+    "timestamp": "2026-11-04T14:03:25.554Z",
     "brand": {
       "brand_name": "UrbanEdge",
       "brand_tagline": "Wear Your Edge",
@@ -47,7 +47,41 @@
         "link": ""
       }
     ],
-    "hero": [],
+    "hero": [
+      {
+        "title": "",
+        "link": "",
+        "image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file2.jpg",
+        "desktop_image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file2.jpg",
+        "mobile_image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file3.jpg",
+        "desktop_fit_mode": "contain",
+        "mobile_fit_mode": "contain",
+        "view_mode": "auto",
+        "category": "Home"
+      },
+      {
+        "title": "",
+        "link": "",
+        "image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file4.jpg",
+        "desktop_image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file4.jpg",
+        "mobile_image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file5.jpg",
+        "desktop_fit_mode": "contain",
+        "mobile_fit_mode": "contain",
+        "view_mode": "auto",
+        "category": "Home"
+      },
+      {
+        "title": "",
+        "link": "",
+        "image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file6.jpg",
+        "desktop_image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file6.jpg",
+        "mobile_image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file7.jpg",
+        "desktop_fit_mode": "contain",
+        "mobile_fit_mode": "contain",
+        "view_mode": "auto",
+        "category": "Home"
+      }
+    ],
     "instagram": [],
     "news": [
       {
@@ -128,7 +162,7 @@
     "NewArrival": [],
     "Mix": []
   },
-  "filename": "2026-11-04-135651-configuration.json",
+  "filename": "2026-11-04-140325-configuration.json",
   "userEmail": "nitikesh@tambnick25.onmicrosoft.com",
   "userName": "nitikesh",
   "organizationName": "Bandhan",
@@ -137,7 +171,7 @@
   "github": {
     "repository": "https://github.com/Noblecompute/NobleApp_bandhan",
     "branch": "main",
-    "publishedAt": "2026-11-04T13:56:52.579Z",
+    "publishedAt": "2026-11-04T14:03:33.689Z",
     "mediaBaseUrl": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/"
   }
 }
