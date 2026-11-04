@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "currentCount": 46,
   "timestamp": "2026-10-27T14:01:05.171Z",
   "data": {
@@ -6,6 +7,15 @@
     "timestamp": "2026-10-26T12:36:10.882Z",
     "brand": {
       "brand_name": "UrbanEdge",
+=======
+  "currentCount": 4,
+  "timestamp": "2026-11-04T12:51:20.193Z",
+  "data": {
+    "currentCount": 4,
+    "timestamp": "2026-11-04T12:51:20.193Z",
+    "brand": {
+      "brand_name": "",
+>>>>>>> 76a17d484b7d8d15fa98d72c0882f2385d4cb2bc
       "brand_tagline": "Wear Your Edge",
       "brand_logo": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file1.png"
     },
@@ -17,6 +27,7 @@
         "link": ""
       },
       {
+<<<<<<< HEAD
         "id": 1792749763143,
         "category_name": "CHAIN TREND",
         "category_image": "https://raw.githubusercontent.com/Noblecompute/customapp-bandhan/main/media/file31.webp",
@@ -101,22 +112,74 @@
         "link": ""
       },
       {
+=======
+        "id": 1793796579549,
+        "category_name": "DATE READY",
+        "category_image": "",
+        "link": ""
+      },
+      {
+        "id": 1793796618335,
+        "category_name": "CONCERT FITS",
+        "category_image": "",
+        "link": ""
+      },
+      {
+        "id": 1793796618490,
+        "category_name": "LINEN COLLECTION",
+        "category_image": "",
+        "link": ""
+      },
+      {
+        "id": 1793796618665,
+        "category_name": "AFTER OFFICE",
+        "category_image": "",
+        "link": ""
+      },
+      {
+        "id": 1793796618842,
+        "category_name": "9 TO 5",
+        "category_image": "",
+        "link": ""
+      }
+    ],
+    "hero": [],
+    "instagram": [],
+    "news": [
+      {
+>>>>>>> 76a17d484b7d8d15fa98d72c0882f2385d4cb2bc
         "headline": "Flat 10% OFF on your 1st Order | Use Code : FIRST10",
         "link": ""
       },
       {
+<<<<<<< HEAD
         "headline": "Buy 3 Get 500 Rs Off | Use Code",
+=======
+        "headline": "Get 5% Cashback on All App Orders",
+        "link": ""
+      },
+      {
+        "headline": "Buy 2 Get 250 Rs Off | Use Code : B2G250",
+>>>>>>> 76a17d484b7d8d15fa98d72c0882f2385d4cb2bc
         "link": ""
       }
     ],
     "story": [],
     "topics": [
       {
+<<<<<<< HEAD
         "id": 1793108390218,
         "topic_name": "",
         "topic_image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file8.jpg",
         "image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file8.jpg",
         "desktop_image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file8.jpg",
+=======
+        "id": 1793796332165,
+        "topic_name": "",
+        "topic_image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file2.webp",
+        "image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file2.webp",
+        "desktop_image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file2.webp",
+>>>>>>> 76a17d484b7d8d15fa98d72c0882f2385d4cb2bc
         "mobile_image": "",
         "desktop_fit_mode": "contain",
         "mobile_fit_mode": "contain",
@@ -125,11 +188,19 @@
         "link": ""
       },
       {
+<<<<<<< HEAD
         "id": 1793108418117,
         "topic_name": "",
         "topic_image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file9.jpg",
         "image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file9.jpg",
         "desktop_image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file9.jpg",
+=======
+        "id": 1793796343771,
+        "topic_name": "",
+        "topic_image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file3.webp",
+        "image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file3.webp",
+        "desktop_image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file3.webp",
+>>>>>>> 76a17d484b7d8d15fa98d72c0882f2385d4cb2bc
         "mobile_image": "",
         "desktop_fit_mode": "contain",
         "mobile_fit_mode": "contain",
@@ -138,6 +209,7 @@
         "link": ""
       },
       {
+<<<<<<< HEAD
         "id": 1793109552643,
         "topic_name": "",
         "topic_image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file10.jpg",
@@ -169,6 +241,13 @@
         "topic_image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file12.jpg",
         "image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file12.jpg",
         "desktop_image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file12.jpg",
+=======
+        "id": 1793796350157,
+        "topic_name": "",
+        "topic_image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file4.webp",
+        "image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file4.webp",
+        "desktop_image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file4.webp",
+>>>>>>> 76a17d484b7d8d15fa98d72c0882f2385d4cb2bc
         "mobile_image": "",
         "desktop_fit_mode": "contain",
         "mobile_fit_mode": "contain",
@@ -178,6 +257,7 @@
       }
     ],
     "footer": {
+<<<<<<< HEAD
       "footer_company": "URBAN EDGE Pvt. Ltd.",
       "footer_address": "Lotus Corporate Park Wing G02 - 1502, Ram Mandir Lane, off Western Express Highway, Goregaon, Mumbai, 400063",
       "footer_phone": "+919004580603",
@@ -443,11 +523,35 @@
         "is_enabled": true
       }
     ],
+=======
+      "footer_company": "",
+      "footer_address": "",
+      "footer_phone": "",
+      "footer_email": "",
+      "footer_hours": "",
+      "footer_copyright": "",
+      "footer_tagline": "",
+      "company_links": [],
+      "policy_links": [],
+      "social_links": {
+        "facebook": "",
+        "instagram": "",
+        "youtube": "",
+        "whatsapp": "",
+        "twitter": ""
+      }
+    },
+    "subpages": [],
+>>>>>>> 76a17d484b7d8d15fa98d72c0882f2385d4cb2bc
     "showcase": [],
     "NewArrival": [],
     "Mix": []
   },
+<<<<<<< HEAD
   "filename": "2026-10-26-123610-configuration.json",
+=======
+  "filename": "2026-11-04-125120-configuration.json",
+>>>>>>> 76a17d484b7d8d15fa98d72c0882f2385d4cb2bc
   "userEmail": "nitikesh@tambnick25.onmicrosoft.com",
   "userName": "nitikesh",
   "organizationName": "Bandhan",
@@ -456,7 +560,11 @@
   "github": {
     "repository": "https://github.com/Noblecompute/NobleApp_bandhan",
     "branch": "main",
+<<<<<<< HEAD
     "publishedAt": "2026-10-27T14:01:22.948Z",
+=======
+    "publishedAt": "2026-11-04T12:51:21.487Z",
+>>>>>>> 76a17d484b7d8d15fa98d72c0882f2385d4cb2bc
     "mediaBaseUrl": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/"
   }
 }
