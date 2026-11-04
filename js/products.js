@@ -31,8 +31,8 @@ function calculateDiscount(original, discounted) {
 }
 
 // Dynamic Media Path Resolver:
-// Inspects whatever rawPath is currently in configuration.json,
-// resolves relative/absolute paths, and provides fallback resolution across extensions (.jpg, .webp, .png).
+// Prioritizes local ./media assets (instant, zero CORS, works offline & on GitHub Pages),
+// with multi-tier remote and cross-extension (.jpg, .webp, .png) fallbacks.
 function resolveMediaUrl(rawPath) {
   if (!rawPath) return { src: '', fallback: '', altFallback: '', extFallback: '' };
   const trimmed = String(rawPath).trim();
@@ -48,34 +48,48 @@ function resolveMediaUrl(rawPath) {
     ? window.ProductStore.config.github.mediaBaseUrl.replace(/\/$/, '')
     : 'https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media';
 
-  // 1. If it's a full remote URL (HTTP/HTTPS)
-  if (trimmed.startsWith('http://') || trimmed.startsWith('https://')) {
+  const isProjectMedia = trimmed.includes('githubusercontent.com') || 
+                         trimmed.includes('/media/') || 
+                         trimmed.startsWith('./media/') || 
+                         trimmed.startsWith('media/') || 
+                         /^file\d+\.(jpg|jpeg|webp|png)$/i.test(filename) ||
+                         !trimmed.startsWith('http');
+
+  if (!isProjectMedia) {
+    // Pure external CDN link
     return {
       src: trimmed,
       fallback: `./media/${filename}`,
       altFallback: `./media/${altFilename}`,
-      extFallback: `${mediaBaseUrl}/${filename}`
+      extFallback: ''
     };
   }
 
-  // 2. If it's a relative path starting with ./ or media/
-  if (trimmed.startsWith('./') || trimmed.startsWith('media/')) {
-    const clean = trimmed.startsWith('./') ? trimmed : `./${trimmed}`;
-    return {
-      src: clean,
-      fallback: `./media/${altFilename}`,
-      altFallback: `${mediaBaseUrl}/${filename}`,
-      extFallback: `${mediaBaseUrl}/${altFilename}`
-    };
-  }
-
-  // 3. Bare filename e.g. "photo.webp" or "apparel.jpg"
+  // Project media asset:
+  // Primary src is local relative path `./media/${filename}` (instant loading, zero CORS issues, works offline & deployed)
   return {
-    src: `./media/${trimmed}`,
-    fallback: `./media/${altFilename}`,
-    altFallback: `${mediaBaseUrl}/${trimmed}`,
+    src: `./media/${filename}`,
+    fallback: trimmed.startsWith('http') ? trimmed : `${mediaBaseUrl}/${filename}`,
+    altFallback: `./media/${altFilename}`,
     extFallback: `${mediaBaseUrl}/${altFilename}`
   };
+}
+
+// Fallback handler for responsive <picture> elements:
+// When an <img> inside a <picture> fails, removes dead <source> siblings so img.src takes visual effect!
+function handlePictureFallback(img, desktopFallback, mobileFallback) {
+  if (!img) return;
+  const pic = img.closest('picture');
+  if (pic) {
+    pic.querySelectorAll('source').forEach(s => s.remove());
+  }
+  if (!img.dataset.fallbackTried) {
+    img.dataset.fallbackTried = '1';
+    img.src = desktopFallback || mobileFallback || '';
+  } else if (!img.dataset.altTried && mobileFallback && mobileFallback !== desktopFallback) {
+    img.dataset.altTried = '1';
+    img.src = mobileFallback;
+  }
 }
 
 // Resolves responsive desktop and mobile media with mutual cross-fallback:
@@ -98,8 +112,8 @@ function resolveResponsiveMedia(item, defaultAlt = '') {
   const desktopMedia = resolveMediaUrl(finalDesktopPath);
   const mobileMedia = resolveMediaUrl(finalMobilePath);
 
-  const desktopFitMode = item.desktop_fit_mode || item.fit_mode || 'cover';
-  const mobileFitMode = item.mobile_fit_mode || item.fit_mode || 'cover';
+  const desktopFitMode = item.desktop_fit_mode || item.fit_mode || 'contain';
+  const mobileFitMode = item.mobile_fit_mode || item.fit_mode || 'contain';
   const viewMode = item.view_mode || 'auto';
 
   return {
@@ -121,8 +135,7 @@ function renderResponsivePictureTag(responsiveData, imgClassName = '', loading =
   const alt = escapeHtml(responsiveData.alt || 'Fashion Campaign');
   const safeClass = escapeHtml(imgClassName);
 
-  // Multi-tier onerror handler
-  const onerrorStr = `if(!this.dataset.fallbackTried){ this.dataset.fallbackTried='1'; this.src='${escapeHtml(desktop.fallback)}'; } else if(!this.dataset.altTried && '${escapeHtml(desktop.altFallback)}'){ this.dataset.altTried='1'; this.src='${escapeHtml(desktop.altFallback)}'; } else if(!this.dataset.extTried && '${escapeHtml(desktop.extFallback || '')}'){ this.dataset.extTried='1'; this.src='${escapeHtml(desktop.extFallback || '')}'; }`;
+  const onerrorStr = `window.handlePictureFallback && window.handlePictureFallback(this, '${escapeHtml(desktop.fallback)}', '${escapeHtml(mobile.fallback)}')`;
 
   return `
     <picture class="responsive-picture">
@@ -228,20 +241,48 @@ const ProductStore = {
 
   async init() {
     let rawConfig = null;
+
+    // Stage 1: Live fetch with cache-busting timestamp so user edits to configuration.json show immediately
     try {
-      // Live fetch with cache-busting timestamp so edits to configuration.json show immediately
       const url = `configuration.json?t=${Date.now()}`;
       const res = await fetch(url, { cache: 'no-store' });
-      if (!res.ok) throw new Error(`HTTP ${res.status} when loading configuration.json`);
-      rawConfig = await res.json();
+      if (res.ok) {
+        rawConfig = await res.json();
+      }
     } catch (err) {
-      console.error('Failed to live-load configuration.json:', err);
-      // Fallback attempt without query param if local server rejected query strings
+      // Stage 2: Fallback attempt without query param if local server rejected query strings
       try {
         const res2 = await fetch('configuration.json');
         if (res2.ok) rawConfig = await res2.json();
       } catch (err2) {
-        console.error('Secondary configuration load also failed:', err2);
+        // Continue to offline/DOM fallbacks
+      }
+    }
+
+    // Stage 3: Embedded DOM script fallback (guarantees zero CORS failures when opened via file:// protocol)
+    if (!rawConfig) {
+      try {
+        const embeddedEl = typeof document !== 'undefined' ? document.getElementById('bandhan-embedded-config') : null;
+        if (embeddedEl && embeddedEl.textContent.trim()) {
+          rawConfig = JSON.parse(embeddedEl.textContent);
+        }
+      } catch (errEmbedded) {
+        console.warn('Embedded config parse error:', errEmbedded);
+      }
+    }
+
+    // Stage 4: Global window.BANDHAN_CONFIG variable
+    if (!rawConfig && typeof window !== 'undefined' && window.BANDHAN_CONFIG) {
+      rawConfig = window.BANDHAN_CONFIG;
+    }
+
+    // Stage 5: Remote GitHub Raw live fetch (supports CORS across all origins including file://)
+    if (!rawConfig) {
+      try {
+        const res3 = await fetch('https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/configuration.json');
+        if (res3.ok) rawConfig = await res3.json();
+      } catch (errRemote) {
+        // Exhausted fallbacks
       }
     }
 
@@ -614,16 +655,26 @@ function renderTopicBannerHtml(topic, index = 0, variant = 'grid-break') {
   const targetCategory = window.ProductStore ? window.ProductStore.resolveTopicTarget(topic) : (topic.category || 'all');
   const safeCat = escapeHtml(targetCategory);
   const safeName = escapeHtml(topic.name || topic.category || 'Curated Style Campaign');
-  const tagText = targetCategory.toLowerCase() === 'all' ? 'SHOP ALL STYLES' : `SHOP ${safeCat.toUpperCase()}`;
+
+  // Intelligent label: use topic name or category if present; if blank, elegant "EXPLORE COLLECTION"
+  const tagText = topic.name && topic.name.trim() 
+    ? `EXPLORE ${escapeHtml(topic.name.toUpperCase())}`
+    : (topic.category && topic.category.trim()
+        ? `SHOP ${escapeHtml(topic.category.toUpperCase())}`
+        : (targetCategory.toLowerCase() !== 'all' ? `SHOP ${safeCat.toUpperCase()}` : 'EXPLORE COLLECTION'));
+
+  const linkHref = topic.link && topic.link.trim() 
+    ? escapeHtml(topic.link.trim())
+    : `index.html?category=${encodeURIComponent(targetCategory)}#catalog`;
 
   const pictureTag = renderResponsivePictureTag(resp, 'topic-banner-img', 'lazy');
   const fitClass = `fit-desktop-${escapeHtml(resp.desktopFitMode || 'contain')} fit-mobile-${escapeHtml(resp.mobileFitMode || 'contain')}`;
 
   return `
     <aside class="topic-campaign-card ${escapeHtml(variant)}" data-topic-index="${index}" data-topic-category="${safeCat}">
-      <a href="index.html?category=${encodeURIComponent(targetCategory)}#catalog" 
+      <a href="${linkHref}" 
          class="topic-banner-link" 
-         onclick="window.navigateToCategory && window.navigateToCategory(event, '${safeCat}')"
+         onclick="if(!this.href.includes('://')) window.navigateToCategory && window.navigateToCategory(event, '${safeCat}')"
          aria-label="Explore ${safeName}">
         <div class="topic-banner-media ${fitClass}">
           ${pictureTag}
@@ -645,6 +696,7 @@ window.renderCategoryCardHtml = renderCategoryCardHtml;
 window.renderTopicBannerHtml = renderTopicBannerHtml;
 window.resolveResponsiveMedia = resolveResponsiveMedia;
 window.renderResponsivePictureTag = renderResponsivePictureTag;
+window.handlePictureFallback = handlePictureFallback;
 window.formatPrice = formatPrice;
 window.escapeHtml = escapeHtml;
 window.resolveMediaUrl = resolveMediaUrl;

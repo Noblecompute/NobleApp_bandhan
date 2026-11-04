@@ -1139,9 +1139,12 @@ main {
 .campaign-editorial-strip {
   position: relative;
   width: 100%;
-  margin: clamp(2.5rem, 4.5vw, 4rem) 0;
+  max-width: var(--container-max, 1280px);
+  margin: clamp(1.5rem, 3vw, 2.5rem) auto;
+  padding: 0 var(--container-gutter, 1.25rem);
+  box-sizing: border-box;
   overflow: hidden;
-  background-color: #111111;
+  border-radius: var(--border-radius-sm, 6px);
 }
 
 .campaign-strip-link {
@@ -1536,7 +1539,7 @@ main {
   padding: 0 0.5rem;
 }
 
-/* Product Grid — Powerlook 4-Column Presentation */
+/* Product Grid — Powerlook 4-Column Presentation (2 cols on mobile, 4 cols on tablet & desktop) */
 .products-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -1544,12 +1547,6 @@ main {
 }
 
 @media (min-width: 768px) {
-  .products-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (min-width: 1024px) {
   .products-grid {
     grid-template-columns: repeat(4, 1fr);
   }
@@ -1561,17 +1558,19 @@ main {
 
 .topic-campaign-card {
   position: relative;
+  display: block;
+  width: 100%;
   border-radius: var(--border-radius-sm, 6px);
   overflow: hidden;
-  background-color: var(--color-charcoal);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  background-color: var(--color-warm-ivory, #f9ebd7);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
   transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .topic-campaign-card.grid-break {
   grid-column: 1 / -1;
   width: 100%;
-  margin: clamp(1rem, 2vw, 2.5rem) 0;
+  margin: clamp(1.25rem, 2.5vw, 2.5rem) 0;
 }
 
 .topic-campaign-card.category-header-banner {
@@ -1582,7 +1581,7 @@ main {
 
 .topic-campaign-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .topic-banner-link {
@@ -1597,7 +1596,7 @@ main {
 .topic-banner-media {
   position: relative;
   width: 100%;
-  background-color: #0b1210;
+  background-color: #f3eee6;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -1642,11 +1641,17 @@ main {
 .topic-banner-img {
   width: 100%;
   height: auto;
-  max-height: clamp(180px, 28vw, 320px);
+  max-height: clamp(200px, 28vw, 360px);
   object-fit: cover;
   object-position: center;
   display: block;
   transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), filter 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .topic-banner-img {
+    max-height: clamp(160px, 45vw, 260px);
+  }
 }
 
 .topic-campaign-card:hover .topic-banner-img {

@@ -393,13 +393,13 @@ function renderDynamicHeroSlider() {
     return `
       <article class="hero-slide ${i === 0 ? 'active' : ''}">
         <div class="hero-media-wrap fit-desktop-${escapeHtml(h.desktop_fit_mode || 'cover')} fit-mobile-${escapeHtml(h.mobile_fit_mode || 'cover')}">
-          <picture>
+          <picture class="responsive-picture">
             <source media="(max-width: 768px)" srcset="${escapeHtml(mobileMedia.src)}" />
             <source media="(min-width: 769px)" srcset="${escapeHtml(desktopMedia.src)}" />
             <img 
               src="${escapeHtml(desktopMedia.src)}" 
               alt="${escapeHtml(category)} Campaign" 
-              onerror="if(!this.dataset.fallbackTried){ this.dataset.fallbackTried='1'; this.src='${escapeHtml(desktopMedia.fallback)}'; } else if(!this.dataset.altTried && '${escapeHtml(desktopMedia.altFallback)}'){ this.dataset.altTried='1'; this.src='${escapeHtml(desktopMedia.altFallback)}'; }"
+              onerror="window.handlePictureFallback && window.handlePictureFallback(this, '${escapeHtml(desktopMedia.fallback)}', '${escapeHtml(mobileMedia.fallback)}')"
             />
           </picture>
           <div class="hero-overlay-gradient"></div>
@@ -757,8 +757,10 @@ function renderCatalogGrid() {
       return window.renderProductCardHtml(p, isWishlisted);
     }).join('');
   } else if (topics.length > 0 && !hasSearch && window.renderTopicBannerHtml) {
-    // "All Collections" view: Dynamically intersperse topic banners between product batches
-    const interval = Math.max(2, Math.min(4, Math.ceil(filtered.length / (topics.length + 1))));
+    // "All Collections" view: Dynamically intersperse topic banners between complete 4-column product rows.
+    // Interval is strictly a multiple of 4 (4 on desktop, 2x2 on mobile) to ensure zero empty grid gaps!
+    // And topics only appear between product batches — never two topics in direct sequence!
+    const interval = (filtered.length >= 24 && topics.length <= 3) ? 8 : 4;
     let topicIdx = 0;
 
     for (let i = 0; i < filtered.length; i++) {
@@ -766,17 +768,17 @@ function renderCatalogGrid() {
       const isWishlisted = window.WishlistStore ? window.WishlistStore.has(p.id) : false;
       html += window.renderProductCardHtml(p, isWishlisted);
 
-      // Intersperse topic banner between product rows
+      // Intersperse topic banner strictly after complete full rows
       if ((i + 1) % interval === 0 && topicIdx < topics.length) {
         html += window.renderTopicBannerHtml(topics[topicIdx], topicIdx, 'grid-break');
         topicIdx++;
       }
     }
 
-    // If any topics remain, append at end of catalog
-    while (topicIdx < topics.length) {
-      html += window.renderTopicBannerHtml(topics[topicIdx], topicIdx, 'grid-break');
-      topicIdx++;
+    // If filtered catalog was smaller than interval (e.g. 1-3 products) and no topic was shown yet,
+    // display at most one elegant closing banner (never multiple stacked in sequence!)
+    if (topicIdx === 0 && topics.length > 0) {
+      html += window.renderTopicBannerHtml(topics[0], 0, 'grid-break');
     }
   } else {
     // Standard flat products list (for flag filters or search)
@@ -1530,4 +1532,9 @@ window.resetCatalogFilters = resetCatalogFilters;
 window.initStorefront = initStorefront;
 window.renderDynamicHeader = renderDynamicHeader;
 window.renderDynamicAnnouncementBar = renderDynamicAnnouncementBar;
+window.renderDynamicHeroSlider = renderDynamicHeroSlider;
+window.renderDynamicCategories = renderDynamicCategories;
+window.renderDynamicCatalogFilters = renderDynamicCatalogFilters;
+window.renderCatalogGrid = renderCatalogGrid;
+window.renderDynamicMixSpotlight = renderDynamicMixSpotlight;
 window.renderDynamicFooter = renderDynamicFooter;
