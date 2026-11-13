@@ -1,0 +1,190 @@
+{
+  "currentCount": 9,
+  "timestamp": "2026-11-13T11:25:25.950Z",
+  "data": {
+    "currentCount": 9,
+    "timestamp": "2026-11-13T11:25:25.950Z",
+    "brand": {
+      "brand_name": "UrbanEdge",
+      "brand_tagline": "Wear Your Edge.",
+      "brand_logo": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file1.png"
+    },
+    "categories": [
+      {
+        "id": 1,
+        "category_name": "Home",
+        "category_image": "",
+        "link": ""
+      },
+      {
+        "id": 1794568994993,
+        "category_name": "DATE READY",
+        "category_image": "",
+        "link": ""
+      },
+      {
+        "id": 1794569016194,
+        "category_name": "CONCERT FITS",
+        "category_image": "",
+        "link": ""
+      },
+      {
+        "id": 1794569016390,
+        "category_name": "LINEN COLLECTION",
+        "category_image": "",
+        "link": ""
+      },
+      {
+        "id": 1794569016575,
+        "category_name": "AFTER OFFICE",
+        "category_image": "",
+        "link": ""
+      },
+      {
+        "id": 1794569016765,
+        "category_name": "9 TO 5",
+        "category_image": "",
+        "link": ""
+      }
+    ],
+    "hero": [
+      {
+        "title": "",
+        "link": "",
+        "image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file2.jpg",
+        "desktop_image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file2.jpg",
+        "mobile_image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file3.jpg",
+        "desktop_fit_mode": "contain",
+        "mobile_fit_mode": "contain",
+        "view_mode": "auto",
+        "category": "Home"
+      },
+      {
+        "title": "",
+        "link": "",
+        "image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file4.jpg",
+        "desktop_image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file4.jpg",
+        "mobile_image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file5.jpg",
+        "desktop_fit_mode": "contain",
+        "mobile_fit_mode": "contain",
+        "view_mode": "auto",
+        "category": "Home"
+      },
+      {
+        "title": "",
+        "link": "",
+        "image": "",
+        "desktop_image": "",
+        "mobile_image": "",
+        "desktop_fit_mode": "contain",
+        "mobile_fit_mode": "contain",
+        "view_mode": "auto",
+        "category": "Home"
+      }
+    ],
+    "instagram": [],
+    "news": [
+      {
+        "headline": "Flat 10% OFF on your 1st Order | Use Code : FIRST10",
+        "link": ""
+      },
+      {
+        "headline": "Get 5% Cashback on All App Orders",
+        "link": ""
+      },
+      {
+        "headline": "Buy 2 Get 250 Rs Off | Use Code : B2G2",
+        "link": ""
+      }
+    ],
+    "story": [],
+    "topics": [
+      {
+        "id": 1794569081214,
+        "topic_name": "",
+        "topic_image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file6.jpg",
+        "image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file6.jpg",
+        "desktop_image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file6.jpg",
+        "mobile_image": "",
+        "desktop_fit_mode": "contain",
+        "mobile_fit_mode": "contain",
+        "view_mode": "auto",
+        "category": "",
+        "link": ""
+      },
+      {
+        "id": 1794569094154,
+        "topic_name": "",
+        "topic_image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file7.jpg",
+        "image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file7.jpg",
+        "desktop_image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file7.jpg",
+        "mobile_image": "",
+        "desktop_fit_mode": "contain",
+        "mobile_fit_mode": "contain",
+        "view_mode": "auto",
+        "category": "",
+        "link": ""
+      },
+      {
+        "id": 1794569094731,
+        "topic_name": "",
+        "topic_image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file8.webp",
+        "image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file8.webp",
+        "desktop_image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file8.webp",
+        "mobile_image": "",
+        "desktop_fit_mode": "contain",
+        "mobile_fit_mode": "contain",
+        "view_mode": "auto",
+        "category": "",
+        "link": ""
+      },
+      {
+        "id": 1794569108218,
+        "topic_name": "",
+        "topic_image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file9.jpg",
+        "image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file9.jpg",
+        "desktop_image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file9.jpg",
+        "mobile_image": "",
+        "desktop_fit_mode": "contain",
+        "mobile_fit_mode": "contain",
+        "view_mode": "auto",
+        "category": "",
+        "link": ""
+      }
+    ],
+    "footer": {
+      "footer_company": "",
+      "footer_address": "",
+      "footer_phone": "",
+      "footer_email": "",
+      "footer_hours": "",
+      "footer_copyright": "",
+      "footer_tagline": "",
+      "company_links": [],
+      "policy_links": [],
+      "social_links": {
+        "facebook": "",
+        "instagram": "",
+        "youtube": "",
+        "whatsapp": "",
+        "twitter": ""
+      }
+    },
+    "subpages": [],
+    "showcase": [],
+    "NewArrival": [],
+    "Mix": []
+  },
+  "filename": "2026-11-13-112525-configuration.json",
+  "userEmail": "nitikesh@tambnick25.onmicrosoft.com",
+  "userName": "nitikesh",
+  "organizationName": "Bandhan",
+  "organizationSlug": "bandhan",
+  "workspaceType": "organization",
+  "github": {
+    "repository": "https://github.com/Noblecompute/NobleApp_bandhan",
+    "branch": "main",
+    "publishedAt": "2026-11-13T11:25:37.817Z",
+    "mediaBaseUrl": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/"
+  }
+}
