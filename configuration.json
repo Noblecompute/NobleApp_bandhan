@@ -1,9 +1,9 @@
 {
   "currentCount": 72,
-  "timestamp": "2026-11-13T11:42:36.975Z",
+  "timestamp": "2026-11-13T11:45:52.824Z",
   "data": {
     "currentCount": 72,
-    "timestamp": "2026-11-13T11:42:36.975Z",
+    "timestamp": "2026-11-13T11:45:52.824Z",
     "brand": {
       "brand_name": "UrbanEdge",
       "brand_tagline": "Wear Your Edge.",
@@ -19,14 +19,16 @@
       {
         "id": 1794568994993,
         "category_name": "DATE READY",
-        "category_image": "",
-        "link": ""
+        "category_image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file10.webp",
+        "link": "",
+        "cover_product_id": 1794569146315
       },
       {
         "id": 1794569016194,
         "category_name": "CONCERT FITS",
-        "category_image": "",
-        "link": ""
+        "category_image": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file50.webp",
+        "link": "",
+        "cover_product_id": 1794569681181
       },
       {
         "id": 1794569016390,
@@ -187,7 +189,7 @@
           "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file15.webp",
           "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file16.webp"
         ],
-        "is_category_cover": false,
+        "is_category_cover": true,
         "is_showcase": false,
         "is_new_arrival": false,
         "is_mix": false,
@@ -303,9 +305,30 @@
         "is_enabled": true
       },
       {
+        "id": 1794570339804,
+        "name": "Off White Structure Stripe Shirt",
+        "category": "9 TO 5",
+        "price": "549",
+        "discount_price": "499",
+        "description": "Stylish off-white textured stripe shirt with a modern look and comfortable fit. Perfect for casual and smart-casual occasions.",
+        "photos": [
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file32.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file33.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file34.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file35.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file36.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file37.webp"
+        ],
+        "is_category_cover": false,
+        "is_showcase": false,
+        "is_new_arrival": false,
+        "is_mix": false,
+        "is_enabled": true
+      },
+      {
         "id": 1794570038248,
         "name": "Off White Structure Stripe Shirt",
-        "category": "CONCERT FITS",
+        "category": "9 TO 5",
         "price": "549",
         "discount_price": "499",
         "description": "Stylish off-white textured stripe shirt with a modern look and comfortable fit. Perfect for casual and smart-casual occasions.",
@@ -327,6 +350,27 @@
         "id": 1794569455655,
         "name": "Butter Yellow Linen Blend Shirt",
         "category": "LINEN COLLECTION",
+        "price": "560",
+        "discount_price": "499",
+        "description": "Elegant butter yellow linen-blend shirt with a lightweight, breathable fabric and comfortable fit. Perfect for casual and smart-casual looks.",
+        "photos": [
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file38.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file39.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file40.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file41.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file42.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file43.webp"
+        ],
+        "is_category_cover": false,
+        "is_showcase": false,
+        "is_new_arrival": false,
+        "is_mix": false,
+        "is_enabled": true
+      },
+      {
+        "id": 1794570331443,
+        "name": "Butter Yellow Linen Blend Shirt",
+        "category": "9 TO 5",
         "price": "560",
         "discount_price": "499",
         "description": "Elegant butter yellow linen-blend shirt with a lightweight, breathable fabric and comfortable fit. Perfect for casual and smart-casual looks.",
@@ -389,7 +433,7 @@
       {
         "id": 1794569681181,
         "name": "Black & Brown Knitted Stripe T-Shirt 100% Cotton",
-        "category": "AFTER OFFICE",
+        "category": "CONCERT FITS",
         "price": "799",
         "discount_price": "699",
         "description": "Stylish black and brown knitted striped T-shirt made from 100% cotton for a soft, breathable, and comfortable feel. Perfect for everyday wear.",
@@ -401,7 +445,7 @@
           "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file54.webp",
           "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file55.webp"
         ],
-        "is_category_cover": false,
+        "is_category_cover": true,
         "is_showcase": false,
         "is_new_arrival": false,
         "is_mix": false,
@@ -431,7 +475,7 @@
       {
         "id": 1794569727310,
         "name": "Grey & Black Knitted Stripe T-Shirt 100% Cotton",
-        "category": "Home",
+        "category": "9 TO 5",
         "price": "699",
         "discount_price": "599",
         "description": "Stylish grey and black knitted striped T-shirt made from 100% cotton for a soft, breathable, and comfortable feel. Perfect for everyday wear.",
@@ -452,7 +496,7 @@
       {
         "id": 1794569771971,
         "name": "Wine Geometric Jacquard Cotton T-Shirt",
-        "category": "Home",
+        "category": "9 TO 5",
         "price": "699",
         "discount_price": "599",
         "description": "Stylish wine-coloured cotton T-shirt featuring a textured geometric jacquard pattern and a comfortable fit. Perfect for casual outings and everyday wear.",
@@ -515,7 +559,7 @@
     "NewArrival": [],
     "Mix": []
   },
-  "filename": "2026-11-13-114236-configuration.json",
+  "filename": "2026-11-13-114552-configuration.json",
   "userEmail": "nitikesh@tambnick25.onmicrosoft.com",
   "userName": "nitikesh",
   "organizationName": "Bandhan",
@@ -524,7 +568,7 @@
   "github": {
     "repository": "https://github.com/Noblecompute/NobleApp_bandhan",
     "branch": "main",
-    "publishedAt": "2026-11-13T11:42:38.183Z",
+    "publishedAt": "2026-11-13T11:45:54.070Z",
     "mediaBaseUrl": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/"
   }
 }
