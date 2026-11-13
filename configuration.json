@@ -1,9 +1,9 @@
 {
   "currentCount": 72,
-  "timestamp": "2026-11-13T11:49:16.522Z",
+  "timestamp": "2026-11-13T13:12:15.522Z",
   "data": {
     "currentCount": 72,
-    "timestamp": "2026-11-13T11:49:16.522Z",
+    "timestamp": "2026-11-13T13:12:15.522Z",
     "brand": {
       "brand_name": "UrbanEdge",
       "brand_tagline": "Wear Your Edge.",
@@ -191,7 +191,7 @@
         ],
         "is_category_cover": true,
         "is_showcase": false,
-        "is_new_arrival": false,
+        "is_new_arrival": true,
         "is_mix": false,
         "is_enabled": true
       },
@@ -237,7 +237,7 @@
         ],
         "is_category_cover": false,
         "is_showcase": false,
-        "is_new_arrival": false,
+        "is_new_arrival": true,
         "is_mix": false,
         "is_enabled": true
       },
@@ -258,7 +258,7 @@
         ],
         "is_category_cover": false,
         "is_showcase": false,
-        "is_new_arrival": false,
+        "is_new_arrival": true,
         "is_mix": false,
         "is_enabled": true
       },
@@ -279,7 +279,7 @@
         ],
         "is_category_cover": false,
         "is_showcase": false,
-        "is_new_arrival": false,
+        "is_new_arrival": true,
         "is_mix": false,
         "is_enabled": true
       },
@@ -426,7 +426,7 @@
         ],
         "is_category_cover": false,
         "is_showcase": false,
-        "is_new_arrival": false,
+        "is_new_arrival": true,
         "is_mix": false,
         "is_enabled": true
       },
@@ -468,7 +468,7 @@
         ],
         "is_category_cover": false,
         "is_showcase": false,
-        "is_new_arrival": false,
+        "is_new_arrival": true,
         "is_mix": false,
         "is_enabled": true
       },
@@ -556,10 +556,141 @@
       }
     ],
     "showcase": [],
-    "NewArrival": [],
+    "NewArrival": [
+      {
+        "id": 1794569146315,
+        "name": "Black Kurta Style Regular Fit Full Sleeves Shirt",
+        "category": "DATE READY",
+        "price": "549",
+        "discount_price": "499",
+        "description": "Stylish black kurta-style shirt featuring a comfortable regular fit and full sleeves. Perfect for casual outings, festive occasions, and everyday wear.",
+        "photos": [
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file10.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file11.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file12.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file13.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file14.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file15.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file16.webp"
+        ],
+        "is_category_cover": true,
+        "is_showcase": false,
+        "is_new_arrival": true,
+        "is_mix": false,
+        "is_enabled": true
+      },
+      {
+        "id": 1794569261532,
+        "name": "Beige Corduroy Buttondown Shirt",
+        "category": "AFTER OFFICE",
+        "price": "480",
+        "discount_price": "449",
+        "description": "Stylish beige corduroy button-down shirt with a comfortable fit and timeless look. Perfect for casual outings and everyday wear.",
+        "photos": [
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file17.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file18.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file19.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file20.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file21.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file22.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file23.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file24.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file25.webp"
+        ],
+        "is_category_cover": false,
+        "is_showcase": false,
+        "is_new_arrival": true,
+        "is_mix": false,
+        "is_enabled": true
+      },
+      {
+        "id": 1794569339565,
+        "name": "Beige Embroidered Knitted T-Shirt",
+        "category": "CONCERT FITS",
+        "price": "480",
+        "discount_price": "449",
+        "description": "Premium beige knitted T-shirt with stylish embroidered detailing and a comfortable fit. Ideal for casual and everyday styling.",
+        "photos": [
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file26.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file27.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file28.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file29.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file30.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file31.webp"
+        ],
+        "is_category_cover": false,
+        "is_showcase": false,
+        "is_new_arrival": true,
+        "is_mix": false,
+        "is_enabled": true
+      },
+      {
+        "id": 1794570027819,
+        "name": "Beige Embroidered Knitted T-Shirt",
+        "category": "AFTER OFFICE",
+        "price": "480",
+        "discount_price": "449",
+        "description": "Premium beige knitted T-shirt with stylish embroidered detailing and a comfortable fit. Ideal for casual and everyday styling.",
+        "photos": [
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file26.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file27.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file28.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file29.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file30.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file31.webp"
+        ],
+        "is_category_cover": false,
+        "is_showcase": false,
+        "is_new_arrival": true,
+        "is_mix": false,
+        "is_enabled": true
+      },
+      {
+        "id": 1794570118451,
+        "name": "Black Printed Zipper T-Shirt",
+        "category": "CONCERT FITS",
+        "price": "600",
+        "discount_price": "549",
+        "description": "Trendy black printed T-shirt featuring a stylish zipper detail and comfortable fit. Perfect for casual and everyday wear.",
+        "photos": [
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file44.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file45.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file46.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file47.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file48.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file49.webp"
+        ],
+        "is_category_cover": false,
+        "is_showcase": false,
+        "is_new_arrival": true,
+        "is_mix": false,
+        "is_enabled": true
+      },
+      {
+        "id": 1794570129140,
+        "name": "Black & Brown Knitted Stripe T-Shirt 100% Cotton",
+        "category": "DATE READY",
+        "price": "799",
+        "discount_price": "699",
+        "description": "Stylish black and brown knitted striped T-shirt made from 100% cotton for a soft, breathable, and comfortable feel. Perfect for everyday wear.",
+        "photos": [
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file50.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file51.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file52.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file53.jpg",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file54.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file55.webp"
+        ],
+        "is_category_cover": false,
+        "is_showcase": false,
+        "is_new_arrival": true,
+        "is_mix": false,
+        "is_enabled": true
+      }
+    ],
     "Mix": []
   },
-  "filename": "2026-11-13-114916-configuration.json",
+  "filename": "2026-11-13-131215-configuration.json",
   "userEmail": "nitikesh@tambnick25.onmicrosoft.com",
   "userName": "nitikesh",
   "organizationName": "Bandhan",
@@ -568,7 +699,7 @@
   "github": {
     "repository": "https://github.com/Noblecompute/NobleApp_bandhan",
     "branch": "main",
-    "publishedAt": "2026-11-13T11:49:17.754Z",
+    "publishedAt": "2026-11-13T13:12:16.763Z",
     "mediaBaseUrl": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/"
   }
 }
