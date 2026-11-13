@@ -1,9 +1,9 @@
 {
   "currentCount": 72,
-  "timestamp": "2026-11-13T11:45:52.824Z",
+  "timestamp": "2026-11-13T11:49:16.522Z",
   "data": {
     "currentCount": 72,
-    "timestamp": "2026-11-13T11:45:52.824Z",
+    "timestamp": "2026-11-13T11:49:16.522Z",
     "brand": {
       "brand_name": "UrbanEdge",
       "brand_tagline": "Wear Your Edge.",
@@ -155,19 +155,19 @@
       }
     ],
     "footer": {
-      "footer_company": "",
-      "footer_address": "",
-      "footer_phone": "",
-      "footer_email": "",
-      "footer_hours": "",
-      "footer_copyright": "",
-      "footer_tagline": "",
+      "footer_company": "Urban Edge Pvt Ltd",
+      "footer_address": "Lotus Corporate Park Wing G02 - 1502, Ram Mandir Lane, off Western Express Highway, Goregaon, Mumbai, 400063",
+      "footer_phone": "+91 9696333000",
+      "footer_email": "support@powerlook.in",
+      "footer_hours": "Mon - Sun : 10:00 AM - 06:00 PM",
+      "footer_copyright": "© 2026 UrbanEdge. All Rights Reserved.",
+      "footer_tagline": "UrbanEdge: Wear Your Edge.",
       "company_links": [],
       "policy_links": [],
       "social_links": {
-        "facebook": "",
-        "instagram": "",
-        "youtube": "",
+        "facebook": "https://www.facebook.com/powerlookofficial",
+        "instagram": "https://www.instagram.com/powerlookofficial",
+        "youtube": "https://www.youtube.com/@powerlook6252",
         "whatsapp": "",
         "twitter": ""
       }
@@ -559,7 +559,7 @@
     "NewArrival": [],
     "Mix": []
   },
-  "filename": "2026-11-13-114552-configuration.json",
+  "filename": "2026-11-13-114916-configuration.json",
   "userEmail": "nitikesh@tambnick25.onmicrosoft.com",
   "userName": "nitikesh",
   "organizationName": "Bandhan",
@@ -568,7 +568,7 @@
   "github": {
     "repository": "https://github.com/Noblecompute/NobleApp_bandhan",
     "branch": "main",
-    "publishedAt": "2026-11-13T11:45:54.070Z",
+    "publishedAt": "2026-11-13T11:49:17.754Z",
     "mediaBaseUrl": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/"
   }
 }
