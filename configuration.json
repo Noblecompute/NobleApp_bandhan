@@ -1,9 +1,9 @@
 {
-  "currentCount": 43,
-  "timestamp": "2026-11-13T11:31:55.983Z",
+  "currentCount": 72,
+  "timestamp": "2026-11-13T11:38:04.516Z",
   "data": {
-    "currentCount": 43,
-    "timestamp": "2026-11-13T11:31:55.983Z",
+    "currentCount": 72,
+    "timestamp": "2026-11-13T11:38:04.516Z",
     "brand": {
       "brand_name": "UrbanEdge",
       "brand_tagline": "Wear Your Edge.",
@@ -279,13 +279,117 @@
         "is_new_arrival": false,
         "is_mix": false,
         "is_enabled": true
+      },
+      {
+        "id": 1794569571783,
+        "name": "Black Printed Zipper T-Shirt",
+        "category": "Home",
+        "price": "600",
+        "discount_price": "549",
+        "description": "Trendy black printed T-shirt featuring a stylish zipper detail and comfortable fit. Perfect for casual and everyday wear.",
+        "photos": [
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file44.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file45.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file46.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file47.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file48.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file49.webp"
+        ],
+        "is_category_cover": false,
+        "is_showcase": false,
+        "is_new_arrival": false,
+        "is_mix": false,
+        "is_enabled": true
+      },
+      {
+        "id": 1794569681181,
+        "name": "Black & Brown Knitted Stripe T-Shirt 100% Cotton",
+        "category": "Home",
+        "price": "799",
+        "discount_price": "699",
+        "description": "Stylish black and brown knitted striped T-shirt made from 100% cotton for a soft, breathable, and comfortable feel. Perfect for everyday wear.",
+        "photos": [
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file50.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file51.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file52.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file53.jpg",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file54.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file55.webp"
+        ],
+        "is_category_cover": false,
+        "is_showcase": false,
+        "is_new_arrival": false,
+        "is_mix": false,
+        "is_enabled": true
+      },
+      {
+        "id": 1794569727310,
+        "name": "Grey & Black Knitted Stripe T-Shirt 100% Cotton",
+        "category": "Home",
+        "price": "699",
+        "discount_price": "599",
+        "description": "Stylish grey and black knitted striped T-shirt made from 100% cotton for a soft, breathable, and comfortable feel. Perfect for everyday wear.",
+        "photos": [
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file56.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file57.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file58.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file59.jpg",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file60.jpg",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file61.webp"
+        ],
+        "is_category_cover": false,
+        "is_showcase": false,
+        "is_new_arrival": false,
+        "is_mix": false,
+        "is_enabled": true
+      },
+      {
+        "id": 1794569771971,
+        "name": "Wine Geometric Jacquard Cotton T-Shirt",
+        "category": "Home",
+        "price": "699",
+        "discount_price": "599",
+        "description": "Stylish wine-coloured cotton T-shirt featuring a textured geometric jacquard pattern and a comfortable fit. Perfect for casual outings and everyday wear.",
+        "photos": [
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file62.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file63.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file64.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file65.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file66.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file67.webp"
+        ],
+        "is_category_cover": false,
+        "is_showcase": false,
+        "is_new_arrival": false,
+        "is_mix": false,
+        "is_enabled": true
+      },
+      {
+        "id": 1794569816747,
+        "name": "Red Embroidered Micro Checks Shirt",
+        "category": "Home",
+        "price": "799",
+        "discount_price": "699",
+        "description": "Stylish red shirt featuring micro-check patterns and elegant embroidered detailing. Perfect for casual and smart-casual occasions.",
+        "photos": [
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file68.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file69.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file70.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file71.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file72.webp"
+        ],
+        "is_category_cover": false,
+        "is_showcase": false,
+        "is_new_arrival": false,
+        "is_mix": false,
+        "is_enabled": true
       }
     ],
     "showcase": [],
     "NewArrival": [],
     "Mix": []
   },
-  "filename": "2026-11-13-113155-configuration.json",
+  "filename": "2026-11-13-113804-configuration.json",
   "userEmail": "nitikesh@tambnick25.onmicrosoft.com",
   "userName": "nitikesh",
   "organizationName": "Bandhan",
@@ -294,7 +398,7 @@
   "github": {
     "repository": "https://github.com/Noblecompute/NobleApp_bandhan",
     "branch": "main",
-    "publishedAt": "2026-11-13T11:32:34.024Z",
+    "publishedAt": "2026-11-13T11:38:42.292Z",
     "mediaBaseUrl": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/"
   }
 }

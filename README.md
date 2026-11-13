@@ -5,4 +5,4 @@ Public website configuration and media assets for **Bandhan**.
 ### Live Configuration
 - **Raw JSON:** [configuration.json](https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/configuration.json)
 - **Media CDN Folder:** [`media/`](./media/)
-- **Last Published:** Fri, 13 Nov 2026 11:32:34 GMT
+- **Last Published:** Fri, 13 Nov 2026 11:38:42 GMT
