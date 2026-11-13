@@ -1,9 +1,9 @@
 {
-  "currentCount": 9,
-  "timestamp": "2026-11-13T11:25:25.950Z",
+  "currentCount": 43,
+  "timestamp": "2026-11-13T11:31:55.983Z",
   "data": {
-    "currentCount": 9,
-    "timestamp": "2026-11-13T11:25:25.950Z",
+    "currentCount": 43,
+    "timestamp": "2026-11-13T11:31:55.983Z",
     "brand": {
       "brand_name": "UrbanEdge",
       "brand_tagline": "Wear Your Edge.",
@@ -170,12 +170,122 @@
         "twitter": ""
       }
     },
-    "subpages": [],
+    "subpages": [
+      {
+        "id": 1794569146315,
+        "name": "Black Kurta Style Regular Fit Full Sleeves Shirt",
+        "category": "DATE READY",
+        "price": "549",
+        "discount_price": "499",
+        "description": "Stylish black kurta-style shirt featuring a comfortable regular fit and full sleeves. Perfect for casual outings, festive occasions, and everyday wear.",
+        "photos": [
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file10.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file11.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file12.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file13.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file14.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file15.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file16.webp"
+        ],
+        "is_category_cover": false,
+        "is_showcase": false,
+        "is_new_arrival": false,
+        "is_mix": false,
+        "is_enabled": true
+      },
+      {
+        "id": 1794569261532,
+        "name": "Beige Corduroy Buttondown Shirt",
+        "category": "Home",
+        "price": "480",
+        "discount_price": "449",
+        "description": "Stylish beige corduroy button-down shirt with a comfortable fit and timeless look. Perfect for casual outings and everyday wear.",
+        "photos": [
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file17.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file18.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file19.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file20.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file21.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file22.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file23.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file24.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file25.webp"
+        ],
+        "is_category_cover": false,
+        "is_showcase": false,
+        "is_new_arrival": false,
+        "is_mix": false,
+        "is_enabled": true
+      },
+      {
+        "id": 1794569339565,
+        "name": "Beige Embroidered Knitted T-Shirt",
+        "category": "Home",
+        "price": "480",
+        "discount_price": "449",
+        "description": "Premium beige knitted T-shirt with stylish embroidered detailing and a comfortable fit. Ideal for casual and everyday styling.",
+        "photos": [
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file26.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file27.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file28.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file29.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file30.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file31.webp"
+        ],
+        "is_category_cover": false,
+        "is_showcase": false,
+        "is_new_arrival": false,
+        "is_mix": false,
+        "is_enabled": true
+      },
+      {
+        "id": 1794569408320,
+        "name": "Off White Structure Stripe Shirt",
+        "category": "Home",
+        "price": "549",
+        "discount_price": "499",
+        "description": "Stylish off-white textured stripe shirt with a modern look and comfortable fit. Perfect for casual and smart-casual occasions.",
+        "photos": [
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file32.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file33.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file34.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file35.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file36.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file37.webp"
+        ],
+        "is_category_cover": false,
+        "is_showcase": false,
+        "is_new_arrival": false,
+        "is_mix": false,
+        "is_enabled": true
+      },
+      {
+        "id": 1794569455655,
+        "name": "Butter Yellow Linen Blend Shirt",
+        "category": "Home",
+        "price": "560",
+        "discount_price": "499",
+        "description": "Elegant butter yellow linen-blend shirt with a lightweight, breathable fabric and comfortable fit. Perfect for casual and smart-casual looks.",
+        "photos": [
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file38.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file39.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file40.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file41.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file42.webp",
+          "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/file43.webp"
+        ],
+        "is_category_cover": false,
+        "is_showcase": false,
+        "is_new_arrival": false,
+        "is_mix": false,
+        "is_enabled": true
+      }
+    ],
     "showcase": [],
     "NewArrival": [],
     "Mix": []
   },
-  "filename": "2026-11-13-112525-configuration.json",
+  "filename": "2026-11-13-113155-configuration.json",
   "userEmail": "nitikesh@tambnick25.onmicrosoft.com",
   "userName": "nitikesh",
   "organizationName": "Bandhan",
@@ -184,7 +294,7 @@
   "github": {
     "repository": "https://github.com/Noblecompute/NobleApp_bandhan",
     "branch": "main",
-    "publishedAt": "2026-11-13T11:25:37.817Z",
+    "publishedAt": "2026-11-13T11:32:34.024Z",
     "mediaBaseUrl": "https://raw.githubusercontent.com/Noblecompute/NobleApp_bandhan/main/media/"
   }
 }
